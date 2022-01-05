@@ -1,36 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public sealed class TimerSystem 
 {
-    private int frameSizeDelaySet =0;
+    private int _frameSizeDelaySet =0;
     private int _delayTic = 0;
-    private bool _startTimer = true;
-    private bool loopTimer;
+    private bool _isStartTimer = true;
+    private bool _isloopTimer;
 
     //timeSwich==true секуны, timeSwich==false кадры.
     //loop зацикливание таймера.
     //time еденицы времени задержки.
-    public TimerSystem(bool timeSwich, bool loop, float time)
+    public TimerSystem(bool timerSwich, bool isloop, float time)
     {
-        loopTimer = loop;
-        if(timeSwich)
+        _isloopTimer = isloop;
+        if(timerSwich)
         {
             float temp = time * 30;
-            frameSizeDelaySet = (int)temp;
+            _frameSizeDelaySet = (int)temp;
         }
         else
         {
-            frameSizeDelaySet =(int)time;
+            _frameSizeDelaySet =(int)time;
         }
+    }
+    public TimerSystem(bool isloop, float time)
+    {
+        _isloopTimer = isloop;
+        float temp = time * 30;
+        _frameSizeDelaySet = (int)temp;
+    }
+    public TimerSystem(float time)
+    {
+        _isloopTimer = true;
+        float temp = time * 30;
+        _frameSizeDelaySet = (int)temp;
     }
     public bool CheckEvent()
     {
-        if (_startTimer)
+        if (_isStartTimer)
         {
-            _delayTic = frameSizeDelaySet;
-            _startTimer = false;
+            _delayTic = _frameSizeDelaySet;
+            _isStartTimer = false;
         }
         else
         {
@@ -50,9 +59,9 @@ public sealed class TimerSystem
         else
         {
             eventTimer = true;
-            if (loopTimer)
+            if (_isloopTimer)
             {
-                _delayTic = frameSizeDelaySet;
+                _delayTic = _frameSizeDelaySet;
             }
         }
     }
