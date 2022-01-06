@@ -1,7 +1,9 @@
+using UnityEngine;
+
 namespace GeekSpace
 {
-    public interface IExecute : IController
+    public interface IExecute
     {
-        void Execute(float deltaTime);
+        void Move(Transform transform);
     }
 }
