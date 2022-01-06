@@ -4,6 +4,6 @@ namespace GeekSpace
 {
     public interface IExecute
     {
-        void Move(Transform transform);
+        void Move();
     }
 }
