@@ -6,7 +6,10 @@ internal sealed class EnemyModel
     private Transform _transform;
     private int _healthPoitns;
     private float _speed;
-
+    public string PathToPrefab 
+    {
+        get { return _pathToPrefab; }
+    }
     public EnemyType EnemyType
     {
         get { return _enemyType; }
