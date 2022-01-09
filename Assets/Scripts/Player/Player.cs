@@ -4,9 +4,9 @@ namespace GeekSpace
 {
     public class Player
     {
-        IMoveble _playerMove;
-        PlayerModel _playerModel;
-        PlayerProvider PlayerProvider;
+        private IMoveble _playerMove;
+        private PlayerModel _playerModel;
+        private PlayerProvider PlayerProvider;
 
         internal Player (IMoveble playerMove, PlayerModel playerModel)
         {
