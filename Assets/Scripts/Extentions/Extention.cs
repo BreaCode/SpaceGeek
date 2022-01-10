@@ -91,12 +91,19 @@ public static class Extention
         return gameObject;
     }
     #endregion
-    public static Vector3 GetCentrFromCamera(this Camera camera)
+
+    #region Vector according Camera
+    public static Vector3 GetCentrAccordingCamera(this Camera camera)
     {
-        var centrPosition= new Vector3(camera.transform.position.x, camera.transform.position.y, 0);
+        var centrPosition = new Vector3(camera.transform.position.x, camera.transform.position.y, 0);
         return centrPosition;
     }
+    public static Vector3 GetRandomVectorAccordingCamera(this Camera camera, float offset)
+    {
+        var randomX = Random.Range(camera.transform.localPosition.z + offset, -1 * camera.transform.localPosition.z - offset);
+        var vector = new Vector2(randomX, Mathf.Abs((camera.transform.localPosition.z/2) - offset));
+        return vector;
 
-  
-
+    }
+    #endregion
 }

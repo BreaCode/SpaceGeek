@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using System;
 
 namespace GeekSpace
@@ -22,7 +19,7 @@ namespace GeekSpace
         {
             if (_timerSystem.CheckEvent())
             {
-                _objectPool.Pop();
+                _objectPool.Pop(Extention.GetRandomVectorAccordingCamera(Camera.main, ConstManager.OFFSET_ASTEROID),Quaternion.identity);
             }
         }
     }

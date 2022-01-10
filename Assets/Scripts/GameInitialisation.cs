@@ -5,10 +5,11 @@ namespace GeekSpace
     public sealed class GameInitialisation
     {
         #region ClassLifeCycles
-        public GameInitialisation(Controllers _controllers/*, InputData inputData*/)
+        public GameInitialisation(Controllers _controllers)
         {
-            var startPosition = Extention.GetCentrFromCamera(Camera.main);
-            var asteroidStartPosition = GameObject.Find("Spawn").transform;
+            Camera camera = Camera.main;
+            var startPosition = Extention.GetCentrAccordingCamera(camera);
+            var asteroidStartPosition = Extention.GetRandomVectorAccordingCamera(camera, ConstManager.OFFSET_ASTEROID);
 
             var input = new InputInitialization();
             var inputController = new InputController(input.GetInput());
@@ -29,7 +30,6 @@ namespace GeekSpace
             _controllers.Add(enemyController);
             _controllers.Add(moveController);
         }
-
         #endregion
     }
 }
