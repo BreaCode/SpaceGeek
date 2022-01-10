@@ -10,13 +10,15 @@ namespace GeekSpace
         internal PlayerModel PlayerModel
         {
             get { return _playerModel; }
-            set { _playerModel = value; }
+            set 
+            { 
+                _playerModel = value;
+                _playerModel.Object = gameObject;
+            }
         }
-
 
         void OnBecameInvisible()
         {
-            Debug.Log("Он испарился");
             GameEventSystem.current.GoingBeyondScreen(_playerModel);
         }
 
