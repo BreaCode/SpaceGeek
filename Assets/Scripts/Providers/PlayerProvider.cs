@@ -14,12 +14,12 @@ namespace GeekSpace
 
         private void Awake()
         {
-
+            GameEventSystem.current.onGoingBeyondScreen += GoingBeyondScreen;
         }
 
         void OnBecameInvisible()
         {
-
+            GameEventSystem.current.GoingBeyondScreen();
         }
 
         void OnTriggerEnter()
@@ -29,7 +29,12 @@ namespace GeekSpace
 
         private void OnDisable()
         {
-            
+            GameEventSystem.current.onGoingBeyondScreen -= GoingBeyondScreen;
+        }
+
+        private void GoingBeyondScreen()
+        {
+
         }
 
     }

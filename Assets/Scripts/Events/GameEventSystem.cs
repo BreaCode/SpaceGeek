@@ -62,12 +62,12 @@ namespace GeekSpace
         #endregion
 
         #region WorldEvents
-        public event Action<IModel> onGoingBeyondScreen;
-        public void goingBeyondScreen(IModel model)
+        public event Action onGoingBeyondScreen;
+        public void GoingBeyondScreen()
         {
             if (onGoingBeyondScreen != null)
             {
-                onGoingBeyondScreen(model);
+                onGoingBeyondScreen();
             }
         }
         #endregion
