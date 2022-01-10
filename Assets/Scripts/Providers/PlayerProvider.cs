@@ -2,24 +2,22 @@ using UnityEngine;
 
 namespace GeekSpace
 {
+    [RequireComponent(typeof(MeshRenderer))]
     public class PlayerProvider : MonoBehaviour
     {
-        private IModel _playerModel;
+        private PlayerModel _playerModel;
 
-        internal IModel PlayerModel
+        internal PlayerModel PlayerModel
         {
             get { return _playerModel; }
-            set { value = _playerModel; }
+            set { _playerModel = value; }
         }
 
-        private void Awake()
-        {
-            GameEventSystem.current.onGoingBeyondScreen += GoingBeyondScreen;
-        }
 
         void OnBecameInvisible()
         {
-            GameEventSystem.current.GoingBeyondScreen();
+            Debug.Log("Он испарился");
+            GameEventSystem.current.GoingBeyondScreen(_playerModel);
         }
 
         void OnTriggerEnter()
@@ -27,15 +25,6 @@ namespace GeekSpace
 
         }
 
-        private void OnDisable()
-        {
-            GameEventSystem.current.onGoingBeyondScreen -= GoingBeyondScreen;
-        }
-
-        private void GoingBeyondScreen()
-        {
-
-        }
 
     }
 }
