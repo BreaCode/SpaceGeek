@@ -9,7 +9,7 @@ namespace GeekSpace
 
         public void GetAxis()
         {
-            AxisOnChange.Invoke(Input.GetAxis(AxisManager.HORIZONTAL));
+            AxisOnChange.Invoke(Input.GetAxis(InputManager.HORIZONTAL));
         }
     }
 }
