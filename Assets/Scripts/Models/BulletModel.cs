@@ -1,25 +1,32 @@
 using UnityEngine;
 namespace GeekSpace
 {
-    internal sealed class BulletModel : IModel
+    internal sealed class BulletModel : IModel, IDynamicModel
     {
         private string _pathToPrefab;
-        private Transform _transform;
+        private Vector3 _position;
+        private GameObject _bulletObject;
         private float _speed;
 
-        public Transform Transform
+        public Vector3 Position
         {
-            get { return _transform; }
+            get { return _position; }
+            set { _position = value; }
+        }
+        public GameObject Object
+        {
+            get { return _bulletObject; }
+            set { _bulletObject = value; }
         }
         public float Speed
         {
             get { return _speed; }
         }
 
-        public BulletModel(string pathToPrefab, Transform transform, float speed)
+        public BulletModel(string pathToPrefab, Vector3 position, float speed)
         {
             _pathToPrefab = pathToPrefab;
-            _transform = transform;
+            _position = position;
             _speed = speed;
         }
     }
