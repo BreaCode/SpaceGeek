@@ -3,15 +3,18 @@ internal sealed class EnemyModel
 {
     private string _pathToPrefab;
     private EnemyType _enemyType;
-    private Transform _transform;
+    private Vector3 _transform;
     private int _healthPoitns;
     private float _speed;
-
+    public string PathToPrefab 
+    {
+        get { return _pathToPrefab; }
+    }
     public EnemyType EnemyType
     {
         get { return _enemyType; }
     }
-    public Transform Transform
+    public Vector3 Position
     {
         get { return _transform; }
     }
@@ -24,11 +27,11 @@ internal sealed class EnemyModel
         get { return _speed; }
     }
 
-    public EnemyModel(string pathToPrefab, EnemyType enemyType, Transform transform, int healthPoitns, float speed)
+    public EnemyModel(string pathToPrefab, EnemyType enemyType, Vector3 position, int healthPoitns, float speed)
     {
         _pathToPrefab = pathToPrefab;
         _enemyType = enemyType;
-        _transform = transform;
+        _transform = position;
         _healthPoitns = healthPoitns;
         _speed = speed;
     }

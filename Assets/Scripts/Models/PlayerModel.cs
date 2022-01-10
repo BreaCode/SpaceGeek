@@ -3,7 +3,7 @@ internal sealed class PlayerModel
 {
     private string _pathToPrefab;
     private WeaponType _weaponType;
-    private Transform _transform;
+    private Vector3 _transform;
     private int _healthPoitns;
     private float _speed;
 
@@ -11,7 +11,7 @@ internal sealed class PlayerModel
     {
         get { return _weaponType; }
     }
-    public Transform Transform
+    public Vector3 Position
     {
         get { return _transform; }
     }
@@ -24,11 +24,11 @@ internal sealed class PlayerModel
         get { return _speed; }
     }
 
-    public PlayerModel(string pathToPrefab, WeaponType weaponType, Transform transform, int healthPoitns, float speed)
+    public PlayerModel(string pathToPrefab, WeaponType weaponType, Vector3 position, int healthPoitns, float speed)
     {
         _pathToPrefab = pathToPrefab;
         _weaponType = weaponType;
-        _transform = transform;
+        _transform = position;
         _healthPoitns = healthPoitns;
         _speed = speed;
     }

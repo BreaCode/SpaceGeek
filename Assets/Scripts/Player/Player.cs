@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace GeekSpace
 {
-    public class Player
+    internal class Player
     {
-        private IMoveble _playerMove;
-        private PlayerModel _playerModel;
-        private PlayerProvider PlayerProvider;
+        private readonly IMoveble _playerMove;
+        private readonly PlayerModel _playerModel;
+        internal PlayerProvider PlayerProvider { get; }
 
         internal Player (IMoveble playerMove, PlayerModel playerModel)
         {
@@ -14,10 +14,10 @@ namespace GeekSpace
             _playerModel = playerModel;
             var player = GameObject.Instantiate(Resources.Load<PlayerProvider>("Prefabs/Ship/PlayerShip"));
             PlayerProvider = player.GetComponent<PlayerProvider>();
-            player.transform.position = _playerModel.Transform.position;
+            player.transform.position = _playerModel.Position;
         }
 
-        public void Move(float timeDelta)
+        internal void Move(float timeDelta)
         {
             _playerMove.Move(PlayerProvider.transform);
         }
