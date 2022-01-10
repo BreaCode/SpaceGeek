@@ -6,6 +6,7 @@ namespace GeekSpace
     {
         private IUserInputProxy _pcInputHorizontal;
         private IUserInputProxy _pcInputVertical;
+        private IUserInputFire _pcInputFire;
 
         public InputInitialization()
         {
@@ -16,15 +17,16 @@ namespace GeekSpace
             }
             _pcInputHorizontal = new PCInputHorizontal();
             _pcInputVertical = new PCInputVertical();
+            _pcInputFire = new PCInputFire();
         }
 
         public void Initialization()
         {
         }
 
-        public (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical) GetInput()
+        public (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical, IUserInputFire pcIinputFire) GetInput()
         {
-            (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical) result = (_pcInputHorizontal, _pcInputVertical);
+            (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical, IUserInputFire pcInputFire) result = (_pcInputHorizontal, _pcInputVertical, _pcInputFire);
             return result;
         }
     }
