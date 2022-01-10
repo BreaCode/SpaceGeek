@@ -14,6 +14,7 @@ namespace GeekSpace
             _playerModel = playerModel;
             var player = GameObject.Instantiate(Resources.Load<PlayerProvider>("Prefabs/Ship/PlayerShip"));
             PlayerProvider = player.GetComponent<PlayerProvider>();
+            PlayerProvider.PlayerModel = _playerModel;
             player.transform.position = _playerModel.Position;
         }
 
