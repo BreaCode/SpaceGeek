@@ -25,6 +25,7 @@ namespace GeekSpace
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid);
 
+            var beyondScreenActer = new BeyondScreenActer();
 
             _controllers.Add(input);
             _controllers.Add(enemyController);
