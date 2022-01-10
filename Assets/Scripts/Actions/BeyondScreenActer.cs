@@ -12,16 +12,16 @@ namespace GeekSpace
         private void GoingBeyondScreen(IDynamicModel model)
         {
             Vector3 newPosition = new Vector3();
-            newPosition = model.Position;
-            if (newPosition.y <= ScreenBordersManager.LEFT_SIDE || newPosition.y >= ScreenBordersManager.RIGHT_SIDE)
-            {
-                newPosition.y *= -1;
-            }
-            else if (newPosition.x <= ScreenBordersManager.DOWN_SIDE || newPosition.x >= ScreenBordersManager.UPPER_SIDE)
+            newPosition = model.Object.transform.position;
+            if (newPosition.x <= ScreenBordersManager.LEFT_SIDE || newPosition.x >= ScreenBordersManager.RIGHT_SIDE)
             {
                 newPosition.x *= -1;
             }
-            model.Position = newPosition;
+            else if (newPosition.y <= ScreenBordersManager.DOWN_SIDE || newPosition.y >= ScreenBordersManager.UPPER_SIDE)
+            {
+                newPosition.y *= -1;
+            }
+            model.Object.transform.position = newPosition;
         }
 
         ~BeyondScreenActer()
