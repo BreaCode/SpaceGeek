@@ -1,15 +1,37 @@
 using UnityEngine;
 
-public class PlayerProvider : MonoBehaviour
+namespace GeekSpace
 {
-    void OnBecameInvisible()
+    public class PlayerProvider : MonoBehaviour
     {
-        
-    }
+        private IModel _playerModel;
 
-    void OnTriggerEnter()
-    {
-        
-    }
+        internal IModel PlayerModel
+        {
+            get { return _playerModel; }
+            set { value = _playerModel; }
+        }
 
+        private void Awake()
+        {
+
+        }
+
+        void OnBecameInvisible()
+        {
+
+        }
+
+        void OnTriggerEnter()
+        {
+
+        }
+
+        private void OnDisable()
+        {
+            
+        }
+
+    }
 }
+

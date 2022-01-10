@@ -12,6 +12,7 @@ namespace GeekSpace
             current = this;
         }
 
+        #region WinLoose
         public event Action onWin;
         public void Win()
         {
@@ -20,14 +21,28 @@ namespace GeekSpace
                 onWin();
             }
         }
-        public event Action<GameObject> onGoingBeyondScreen;
-        public void goingBeyondScreen(GameObject gameObject)
+        public event Action onLoose;
+        public void Loose()
         {
-            if (onGoingBeyondScreen != null)
+            if (onLoose != null)
             {
-                onGoingBeyondScreen(gameObject);
+                onLoose();
             }
         }
+        #endregion
+
+        #region ActionEvents
+        public event Action<IModel> onTakeDamage;
+        public void TakeDamage(IModel model)
+        {
+            if (onTakeDamage != null)
+            {
+                onTakeDamage(model);
+            }
+        }
+        #endregion
+
+        #region Changes
         public event Action onScoreUpdate;
         public void ScoreUpdate()
         {
@@ -36,22 +51,26 @@ namespace GeekSpace
                 onScoreUpdate();
             }
         }
-        public event Action onSpeedUpdate;
-        public void SpeedUpdate()
+        public event Action onSpeedChange;
+        public void SpeedChange()
         {
-            if (onSpeedUpdate != null)
+            if (onSpeedChange != null)
             {
-                onSpeedUpdate();
+                onSpeedChange();
             }
         }
-        public event Action<string> onControlUpdate;
-        public void ControlUpdate(string controlType)
+        #endregion
+
+        #region WorldEvents
+        public event Action<IModel> onGoingBeyondScreen;
+        public void goingBeyondScreen(IModel model)
         {
-            if (onControlUpdate != null)
+            if (onGoingBeyondScreen != null)
             {
-                onControlUpdate(controlType);
+                onGoingBeyondScreen(model);
             }
         }
+        #endregion
     }
 }
 
