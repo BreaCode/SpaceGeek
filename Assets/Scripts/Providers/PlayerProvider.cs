@@ -1,15 +1,42 @@
 using UnityEngine;
 
-public class PlayerProvider : MonoBehaviour
+namespace GeekSpace
 {
-    void OnBecameInvisible()
+    public class PlayerProvider : MonoBehaviour
     {
-        
-    }
+        private IModel _playerModel;
 
-    void OnTriggerEnter()
-    {
-        
-    }
+        internal IModel PlayerModel
+        {
+            get { return _playerModel; }
+            set { value = _playerModel; }
+        }
 
+        private void Awake()
+        {
+            GameEventSystem.current.onGoingBeyondScreen += GoingBeyondScreen;
+        }
+
+        void OnBecameInvisible()
+        {
+            GameEventSystem.current.GoingBeyondScreen();
+        }
+
+        void OnTriggerEnter()
+        {
+
+        }
+
+        private void OnDisable()
+        {
+            GameEventSystem.current.onGoingBeyondScreen -= GoingBeyondScreen;
+        }
+
+        private void GoingBeyondScreen()
+        {
+
+        }
+
+    }
 }
+

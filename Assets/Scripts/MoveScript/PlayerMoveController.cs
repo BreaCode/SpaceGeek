@@ -2,9 +2,9 @@
 {
     internal class PlayerMoveController : IExecute 
     {
-        player2 _player;
+        Player _player;
 
-        internal PlayerMoveController(player2 player)
+        internal PlayerMoveController(Player player)
         {
             _player = player;
         }
