@@ -7,7 +7,7 @@ namespace GeekSpace
         #region ClassLifeCycles
         public GameInitialisation(Controllers _controllers/*, InputData inputData*/)
         {
-            var startPosition = GameObject.Find("Start").transform;
+            var startPosition = Extention.GetCentrFromCamera(Camera.main);
             var asteroidStartPosition = GameObject.Find("Spawn").transform;
 
             var input = new InputInitialization();
@@ -18,10 +18,10 @@ namespace GeekSpace
             var _player = new Player(_playerMove, _playerModel);
             var moveController = new PlayerMoveController(_player);
 
-            var asteriodModel = new EnemyModel("Prefabs/Enemy/EnemyAsteroid",EnemyType.Asteroid, asteroidStartPosition,10,10);
+            var asteriodModel = new EnemyModel("Prefabs/Enemy/EnemyAsteroid", EnemyType.Asteroid, asteroidStartPosition, 10, 10);
             var asteroidPrefab = (Resources.Load<EnemyProvider>(asteriodModel.PathToPrefab));
             var enemyPoolAsteroid = new ObjectPool(asteroidPrefab.gameObject, asteroidStartPosition);
-            var timerSystemAsteroidSpawn = new TimerSystem(true, true, 5);
+            var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid);
 
 

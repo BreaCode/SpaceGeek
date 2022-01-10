@@ -12,6 +12,9 @@ namespace GeekSpace
         private readonly ObjectPool _objectPool;
         internal EnemyController(TimerSystem timerSystem, ObjectPool objectPool)
         {
+            if (timerSystem == null) throw new Exception("TimerSystem is null");
+            if (objectPool == null) throw new Exception("ObjectPool is null");
+
             _timerSystem = timerSystem;
             _objectPool = objectPool;
         }
@@ -19,7 +22,7 @@ namespace GeekSpace
         {
             if (_timerSystem.CheckEvent())
             {
-                var enemy = _objectPool.Pop();
+                _objectPool.Pop();
             }
         }
     }

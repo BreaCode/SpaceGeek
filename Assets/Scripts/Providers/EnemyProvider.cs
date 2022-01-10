@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -5,7 +6,7 @@ using UnityEngine;
 public class EnemyProvider : MonoBehaviour
 {
     void OnBecameInvisible()
-    {
+    {   
         // TO DO Invoke event
     }
 

@@ -91,5 +91,12 @@ public static class Extention
         return gameObject;
     }
     #endregion
+    public static Vector3 GetCentrFromCamera(this Camera camera)
+    {
+        var centrPosition= new Vector3(camera.transform.position.x, camera.transform.position.y, 0);
+        return centrPosition;
+    }
+
+  
 
 }

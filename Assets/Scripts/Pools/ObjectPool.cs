@@ -15,6 +15,7 @@ internal sealed class ObjectPool
     public void Push(GameObject go)
     {
         _stack.Push(go);
+        go.transform.position = _parent.position;
         go.SetActive(false);
     }
 
@@ -24,10 +25,12 @@ internal sealed class ObjectPool
         if (_stack.Count == 0)
         {
             go = GameObject.Instantiate(_prefab, _parent);
+           
         }
         else
         {
             go = _stack.Pop();
+            
         }
         go.SetActive(true);
         return go;
