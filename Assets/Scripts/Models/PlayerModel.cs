@@ -8,6 +8,7 @@ namespace GeekSpace
         private WeaponType _weaponType;
         private Vector3 _position;
         private GameObject _playerObject;
+        private IPool _pool;
         private int _healthPoitns;
         private float _speed;
 
@@ -24,6 +25,11 @@ namespace GeekSpace
         {
             get { return _playerObject; }
             set { _playerObject = value; }
+        }
+        public IPool Pool
+        {
+            get { return _pool; }
+            set { _pool = value; }
         }
         public int HealthPoitns
         {
