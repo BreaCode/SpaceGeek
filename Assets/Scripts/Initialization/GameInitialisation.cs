@@ -26,13 +26,13 @@ namespace GeekSpace
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid);
 
 
-            var bulletdPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));        
-            var bulletPool = new ObjectPool(bulletdPrefab.gameObject, poolRoot);
+            var bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));        
+            var bulletPool = new ObjectPool(bulletPrefab.gameObject, poolRoot);
             var bulletModel = new BulletModel(bulletPool, _player.PlayerProvider.transform.position, 2);
             var bulletPoolOperator = new BulletPoolOperator(bulletPool,bulletModel, MaximumsManager.BULLETS_MAXIMUM);
-            var shootTimer = new TimerSystem(true, true, 1);
+            var shootTimer = new TimerSystem(true, true, 3);
             
-            var bulletController = new BulletController(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
+            var bulletController = new ShootController(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
 
             var beyondScreenActer = new BeyondScreenActer();
 
