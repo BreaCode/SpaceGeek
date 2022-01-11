@@ -15,7 +15,7 @@ namespace GeekSpace
             var inputController = new InputController(input.GetInput());
 
             var _playerModel = new PlayerModel("Prefabs/Ship/PlayerShip", WeaponType.ChainGunMk1, startPosition, 10, 1);
-            IMoveble _playerMove = new MoveTransform(_playerModel,input.GetInput());
+            IMoveble _playerMove = new MoveTransform(_playerModel,(input.GetInput().inputHorizontal, input.GetInput().inputVertical));
             var _player = new Player(_playerMove, _playerModel);
             var moveController = new PlayerMoveController(_player);
             var asteroidPrefab = (Resources.Load<EnemyProvider>(PathsManager.ASTEROID_PREFAB));
@@ -24,6 +24,9 @@ namespace GeekSpace
             var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM);
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid);
+          
+
+
 
             var beyondScreenActer = new BeyondScreenActer();
 

@@ -10,7 +10,7 @@ namespace GeekSpace
         private float horizontal;
         private float vertical;
 
-        public MoveTransform(PlayerModel playerModel, (IUserInputProxy horizontalInputProxy, IUserInputProxy verticalInputProxy, IUserInputFire fire) GetInput)
+        public MoveTransform(PlayerModel playerModel, (IUserInputProxy horizontalInputProxy, IUserInputProxy verticalInputProxy) GetInput)
         {
             this.playerModel = playerModel;
             _horizontalInputProxy = GetInput.horizontalInputProxy;
