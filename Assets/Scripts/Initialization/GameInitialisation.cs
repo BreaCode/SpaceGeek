@@ -24,8 +24,8 @@ namespace GeekSpace
             var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM);
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid);
-          
 
+       
 
 
             var beyondScreenActer = new BeyondScreenActer();
