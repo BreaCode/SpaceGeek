@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GeekSpace
 {
-    internal sealed class ObjectPool
+    internal sealed class ObjectPool : IPool
     {
         private readonly Stack<GameObject> _stack = new Stack<GameObject>();
         private readonly GameObject _prefab;
@@ -35,7 +35,6 @@ namespace GeekSpace
             if (_stack.Count == 0)
             {
                 go = Object.Instantiate(_prefab, _parent, quaternion);
-               // event +=Push
             }
             else
             {

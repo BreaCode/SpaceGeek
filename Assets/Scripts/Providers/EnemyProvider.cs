@@ -1,32 +1,47 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(MeshRenderer))]
-public class EnemyProvider : MonoBehaviour
+namespace GeekSpace
 {
-    private Rigidbody2D _rigidbody2D;
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(MeshRenderer))]
+    public class EnemyProvider : MonoBehaviour
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-    }
-    void OnBecameInvisible()
-    {
-        // TO DO Invoke event
-    }
-    private void OnBecameVisible()
-    {
-        _rigidbody2D.velocity = Vector2.zero;
-    }
+        private EnemyModel _enemyModel;
+        private Rigidbody2D _rigidbody2D;
 
-    void OnTriggerEnter()
-    {
+        internal EnemyModel EnemyModel
+        {
+            get { return _enemyModel; }
+            set 
+            {
+                _enemyModel = value;
+                _enemyModel.Object = gameObject;
+            }
+        }
+        private void Awake()
+        {
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+        void OnBecameInvisible()
+        {
+            GameEventSystem.current.GoingBeyondScreen(_enemyModel);
+        }
+        private void OnBecameVisible()
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+        }
+
+        void OnTriggerEnter()
+        {
+
+        }
+
+        void ReturnToPool()
+        {
+
+        }
 
     }
-
-    void ReturnToPool()
-    {
-
-    }
-
 }
+

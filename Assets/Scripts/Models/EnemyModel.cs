@@ -3,16 +3,13 @@ namespace GeekSpace
 {
     internal sealed class EnemyModel : IModel, IDynamicModel
     {
-        private string _pathToPrefab;
         private EnemyType _enemyType;
         private Vector3 _position;
         private GameObject _enemyObject;
+        private IPool _pool;
         private int _healthPoitns;
         private float _speed;
-        public string PathToPrefab
-        {
-            get { return _pathToPrefab; }
-        }
+
         public EnemyType EnemyType
         {
             get { return _enemyType; }
@@ -27,6 +24,11 @@ namespace GeekSpace
             get { return _enemyObject; }
             set { _enemyObject = value; }
         }
+        public IPool Pool
+        {
+            get { return _pool; }
+            set { _pool = value; }
+        }
         public int HealthPoitns
         {
             get { return _healthPoitns; }
@@ -36,9 +38,9 @@ namespace GeekSpace
             get { return _speed; }
         }
 
-        public EnemyModel(string pathToPrefab, EnemyType enemyType, Vector3 position, int healthPoitns, float speed)
+        public EnemyModel(IPool pool, EnemyType enemyType, Vector3 position, int healthPoitns, float speed)
         {
-            _pathToPrefab = pathToPrefab;
+            _pool = pool;
             _enemyType = enemyType;
             _position = position;
             _healthPoitns = healthPoitns;

@@ -11,17 +11,29 @@ namespace GeekSpace
 
         private void GoingBeyondScreen(IDynamicModel model)
         {
-            Vector3 newPosition = new Vector3();
-            newPosition = model.Object.transform.position;
-            if (newPosition.x <= ScreenBordersManager.LEFT_SIDE || newPosition.x >= ScreenBordersManager.RIGHT_SIDE)
+            if (model is EnemyModel || model is BulletModel)
             {
-                newPosition.x *= -1;
+                model.Pool.Push(model.Object);
             }
-            else if (newPosition.y <= ScreenBordersManager.DOWN_SIDE || newPosition.y >= ScreenBordersManager.UPPER_SIDE)
+            else if (model is PlayerModel)
             {
-                newPosition.y *= -1;
+                Vector3 newPosition = new Vector3();
+                newPosition = model.Object.transform.position;
+                if (newPosition.x <= ScreenBordersManager.LEFT_SIDE || newPosition.x >= ScreenBordersManager.RIGHT_SIDE)
+                {
+                    newPosition.x *= -1;
+                }
+                else if (newPosition.y <= ScreenBordersManager.DOWN_SIDE || newPosition.y >= ScreenBordersManager.UPPER_SIDE)
+                {
+                    newPosition.y *= -1;
+                }
+                model.Object.transform.position = newPosition;
             }
-            model.Object.transform.position = newPosition;
+            else
+            {
+                Debug.Log("Model Error");
+            }
+
         }
 
         ~BeyondScreenActer()

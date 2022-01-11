@@ -6,6 +6,7 @@ namespace GeekSpace
         private string _pathToPrefab;
         private Vector3 _position;
         private GameObject _bulletObject;
+        private IPool _pool;
         private float _speed;
 
         public Vector3 Position
@@ -17,6 +18,11 @@ namespace GeekSpace
         {
             get { return _bulletObject; }
             set { _bulletObject = value; }
+        }
+        public IPool Pool
+        {
+            get { return _pool; }
+            set { _pool = value; }
         }
         public float Speed
         {

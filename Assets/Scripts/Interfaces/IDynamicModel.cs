@@ -6,6 +6,7 @@ namespace GeekSpace
     {
         public Vector3 Position { get; set; }
         public GameObject Object { get; set; }
+        public IPool Pool { get; set; }
     }
 }
 
