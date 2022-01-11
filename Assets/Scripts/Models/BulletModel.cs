@@ -29,9 +29,9 @@ namespace GeekSpace
             get { return _speed; }
         }
 
-        public BulletModel(string pathToPrefab, Vector3 position, float speed)
+        public BulletModel(IPool pool, Vector3 position,float speed)
         {
-            _pathToPrefab = pathToPrefab;
+            _pool = pool;         
             _position = position;
             _speed = speed;
         }
