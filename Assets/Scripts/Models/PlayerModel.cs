@@ -4,13 +4,13 @@ namespace GeekSpace
 {
     internal sealed class PlayerModel : IModel, IDynamicModel
     {
-        private string _pathToPrefab;
-        private WeaponType _weaponType;
+        readonly private string _pathToPrefab;
+        readonly private WeaponType _weaponType;
         private Vector3 _position;
         private GameObject _playerObject;
         private IPool _pool;
         private int _healthPoitns;
-        private float _speed;
+        readonly private float _speed;
 
         public WeaponType WeaponType
         {
@@ -34,6 +34,7 @@ namespace GeekSpace
         public int HealthPoitns
         {
             get { return _healthPoitns; }
+            set { _healthPoitns = value; }
         }
         public float Speed
         {

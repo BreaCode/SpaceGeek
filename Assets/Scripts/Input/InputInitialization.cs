@@ -4,9 +4,9 @@ namespace GeekSpace
 {
     internal sealed class InputInitialization : IInitialization
     {
-        private IUserInputProxy _pcInputHorizontal;
-        private IUserInputProxy _pcInputVertical;
-        private IUserInputFire _pcInputFire;
+        readonly private IUserInputProxy _pcInputHorizontal;
+        readonly private IUserInputProxy _pcInputVertical;
+        readonly private IUserInputFire _pcInputFire;
 
         public InputInitialization()
         {

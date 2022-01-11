@@ -4,8 +4,8 @@ namespace GeekSpace
 {
     public class EnemyPoolOperator 
     {
-        private IPool _pool;
-        private int _poolSize;
+        readonly private IPool _pool;
+        readonly private int _poolSize;
         
 
         public EnemyPoolOperator(IPool pool, int poolSize)    
