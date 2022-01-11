@@ -9,7 +9,7 @@ namespace GeekSpace
         {
             Camera camera = Camera.main;
             var startPosition = Extention.GetCentrAccordingCamera(camera);
-            var asteroidStartPosition = Extention.GetRandomVectorAccordingCamera(camera, ConstManager.OFFSET_ASTEROID);
+
 
             var input = new InputInitialization();
             var inputController = new InputController(input.GetInput());
@@ -18,10 +18,10 @@ namespace GeekSpace
             IMoveble _playerMove = new MoveTransform(_playerModel);
             var _player = new Player(_playerMove, _playerModel);
             var moveController = new PlayerMoveController(_player);
-
-            var asteriodModel = new EnemyModel("Prefabs/Enemy/EnemyAsteroid", EnemyType.Asteroid, asteroidStartPosition, 10, 10);
-            var asteroidPrefab = (Resources.Load<EnemyProvider>(asteriodModel.PathToPrefab));
-            var enemyPoolAsteroid = new ObjectPool(asteroidPrefab.gameObject, asteroidStartPosition);
+            var asteroidPrefab = (Resources.Load<EnemyProvider>(PathsManager.ASTEROID_PREFAB));
+            var poolRoot = new Vector3(0, 0, 0);
+            var enemyPoolAsteroid = new ObjectPool(asteroidPrefab.gameObject, poolRoot);
+            var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM);
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid);
 
