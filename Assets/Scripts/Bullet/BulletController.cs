@@ -30,7 +30,7 @@ namespace GeekSpace
                 _onClickFire = 0;
                 Debug.Log(_onClickFire);
                 var a = _enemyPool.Pop(_startPosition.position,_startPosition.rotation);
-                a.GetComponent<Rigidbody2D>().AddForce(_startPosition.transform.up * 1);
+                a.GetComponent<Rigidbody2D>().AddForce(_startPosition.transform.up * 3);
 
                 return;
             }

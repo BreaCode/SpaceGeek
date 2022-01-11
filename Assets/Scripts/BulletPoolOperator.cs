@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace GeekSpace
 {
-    public class BulletPoolOperator 
+    internal class BulletPoolOperator 
     {
         private IPool _pool;
-        private Transform _startPosition;
+        private BulletModel _bulletModel;
         private int _poolSize;
 
-        public BulletPoolOperator(IPool pool, Transform startPosition, int poolSize)
+        internal BulletPoolOperator(IPool pool, BulletModel bulletModel, int poolSize)
         {
             _pool = pool;
-            _startPosition = startPosition;
+            _bulletModel = bulletModel;
             _poolSize = poolSize;
             InitiatePool();
         }
@@ -23,13 +23,10 @@ namespace GeekSpace
 
             for (int i = 0; i < _poolSize; i++)
             {
-               
-                var bulletModel = new BulletModel(_pool,_startPosition.position, 10);
-
-                objects[i] = _pool.Pop(_startPosition.position, _startPosition.rotation);
+                objects[i] = _pool.Pop(_bulletModel.Position, Quaternion.identity);
 
                 var BulletProvider = objects[i].GetComponent<BulletProvider>();
-                BulletProvider.BulletModel = bulletModel;
+                BulletProvider.BulletModel = _bulletModel;
             }
             for (int i = 0; i < _poolSize; i++)
             {
