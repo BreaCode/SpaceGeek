@@ -4,9 +4,9 @@ namespace GeekSpace
 {
     internal class MoveTransform : IMoveble
     {
-        private PlayerModel _playerModel;
-        private IUserInputProxy _horizontalInputProxy;
-        private IUserInputProxy _verticalInputProxy;
+        readonly private PlayerModel _playerModel;
+        readonly private IUserInputProxy _horizontalInputProxy;
+        readonly private IUserInputProxy _verticalInputProxy;
         private float horizontal;
         private float vertical;
 

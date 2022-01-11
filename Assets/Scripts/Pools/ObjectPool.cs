@@ -8,7 +8,7 @@ namespace GeekSpace
         private readonly Stack<GameObject> _stack = new Stack<GameObject>();
         private readonly GameObject _prefab;
         private readonly Vector3 _parent;
-        private Transform _rootPool;
+        private readonly Transform _rootPool;
 
         public ObjectPool(GameObject prefab, Vector3 parent)
         {
