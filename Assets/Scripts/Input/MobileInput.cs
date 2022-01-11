@@ -10,5 +10,10 @@ namespace GeekSpace
         {
             Debug.Log("нажали кнопку!");
         }
+
+        public void GetFire()
+        {
+            Debug.Log("нажали на кнопку выстрела.");
+        }
     }
 }

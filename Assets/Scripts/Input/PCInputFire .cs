@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace GeekSpace
 {
-    public sealed class PCInputHorizontal : IUserInputProxy
+    internal class PCInputFire : IUserInputFire
     {
         public event Action<float> AxisOnChange = delegate (float f) { };
 
-        public void GetAxis()
+        public void GetFire()
         {
-            AxisOnChange.Invoke(Input.GetAxis(InputManager.HORIZONTAL));
+            AxisOnChange.Invoke(Input.GetAxis(InputManager.FIRE1));
         }
     }
 }
