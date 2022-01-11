@@ -28,6 +28,7 @@ namespace GeekSpace
             var beyondScreenActer = new BeyondScreenActer();
 
             _controllers.Add(input);
+            _controllers.Add(inputController);
             _controllers.Add(enemyController);
             _controllers.Add(moveController);
         }
