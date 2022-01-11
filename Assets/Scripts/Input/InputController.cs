@@ -4,20 +4,33 @@
     {
         private readonly IUserInputProxy _horizontal;
         private readonly IUserInputProxy _vertical;
-        private readonly IUserInputFire _fire1;
+        private readonly IUserInputFire _fire;
+
+        internal IUserInputProxy Horizontal
+        {
+            get { return _horizontal; }
+        }
+        internal IUserInputProxy Vertical
+        {
+            get { return _vertical; }
+        }
+        internal IUserInputFire Fire
+        {
+            get { return _fire; }
+        }
 
         public InputController((IUserInputProxy inputHorizontal, IUserInputProxy inputVertical, IUserInputFire inputFire1) input)
         {
             _horizontal = input.inputHorizontal;
             _vertical = input.inputVertical;
-            _fire1 = input.inputFire1;
+            _fire = input.inputFire1;
         }
 
         public void Execute(float deltaTime)
         {
             _horizontal.GetAxis();
             _vertical.GetAxis();
-            _fire1.GetFire();
+            _fire.GetFire();
         }
     }
 }
