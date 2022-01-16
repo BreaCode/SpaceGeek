@@ -32,14 +32,14 @@ namespace GeekSpace
             var bulletPoolOperator = new BulletPoolOperator(bulletPool,bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var shootTimer = new TimerSystem(true, true, 3);
             
-            var bulletController = new ShootControllerWithInput(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
-
+           // var bulletController = new ShootControllerWithInput(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
+            IShootController shootController =new ShootControllerWithAutoShoot(shootTimer, bulletPool, _player.PlayerProvider.transform,_player.PlayerProvider.gameObject);
             var beyondScreenActer = new BeyondScreenActer();
 
             _controllers.Add(inputController);
             _controllers.Add(enemyController);
             _controllers.Add(moveController);
-            _controllers.Add(bulletController);
+            _controllers.Add(shootController);
 
         }
         #endregion
