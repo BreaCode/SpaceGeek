@@ -8,9 +8,9 @@ namespace GeekSpace
         public GameInitialisation(Controllers _controllers)
         {
             Camera camera = Camera.main;
+            System.Random random = new System.Random();
+
             var startPosition = Extention.GetCentrAccordingCamera(camera);
-
-
             var input = new InputInitialization();
             var inputController = new InputController(input.GetInput());
 
@@ -18,13 +18,11 @@ namespace GeekSpace
             IMoveble _playerMove = new MoveTransform(_playerModel, (input.GetInput().inputHorizontal, input.GetInput().inputVertical));
             var _player = new Player(_playerMove, _playerModel);
             var moveController = new PlayerMoveController(_player);
-            //var asteroidPrefab = (Resources.Load<EnemyProvider>(PathsManager.ASTEROID_PREFAB));
-            //var enemyPoolRoot = new Vector3(0, 0, 0);
-            //var enemyPoolAsteroid = new ObjectPool(asteroidPrefab.gameObject, poolRoot);
             var enemyPoolAsteroid = EnemyPoolFactory.EnemyPoolCreate(EnemyType.Asteroid);
-            var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM);
+            var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM, EnemyType.Asteroid);
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
-            var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid);
+            
+            var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid, random);
 
             var bulletPoolRoot = new Vector3(0, 0, 0);
             var bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));        
