@@ -11,7 +11,7 @@ namespace GeekSpace
         private Transform _startPosition;
 
         GameObject _player;
-        RaycastHit2D hit;
+        RaycastHit2D _hit;
         public ShootControllerWithAutoShoot(TimerSystem timerSystem, ObjectPool enemyPool, Transform startPosition, GameObject player)
         {
             _startPosition = startPosition;
@@ -22,19 +22,11 @@ namespace GeekSpace
 
         public void GetShoot()
         {
-            Debug.DrawLine(_player.transform.position, _player.transform.forward, Color.red);
-            hit = Physics2D.Raycast(_player.transform.position, _player.transform.up);
-            if (hit)
+            _hit = Physics2D.Raycast(_player.transform.position, _player.transform.up);
+            if (_timerSystem.CheckEvent() && _hit)
             {
-                Debug.Log(hit.transform.name);              
-            }
-            if (_timerSystem.CheckEvent() && hit)
-            {
-
-
                 var a = _enemyPool.Pop(_startPosition.position, _startPosition.rotation);
                 a.GetComponent<Rigidbody2D>().AddForce(_startPosition.transform.up * 3);
-
                 return;
             }
         }
@@ -43,7 +35,5 @@ namespace GeekSpace
         {
             GetShoot();
         }
-
-
     }
 }
