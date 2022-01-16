@@ -14,7 +14,7 @@ namespace GeekSpace
             var input = new InputInitialization();
             var inputController = new InputController(input.GetInput());
 
-            var _playerModel = new PlayerModel("Prefabs/Ship/PlayerShip", WeaponType.ChainGunMk1, startPosition, 10, 3);
+            var _playerModel = new PlayerModel("Prefabs/Ship/PlayerShip", WeaponType.ChainGunMk1, startPosition, 10, 1);
             IMoveble _playerMove = new MoveTransform(_playerModel, (input.GetInput().inputHorizontal, input.GetInput().inputVertical));
             var _player = new Player(_playerMove, _playerModel);
             var moveController = new PlayerMoveController(_player);
@@ -32,14 +32,14 @@ namespace GeekSpace
             var bulletPoolOperator = new BulletPoolOperator(bulletPool,bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var shootTimer = new TimerSystem(true, true, 3);
             
-            var bulletController = new ShootController(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
-
+           // var bulletController = new ShootControllerWithInput(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
+            IShootController shootController =new ShootControllerWithAutoShoot(shootTimer, bulletPool, _player.PlayerProvider.transform,_player.PlayerProvider.gameObject);
             var beyondScreenActer = new BeyondScreenActer();
 
             _controllers.Add(inputController);
             _controllers.Add(enemyController);
             _controllers.Add(moveController);
-            _controllers.Add(bulletController);
+            _controllers.Add(shootController);
 
         }
         #endregion
