@@ -13,7 +13,7 @@ namespace GeekSpace
         internal EnemyModel EnemyModel
         {
             get { return _enemyModel; }
-            set 
+            set
             {
                 _enemyModel = value;
                 _enemyModel.Object = gameObject;
@@ -32,9 +32,9 @@ namespace GeekSpace
             _rigidbody2D.velocity = Vector2.zero;
         }
 
-        void OnTriggerEnter()
+        void OnTriggerEnter2D()
         {
-
+            GameEventSystem.current.GoingBeyondScreen(_enemyModel);
         }
 
         void ReturnToPool()
