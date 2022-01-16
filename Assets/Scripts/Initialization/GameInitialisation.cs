@@ -32,7 +32,7 @@ namespace GeekSpace
             var bulletPoolOperator = new BulletPoolOperator(bulletPool,bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var shootTimer = new TimerSystem(true, true, 3);
             
-            var bulletController = new ShootController(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
+            var bulletController = new ShootControllerWithInput(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
 
             var beyondScreenActer = new BeyondScreenActer();
 
