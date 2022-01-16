@@ -6,18 +6,21 @@ namespace GeekSpace
 {
     internal class EnemyModelFactory
     {
-        internal EnemyModelFactory(Vector3 startPosition, int poolSize, int coolDown)
+        internal static EnemyModel EnemyModelCreate(IPool pool, EnemyType enemyType)
         {
-            var enemyPrefab = (Resources.Load<EnemyProvider>(PathsManager.ASTEROID_PREFAB));
+            Camera camera = Camera.main;
+            var startPosition = Extention.GetRandomVectorAccordingCamera(camera, ConstManager.OFFSET_ASTEROID);
 
-            var poolRoot = new Vector3(0, 0, 0);
-            var enemyPool = new ObjectPool(enemyPrefab.gameObject, poolRoot);
+            WeaponModel weaponModel = null; //—юда фабрику оружи€
+            int enemySize = 2;
+            if (enemyType == EnemyType.Asteroid)
+            {
+                enemySize = 6;
+            }
 
-            var poolMaximumSize = MaximumsManager.ASTEROIDS_MAXIMUM;
+            var enemyModel = new EnemyModel(pool, enemyType, weaponModel, startPosition, 10, 10, enemySize);
 
-            var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPool, poolMaximumSize);
-            var timerSystemAsteroidSpawn = new TimerSystem(true, true, coolDown);
-
+            return enemyModel;
         }
     }
 }
