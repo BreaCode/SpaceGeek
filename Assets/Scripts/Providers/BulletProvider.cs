@@ -28,9 +28,9 @@ namespace GeekSpace
         {
             _rigidbody2D.velocity = Vector2.zero;
         }
-        void OnTriggerEnter()
+        void OnTriggerEnter2D()
         {
-
+            GameEventSystem.current.GoingBeyondScreen(_bulletModel);
         }
 
         void ReturnToPool()
