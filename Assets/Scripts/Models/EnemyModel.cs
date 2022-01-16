@@ -3,16 +3,16 @@ namespace GeekSpace
 {
     internal sealed class EnemyModel : IModel, IDynamicModel
     {
-        private EnemyType _enemyType;
+        private WeaponModel _weaponModel;
         private Vector3 _position;
         private GameObject _enemyObject;
         private IPool _pool;
         private int _healthPoitns;
         private float _speed;
 
-        public EnemyType EnemyType
+        public WeaponModel WeaponModel
         {
-            get { return _enemyType; }
+            get { return _weaponModel; }
         }
         public Vector3 Position
         {
@@ -38,10 +38,10 @@ namespace GeekSpace
             get { return _speed; }
         }
 
-        public EnemyModel(IPool pool, EnemyType enemyType, Vector3 position, int healthPoitns, float speed)
+        public EnemyModel(IPool pool, WeaponModel weaponModel, Vector3 position, int healthPoitns, float speed)
         {
             _pool = pool;
-            _enemyType = enemyType;
+            _weaponModel = weaponModel;
             _position = position;
             _healthPoitns = healthPoitns;
             _speed = speed;

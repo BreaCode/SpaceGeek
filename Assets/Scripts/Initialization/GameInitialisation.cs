@@ -18,16 +18,17 @@ namespace GeekSpace
             IMoveble _playerMove = new MoveTransform(_playerModel, (input.GetInput().inputHorizontal, input.GetInput().inputVertical));
             var _player = new Player(_playerMove, _playerModel);
             var moveController = new PlayerMoveController(_player);
-            var asteroidPrefab = (Resources.Load<EnemyProvider>(PathsManager.ASTEROID_PREFAB));
-            var poolRoot = new Vector3(0, 0, 0);
-            var enemyPoolAsteroid = new ObjectPool(asteroidPrefab.gameObject, poolRoot);
+            //var asteroidPrefab = (Resources.Load<EnemyProvider>(PathsManager.ASTEROID_PREFAB));
+            //var enemyPoolRoot = new Vector3(0, 0, 0);
+            //var enemyPoolAsteroid = new ObjectPool(asteroidPrefab.gameObject, poolRoot);
+            var enemyPoolAsteroid = EnemyPoolFactory.EnemyPoolCreate(EnemyType.Asteroid);
             var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM);
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid);
 
-
+            var bulletPoolRoot = new Vector3(0, 0, 0);
             var bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));        
-            var bulletPool = new ObjectPool(bulletPrefab.gameObject, poolRoot);
+            var bulletPool = new ObjectPool(bulletPrefab.gameObject, bulletPoolRoot);
             var bulletModel = new BulletModel(bulletPool, _player.PlayerProvider.transform.position, 2);
             var bulletPoolOperator = new BulletPoolOperator(bulletPool,bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var shootTimer = new TimerSystem(true, true, 3);

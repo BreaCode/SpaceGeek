@@ -23,7 +23,8 @@ namespace GeekSpace
             for (int i = 0; i < _poolSize; i++)
             {
                 var asteroidStartPosition = Extention.GetRandomVectorAccordingCamera(camera, ConstManager.OFFSET_ASTEROID);
-                var asteroidModel = new EnemyModel(_pool, EnemyType.Asteroid, asteroidStartPosition, 10, 10);
+                WeaponModel weaponModel = null;
+                var asteroidModel = new EnemyModel(_pool, weaponModel, asteroidStartPosition, 10, 10);
 
                 objects[i] = _pool.Pop(asteroidStartPosition, Quaternion.identity);
 
