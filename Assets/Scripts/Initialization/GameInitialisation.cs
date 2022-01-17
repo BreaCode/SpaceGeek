@@ -13,24 +13,26 @@ namespace GeekSpace
             var startPosition = Extention.GetCentrAccordingCamera(camera);
             var input = new InputInitialization();
             var inputController = new InputController(input.GetInput());
+            var playerWeaponModel = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);
+            var playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB , WeaponType.ChainGunMk1, playerWeaponModel, startPosition, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
 
-            var _playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB , WeaponType.ChainGunMk1, startPosition, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
-            IMoveble _playerMove = new MoveTransform(_playerModel, (input.GetInput().inputHorizontal, input.GetInput().inputVertical));
-            var _player = new Player(_playerMove, _playerModel);
-            var moveController = new PlayerMoveController(_player);
+            IMoveble playerMove = new MoveTransform(playerModel, (input.GetInput().inputHorizontal, input.GetInput().inputVertical));
+            var player = new Player(playerMove, playerModel);
+            var gunBulletPool = BulletPoolFactory.BulletPoolCreate(WeaponType.ChainGunMk1);
+            var bulletModel = new BulletModel(gunBulletPool, player.PlayerProvider.transform.position, 2);
+            var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
+            var shootTimer = new TimerSystem(true, true, 3);
+
+            IShootController shootController = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject);
+
+            var moveController = new PlayerMoveController(player);
+
             var enemyPoolAsteroid = EnemyPoolFactory.EnemyPoolCreate(EnemyType.Asteroid);
             var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM, EnemyType.Asteroid);
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid, random);
       
-            var gunBulletPool = BulletPoolFactory.BulletPoolCreate(WeaponType.ChainGunMk1);
-            var bulletModel = new BulletModel(gunBulletPool, _player.PlayerProvider.transform.position, 2);
-            var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
-            var shootTimer = new TimerSystem(true, true, 3);
-
-
-            IShootController shootController =new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, _player.PlayerProvider.transform,_player.PlayerProvider.gameObject);
             var beyondScreenActer = new BeyondScreenActer();
 
             _controllers.Add(inputController);
