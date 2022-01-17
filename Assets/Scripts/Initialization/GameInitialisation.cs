@@ -30,8 +30,10 @@ namespace GeekSpace
             var bulletModel = new BulletModel(bulletPool, _player.PlayerProvider.transform.position, 2);
             var bulletPoolOperator = new BulletPoolOperator(bulletPool,bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var shootTimer = new TimerSystem(true, true, 3);
-            
-           // var bulletController = new ShootControllerWithInput(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
+            var weaponPoolLazer = WeaponPoolFactory.WeaponPoolCreate(WeaponType.LaserGunMk1);
+            var weaponPoolGun = WeaponPoolFactory.WeaponPoolCreate(WeaponType.ChainGunMk1);
+
+            // var bulletController = new ShootControllerWithInput(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
             IShootController shootController =new ShootControllerWithAutoShoot(shootTimer, bulletPool, _player.PlayerProvider.transform,_player.PlayerProvider.gameObject);
             var beyondScreenActer = new BeyondScreenActer();
 
