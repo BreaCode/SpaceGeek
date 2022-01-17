@@ -21,7 +21,7 @@ namespace GeekSpace
                     break;
             }
 
-            var weaponModel = new WeaponModel(null, weaponType, damage, cooldown);
+            var weaponModel = new WeaponModel(pool, weaponType, damage, cooldown);
 
             return weaponModel;
         }
