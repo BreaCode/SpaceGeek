@@ -2,26 +2,26 @@
 
 namespace GeekSpace
 {
-    internal class WeaponPoolFactory
+    internal class BulletPoolFactory
     {
-        internal static ObjectPool WeaponPoolCreate(WeaponType weaponType)
+        internal static ObjectPool BulletPoolCreate(WeaponType weaponType)
         {
-            var weaponPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
+            var bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
             switch (weaponType)
             {
                 case WeaponType.ChainGunMk1:
-                    weaponPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
+                    bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
                     break;
                 case WeaponType.LaserGunMk1:
-                    weaponPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
+                    bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
                     break;
             }
 
 
             var poolRoot = new Vector3(0, 0, 0);
-            var weaponPool = new ObjectPool(weaponPrefab.gameObject, poolRoot);
+            var bulletPool = new ObjectPool(bulletPrefab.gameObject, poolRoot);
 
-            return weaponPool;
+            return bulletPool;
         }
     }
 }
