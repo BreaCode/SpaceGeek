@@ -9,6 +9,7 @@ namespace GeekSpace
         private GameObject _enemyObject;
         private IPool _pool;
         private int _healthPoitns;
+        private int _armor;
         private int _size;
         private float _speed;
 
@@ -39,6 +40,10 @@ namespace GeekSpace
         {
             get { return _healthPoitns; }
         }
+        public int Armor
+        {
+            get { return _armor; }
+        }
         public int Size
         {
             get { return _size; }
@@ -48,13 +53,14 @@ namespace GeekSpace
             get { return _speed; }
         }
 
-        public EnemyModel(IPool pool, EnemyType enemyType, WeaponModel weaponModel, Vector3 position, int healthPoitns, float speed, int size = 1)
+        public EnemyModel(IPool pool, EnemyType enemyType, WeaponModel weaponModel, Vector3 position, int healthPoitns, float speed, int armor, int size = 1)
         {
             _pool = pool;
             _enemyType = enemyType;
             _weaponModel = weaponModel;
             _position = position;
             _healthPoitns = healthPoitns * size;
+            _armor = armor;
             _speed = speed;
             _size = size;
         }

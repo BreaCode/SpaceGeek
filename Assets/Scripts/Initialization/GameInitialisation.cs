@@ -14,7 +14,7 @@ namespace GeekSpace
             var input = new InputInitialization();
             var inputController = new InputController(input.GetInput());
 
-            var _playerModel = new PlayerModel("Prefabs/Ship/PlayerShip", WeaponType.ChainGunMk1, startPosition, 10, 1);
+            var _playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB , WeaponType.ChainGunMk1, startPosition, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
             IMoveble _playerMove = new MoveTransform(_playerModel, (input.GetInput().inputHorizontal, input.GetInput().inputVertical));
             var _player = new Player(_playerMove, _playerModel);
             var moveController = new PlayerMoveController(_player);
