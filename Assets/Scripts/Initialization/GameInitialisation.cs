@@ -23,17 +23,14 @@ namespace GeekSpace
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             
             var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid, random);
-
-            var bulletPoolRoot = new Vector3(0, 0, 0);
-            var bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));        
-            var bulletPool = new ObjectPool(bulletPrefab.gameObject, bulletPoolRoot);
-            var bulletPoolGun = BulletPoolFactory.BulletPoolCreate(WeaponType.ChainGunMk1);
-            var bulletModel = new BulletModel(bulletPoolGun, _player.PlayerProvider.transform.position, 2);
-            var bulletPoolOperator = new BulletPoolOperator(bulletPoolGun, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
+      
+            var gunBulletPool = BulletPoolFactory.BulletPoolCreate(WeaponType.ChainGunMk1);
+            var bulletModel = new BulletModel(gunBulletPool, _player.PlayerProvider.transform.position, 2);
+            var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var shootTimer = new TimerSystem(true, true, 3);
 
 
-            IShootController shootController =new ShootControllerWithAutoShoot(shootTimer, bulletPool, _player.PlayerProvider.transform,_player.PlayerProvider.gameObject);
+            IShootController shootController =new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, _player.PlayerProvider.transform,_player.PlayerProvider.gameObject);
             var beyondScreenActer = new BeyondScreenActer();
 
             _controllers.Add(inputController);
