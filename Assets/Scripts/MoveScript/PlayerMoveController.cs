@@ -9,9 +9,9 @@
             _player = player;
         }
 
-        public void Execute(float delteTime)
+        public void Execute(float deltaTime)
         {
-            _player.Move(delteTime);
+            _player.Move(deltaTime);
         }
     }
 }

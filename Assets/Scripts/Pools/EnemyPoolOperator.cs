@@ -19,7 +19,6 @@ namespace GeekSpace
 
         private void InitiatePool()
         {
-            Camera camera = Camera.main;
             GameObject[] objects = new GameObject[_poolSize];
 
             for (int i = 0; i < _poolSize; i++)
