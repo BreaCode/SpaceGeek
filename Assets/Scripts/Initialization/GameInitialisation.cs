@@ -27,11 +27,12 @@ namespace GeekSpace
             var bulletPoolRoot = new Vector3(0, 0, 0);
             var bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));        
             var bulletPool = new ObjectPool(bulletPrefab.gameObject, bulletPoolRoot);
-            var bulletModel = new BulletModel(bulletPool, _player.PlayerProvider.transform.position, 2);
-            var bulletPoolOperator = new BulletPoolOperator(bulletPool,bulletModel, MaximumsManager.BULLETS_MAXIMUM);
+            var bulletPoolGun = BulletPoolFactory.BulletPoolCreate(WeaponType.ChainGunMk1);
+            var bulletModel = new BulletModel(bulletPoolGun, _player.PlayerProvider.transform.position, 2);
+            var bulletPoolOperator = new BulletPoolOperator(bulletPoolGun, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var shootTimer = new TimerSystem(true, true, 3);
-            
-           // var bulletController = new ShootControllerWithInput(shootTimer,bulletPool,_player.PlayerProvider.transform,input.GetInput().pcIinputFire);
+
+
             IShootController shootController =new ShootControllerWithAutoShoot(shootTimer, bulletPool, _player.PlayerProvider.transform,_player.PlayerProvider.gameObject);
             var beyondScreenActer = new BeyondScreenActer();
 
