@@ -17,6 +17,10 @@ namespace GeekSpace
         {
             get { return _weaponType; }
         }
+        public WeaponModel WeaponModel
+        {
+            get { return _weaponModel; }
+        }
         public Vector3 Position
         {
             get { return _position; }

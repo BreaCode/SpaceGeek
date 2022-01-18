@@ -21,7 +21,8 @@ namespace GeekSpace
             var gunBulletPool = BulletPoolFactory.BulletPoolCreate(WeaponType.ChainGunMk1);
             var bulletModel = new BulletModel(gunBulletPool, player.PlayerProvider.transform.position, 2);
             var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
-            var shootTimer = new TimerSystem(true, true, 3);
+            var playerReloadCooldown = player.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
+            var shootTimer = new TimerSystem(true, true, playerReloadCooldown);
 
             IShootController shootController = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject);
 
