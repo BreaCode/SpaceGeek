@@ -6,8 +6,8 @@ namespace GeekSpace
 {
     internal class MoveTransformEnemy : IMoveble
     {
-        EnemyModel _enemyModel;
-        GameObject _player;
+        private EnemyModel _enemyModel;
+        private GameObject _player;
         public MoveTransformEnemy(EnemyModel enemyModel, GameObject player)
         {
             _enemyModel = enemyModel;
@@ -16,7 +16,7 @@ namespace GeekSpace
 
         public void Move(Transform transform)
         {
-            var speed = _enemyModel.Speed * Time.deltaTime; 
+            var speed = _enemyModel.Speed * Time.deltaTime;
             var pos = Vector2.MoveTowards(transform.position, _player.transform.position, speed);
             transform.position = new Vector2(pos.x, transform.position.y);
         }

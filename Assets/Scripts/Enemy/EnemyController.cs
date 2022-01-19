@@ -40,7 +40,7 @@ namespace GeekSpace
             {
                 var startpos = new Vector2(enemy.transform.position.x, enemy.transform.position.y - 1);
                 var a = _bulletPool.Pop(startpos, enemy.transform.rotation);
-                a.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.up * 1);
+                a.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.up * 0.5f);
                 return;
             }
         }
