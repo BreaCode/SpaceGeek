@@ -8,6 +8,7 @@ namespace GeekSpace
         private readonly int _poolSize;
         private readonly EnemyType _enemyType;
 
+        internal EnemyModel CurrentModel { get; private set; }
 
         internal EnemyPoolOperator(IPool pool, int poolSize, EnemyType enemyType)    
         {
@@ -29,6 +30,7 @@ namespace GeekSpace
 
                 var EnemyProvider = objects[i].GetComponent<EnemyProvider>();
                 EnemyProvider.EnemyModel = enemyModel;
+                CurrentModel = enemyModel;
             }
             for (int i = 0; i < _poolSize; i++)
             {
