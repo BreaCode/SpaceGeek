@@ -20,9 +20,9 @@ namespace GeekSpace
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
         }
-        void OnBecameInvisible()
+       private void OnBecameInvisible()
         {
-            GameEventSystem.current.GoingBeyondScreen(_bulletModel);
+            ReturnToPool();
         }
         private void OnBecameVisible()
         {
@@ -30,12 +30,12 @@ namespace GeekSpace
         }
         void OnTriggerEnter2D()
         {
-            GameEventSystem.current.GoingBeyondScreen(_bulletModel);
+           
         }
 
         void ReturnToPool()
         {
-
+            GameEventSystem.current.GoingBeyondScreen(_bulletModel);
         }
     }
 }

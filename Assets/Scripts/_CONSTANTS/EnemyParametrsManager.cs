@@ -10,6 +10,8 @@ namespace GeekSpace
         internal const int SHIP_HEALTH = 100;
         internal const float SHIP_SPEED = 3f;
         internal const int SHIP_ARMOR = 20;
+        internal const string TARGET_LAYER = "player";
+
     }
 }
 

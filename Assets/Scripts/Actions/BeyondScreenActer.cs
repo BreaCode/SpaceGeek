@@ -4,6 +4,8 @@ namespace GeekSpace
 {
     internal sealed class BeyondScreenActer
     {
+     
+
         internal BeyondScreenActer()
         {
             GameEventSystem.current.onGoingBeyondScreen += GoingBeyondScreen;

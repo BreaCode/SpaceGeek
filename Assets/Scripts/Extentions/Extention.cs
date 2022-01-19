@@ -101,7 +101,7 @@ public static class Extention
     public static Vector3 GetRandomVectorAccordingCamera(this Camera camera, float offset)
     {
         var randomX = Random.Range(camera.transform.localPosition.z + offset, -1 * camera.transform.localPosition.z - offset);
-        var vector = new Vector2(randomX, Mathf.Abs((camera.transform.localPosition.z/2) - offset));
+        var vector = new Vector2(randomX, Mathf.Abs((camera.transform.localPosition.z/2) + offset));
         return vector;
 
     }

@@ -6,7 +6,7 @@ namespace GeekSpace
     {
         internal static EnemyModel EnemyModelCreate(IPool pool, EnemyType enemyType)
         {
-            WeaponModel DEFAULT_WEAPON_MODEL = new WeaponModel(0, 1);
+            WeaponModel DEFAULT_WEAPON_MODEL = new WeaponModel(0, 5);
             WeaponModel weaponModel = DEFAULT_WEAPON_MODEL;
             var startPosition = new Vector3(0, 0, 0);
             var enemyHealth = EnemyParametrsManager.DEFAULT_HEALTH;
