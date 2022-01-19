@@ -32,15 +32,16 @@ namespace GeekSpace
 
         public void GetShoot(GameObject enemy)
         {
-            if (_bulletPool is null || _respawnTimer == null) return;
+            if (_bulletPool is null || _shootTimer == null) return;
             if (enemy.activeSelf == false) return;
-
+          
             _hit = Physics2D.Raycast(enemy.transform.position, -enemy.transform.up, 100.0f, _mask);
             if (_shootTimer.CheckEvent() && _hit)
             {
                 var startpos = new Vector2(enemy.transform.position.x, enemy.transform.position.y - 1);
                 var a = _bulletPool.Pop(startpos, enemy.transform.rotation);
                 a.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.up * 0.5f);
+             
                 return;
             }
         }
