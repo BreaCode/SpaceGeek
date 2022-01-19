@@ -6,7 +6,8 @@ namespace GeekSpace
 {
     internal sealed class EnemyController : IExecute
     {
-        private readonly TimerSystem _timerSystem;
+        private readonly TimerSystem _respawnTimer;
+        private readonly TimerSystem _shootTimer;
         private readonly IPool _objectPool;
         private readonly IPool _bulletPool;
         private readonly System.Random _random;
@@ -14,12 +15,13 @@ namespace GeekSpace
         private List<GameObject> _enemies;
         private RaycastHit2D _hit;
         private LayerMask _mask;
-        internal EnemyController(TimerSystem timerSystem, IPool objectPool, IPool bulletPool, System.Random random, IMoveble moveble)
+        internal EnemyController(TimerSystem respawnTimer, TimerSystem shootTimer, IPool objectPool, IPool bulletPool, System.Random random, IMoveble moveble)
         {
-            if (timerSystem == null) throw new Exception("TimerSystem is null");
+            if (respawnTimer == null) throw new Exception("TimerSystem is null");
             if (objectPool == null) throw new Exception("ObjectPool is null");
 
-            _timerSystem = timerSystem;
+            _respawnTimer = respawnTimer;
+            _shootTimer = shootTimer;
             _objectPool = objectPool;
             _bulletPool = bulletPool;
             _random = random;
@@ -30,12 +32,11 @@ namespace GeekSpace
 
         public void GetShoot(GameObject enemy)
         {
+            if (_bulletPool is null || _respawnTimer == null) return;
             if (enemy.activeSelf == false) return;
-            if (_bulletPool is null) return;
 
             _hit = Physics2D.Raycast(enemy.transform.position, -enemy.transform.up, 100.0f, _mask);
-
-            if (_timerSystem.CheckEvent() && _hit)
+            if (_shootTimer.CheckEvent() && _hit)
             {
                 var startpos = new Vector2(enemy.transform.position.x, enemy.transform.position.y - 1);
                 var a = _bulletPool.Pop(startpos, enemy.transform.rotation);
@@ -47,7 +48,7 @@ namespace GeekSpace
         public void Execute(float deltaTime)
         {
 
-            if (_timerSystem.CheckEvent())
+            if (_respawnTimer.CheckEvent())
             {
                 var enemyObject = _objectPool.Pop(Extention.GetRandomVectorAccordingCamera(Camera.main, ConstManager.OFFSET_ASTEROID), Quaternion.identity);
                 var enemyModel = enemyObject.gameObject.GetOrAddComponent<EnemyProvider>().EnemyModel;

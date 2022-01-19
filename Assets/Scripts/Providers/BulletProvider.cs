@@ -30,7 +30,7 @@ namespace GeekSpace
         }
         void OnTriggerEnter2D()
         {
-            GameEventSystem.current.GoingBeyondScreen(_bulletModel);
+          
         }
 
         void ReturnToPool()

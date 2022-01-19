@@ -10,19 +10,21 @@ namespace GeekSpace
         private ObjectPool _enemyPool;
         private Transform _startPosition;
 
-        GameObject _player;
-        RaycastHit2D _hit;
+        private GameObject _player;
+        private RaycastHit2D _hit;
+        private LayerMask _mask;
         public ShootControllerWithAutoShoot(TimerSystem timerSystem, ObjectPool enemyPool, Transform startPosition, GameObject player)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;
             _enemyPool = enemyPool;
             _player = player;
+            _mask = LayerMask.GetMask("enemy");
         }
 
         public void GetShoot()
         {
-            _hit = Physics2D.Raycast(_player.transform.position, _player.transform.up);
+            _hit = Physics2D.Raycast(_player.transform.position, _player.transform.up,100.0f, _mask);
             if (_timerSystem.CheckEvent() && _hit)
             {
                 var a = _enemyPool.Pop(_startPosition.position, _startPosition.rotation);

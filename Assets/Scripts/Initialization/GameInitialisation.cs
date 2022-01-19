@@ -33,13 +33,14 @@ namespace GeekSpace
             var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM, EnemyType.Asteroid);
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 30);
             IMoveble nullMove = new MoveNOTHING();
-            var enemyController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid,null, random,nullMove);
+            var enemyController = new EnemyController(timerSystemAsteroidSpawn,null, enemyPoolAsteroid,null, random,nullMove);
 
             var enemyPoolShip = EnemyPoolFactory.EnemyPoolCreate(EnemyType.Ship);
             var enemyShipPoolOperator = new EnemyPoolOperator(enemyPoolShip, MaximumsManager.SHIP_MAXIMUM, EnemyType.Ship);
             var timerSystemShipSpawn = new TimerSystem(true, true, 50);
+            var timerSystemShipShooting = new TimerSystem(true, true, enemyShipPoolOperator.CurrentModel.WeaponModel.Cooldown);
             IMoveble shipMove = new MoveTransformEnemy(enemyShipPoolOperator.CurrentModel,player.PlayerProvider.gameObject);
-            var shipController = new EnemyController(timerSystemShipSpawn, enemyPoolShip, gunBulletPool, random, shipMove);
+            var shipController = new EnemyController(timerSystemShipSpawn, timerSystemShipShooting, enemyPoolShip, gunBulletPool, random, shipMove);
 
             #endregion
             var beyondScreenActer = new BeyondScreenActer();
