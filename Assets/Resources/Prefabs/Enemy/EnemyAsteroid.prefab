@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 486404336723969832}
   - component: {fileID: 5280780891421803473}
   - component: {fileID: 8640704123166877260}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FireParticle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4815,7 +4815,7 @@ GameObject:
   - component: {fileID: 4294599600287056085}
   - component: {fileID: 5267859636685032883}
   - component: {fileID: 1373395106189500046}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AsteroidParticle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9621,7 +9621,7 @@ GameObject:
   - component: {fileID: 938682668560729424}
   - component: {fileID: 5202131297449765932}
   - component: {fileID: 8648581387982134388}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyAsteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
