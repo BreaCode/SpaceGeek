@@ -4,7 +4,7 @@ namespace GeekSpace
 {
     internal class WeaponModelFactory
     {
-        internal static WeaponModel WeaponModelCreate(WeaponType weaponType)
+        internal  static WeaponModel WeaponModelCreate(WeaponType weaponType)
         {
             var cooldown = WeaponParametrsManager.DEFAULT_RELOAD_COOLDOWN;
             var damage = WeaponParametrsManager.DEFAULT_DAMAGE;

@@ -1,9 +1,8 @@
 using UnityEngine;
 namespace GeekSpace
 {
-    internal sealed class BulletModel : IModel, IDynamicModel
+    internal sealed class BulletModel :  IDynamicModel
     {
-        private string _pathToPrefab;
         private Vector3 _position;
         private GameObject _bulletObject;
         private IPool _pool;

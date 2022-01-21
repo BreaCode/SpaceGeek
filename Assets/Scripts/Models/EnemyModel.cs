@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace GeekSpace
 {
-    internal sealed class EnemyModel : IModel, IDynamicModel
+    internal sealed class EnemyModel : IDynamicModel
     {
         private EnemyType _enemyType;
         private WeaponModel _weaponModel;

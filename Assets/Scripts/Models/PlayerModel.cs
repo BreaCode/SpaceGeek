@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GeekSpace
 {
-    internal sealed class PlayerModel : IModel, IDynamicModel
+    internal sealed class PlayerModel :  IDynamicModel
     {
         readonly private string _pathToPrefab;
         readonly private WeaponType _weaponType;
