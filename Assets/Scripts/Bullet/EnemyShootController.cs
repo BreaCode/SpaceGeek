@@ -4,27 +4,16 @@ using UnityEngine;
 
 namespace GeekSpace
 {
-    internal class EnemyShootController : IExecute, IShootController
+    internal class EnemyShootController : ShootControllerWithAutoShoot
     {
-        private TimerSystem _timerSystem;
-        private IPool _enemyPool;
-        private Transform _startPosition;
-        GameObject _player;
-        RaycastHit2D _hit;
-        LayerMask _mask;
-        public EnemyShootController(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player, string layer)
+        internal EnemyShootController(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player, string enemyLayerMask) : base(timerSystem, enemyPool, startPosition, player, enemyLayerMask)
         {
-            _startPosition = startPosition;
-            _timerSystem = timerSystem;
-            _enemyPool = enemyPool;
-            _player = player;
-            _mask = LayerMask.GetMask(layer);
         }
 
-        public void GetShoot()
+        public override void GetShoot()
         {
             if (_player.activeSelf == false) return;
-            _hit = Physics2D.Raycast(_player.transform.position, -_player.transform.up, 100.0f, _mask);
+            _hit = Physics2D.Raycast(_player.transform.position, -_player.transform.up, 100.0f, _enemyLayerMask);
             if (_timerSystem.CheckEvent() && _hit)
             {
                 var startpos = new Vector2(_startPosition.transform.position.x, _startPosition.transform.position.y - 1);
@@ -32,11 +21,6 @@ namespace GeekSpace
                 a.GetComponent<Rigidbody2D>().AddForce(-_startPosition.transform.up * 3);
                 return;
             }
-        }
-
-        public void Execute(float deltaTime)
-        {
-            GetShoot();
         }
     }
 }

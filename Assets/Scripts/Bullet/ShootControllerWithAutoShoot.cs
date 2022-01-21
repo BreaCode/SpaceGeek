@@ -6,14 +6,14 @@ namespace GeekSpace
 {
     internal class ShootControllerWithAutoShoot : IExecute, IShootController
     {
-        private TimerSystem _timerSystem;
-        private IPool _enemyPool;
-        private Transform _startPosition;
+        internal TimerSystem _timerSystem;
+        internal IPool _enemyPool;
+        internal Transform _startPosition;
 
-        private GameObject _player;
-        private RaycastHit2D _hit;
-        private LayerMask _enemyLayerMask;
-        public ShootControllerWithAutoShoot(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player,string enemyLayerMask)
+        internal GameObject _player;
+        internal RaycastHit2D _hit;
+        internal LayerMask _enemyLayerMask;
+        internal ShootControllerWithAutoShoot(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player,string enemyLayerMask)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;
