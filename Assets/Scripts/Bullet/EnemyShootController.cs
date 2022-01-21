@@ -7,13 +7,12 @@ namespace GeekSpace
     internal class EnemyShootController : IExecute, IShootController
     {
         private TimerSystem _timerSystem;
-        private ObjectPool _enemyPool;
+        private IPool _enemyPool;
         private Transform _startPosition;
-
         GameObject _player;
         RaycastHit2D _hit;
         LayerMask _mask;
-        public EnemyShootController(TimerSystem timerSystem, ObjectPool enemyPool, Transform startPosition, GameObject player, string layer)
+        public EnemyShootController(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player, string layer)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;

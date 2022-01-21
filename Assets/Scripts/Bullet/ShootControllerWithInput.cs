@@ -4,18 +4,17 @@ namespace GeekSpace
     internal class ShootControllerWithInput : IExecute,IShootController
     {
         private TimerSystem _timerSystem;
-        private ObjectPool _enemyPool;
+        private IPool _enemyPool;
         private Transform _startPosition;
-
-        IUserInputFire _fire;
+        IUserInputFire _getShoot;
         float _onClickFire;
-        public ShootControllerWithInput(TimerSystem timerSystem, ObjectPool enemyPool,Transform startPosition,IUserInputFire fire)
+        public ShootControllerWithInput(TimerSystem timerSystem, IPool enemyPool,Transform startPosition,IUserInputFire getShoot)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;
             _enemyPool = enemyPool;
-            _fire = fire;
-            _fire.AxisOnChange += GetInput;
+            _getShoot = getShoot;
+            _getShoot.AxisOnChange += GetInput;
         }
 
         private void GetInput(float value)

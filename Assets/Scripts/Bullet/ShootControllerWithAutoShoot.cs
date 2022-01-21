@@ -7,13 +7,13 @@ namespace GeekSpace
     internal class ShootControllerWithAutoShoot : IExecute, IShootController
     {
         private TimerSystem _timerSystem;
-        private ObjectPool _enemyPool;
+        private IPool _enemyPool;
         private Transform _startPosition;
 
         private GameObject _player;
         private RaycastHit2D _hit;
         private LayerMask _enemyLayerMask;
-        public ShootControllerWithAutoShoot(TimerSystem timerSystem, ObjectPool enemyPool, Transform startPosition, GameObject player,string enemyLayerMask)
+        public ShootControllerWithAutoShoot(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player,string enemyLayerMask)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;
@@ -22,7 +22,7 @@ namespace GeekSpace
             _enemyLayerMask = LayerMask.GetMask(enemyLayerMask);
         }
 
-        public void GetShoot()
+        public virtual void GetShoot()
         {
             _hit = Physics2D.Raycast(_player.transform.position, _player.transform.up,100.0f, _enemyLayerMask);
             if (_timerSystem.CheckEvent() && _hit)
