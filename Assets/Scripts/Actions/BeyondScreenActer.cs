@@ -4,13 +4,10 @@ namespace GeekSpace
 {
     internal sealed class BeyondScreenActer
     {
-     
-
         internal BeyondScreenActer()
         {
             GameEventSystem.current.onGoingBeyondScreen += GoingBeyondScreen;
         }
-
         private void GoingBeyondScreen(IDynamicModel model)
         {
             if (model is EnemyModel || model is BulletModel)
@@ -37,7 +34,6 @@ namespace GeekSpace
             }
 
         }
-
         ~BeyondScreenActer()
         {
             GameEventSystem.current.onGoingBeyondScreen -= GoingBeyondScreen;
