@@ -2,16 +2,16 @@
 {
     internal class PlayerMoveController : IExecute 
     {
-        player2 _player;
+        Player _player;
 
-        internal PlayerMoveController(player2 player)
+        internal PlayerMoveController(Player player)
         {
             _player = player;
         }
 
-        public void Execute(float delteTime)
+        public void Execute(float deltaTime)
         {
-            _player.Move(delteTime);
+            _player.Move(deltaTime);
         }
     }
 }

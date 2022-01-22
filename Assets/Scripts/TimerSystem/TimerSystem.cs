@@ -65,4 +65,8 @@ public sealed class TimerSystem
             }
         }
     }
+    public void ResetTimer()
+    {
+        _delayTic = _frameSizeDelaySet;
+    }
 }

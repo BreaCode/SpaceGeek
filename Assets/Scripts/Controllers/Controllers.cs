@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace GeekSpace
 {
-    public class Controllers : IInitialisation, IExecute,IFixedExecute,ICleanUp
+    public class Controllers :IController
     {
         #region Fields
         private readonly List<IInitialisation> _initializeControllers;

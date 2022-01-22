@@ -1,20 +1,24 @@
-internal sealed class WeaponModel
+namespace GeekSpace
 {
-    private int _damage;
-    private float _cooldown;
+    internal sealed class WeaponModel : IModel
+    {
+        private int _damage;
+        private float _cooldown;
 
-    public int Damage
-    {
-        get { return _damage; }
-    }
-    public float Cooldown
-    {
-        get { return _cooldown; }
-    }
+        public int Damage
+        {
+            get { return _damage; }
+        }
+        public float Cooldown
+        {
+            get { return _cooldown; }
+        }
 
-    public WeaponModel(int damage, float cooldown)
-    {
-        _damage = damage;
-        _cooldown = cooldown;
+        public WeaponModel(int damage, float cooldown)
+        {
+            _damage = damage;
+            _cooldown = cooldown;
+        }
     }
 }
+

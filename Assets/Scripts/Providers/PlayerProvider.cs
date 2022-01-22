@@ -1,15 +1,33 @@
 using UnityEngine;
 
-public class PlayerProvider : MonoBehaviour
+namespace GeekSpace
 {
-    void OnBecameInvisible()
+    [RequireComponent(typeof(MeshRenderer))]
+    public class PlayerProvider : MonoBehaviour
     {
-        
-    }
+        private PlayerModel _playerModel;
 
-    void OnTriggerEnter()
-    {
-        
-    }
+        internal PlayerModel PlayerModel
+        {
+            get { return _playerModel; }
+            set 
+            { 
+                _playerModel = value;
+                _playerModel.Object = gameObject;
+            }
+        }
 
+        void OnBecameInvisible()
+        {
+            GameEventSystem.current.GoingBeyondScreen(_playerModel);
+        }
+
+        void OnTriggerEnter()
+        {
+
+        }
+
+
+    }
 }
+
