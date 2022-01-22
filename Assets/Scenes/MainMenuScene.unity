@@ -5818,9 +5818,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 4cd6ebcc4deff974489767594ecd716f, type: 2}
-  ResolutionDropDown: {fileID: 1073118430}
-  QualityDropDown: {fileID: 2002326180}
-  sliderAudio: {fileID: 905757165}
+  _resolutionDropDown: {fileID: 1073118430}
+  _qualityDropDown: {fileID: 2002326180}
+  _sliderAudio: {fileID: 905757165}
   _animator: {fileID: 1356993103}
 --- !u!4 &2081701107
 Transform:
