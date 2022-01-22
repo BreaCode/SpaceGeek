@@ -4,57 +4,61 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneManagment : MonoBehaviour
+namespace GeekSpace
 {
-
-    public UnityEngine.Audio.AudioMixer _audioMixer;
-    Resolution[] resolutionsList;
-    List<string> resolutions;
-    public Dropdown ResolutionDropDown;
-    public Dropdown QualityDropDown;
-    public Animator _animator;
-    public void Awake()
+    public class SceneManagment : MonoBehaviour
     {
-        resolutions = new List<string>();
-        resolutionsList = Screen.resolutions;
-        foreach (var i in resolutionsList)
+
+        public UnityEngine.Audio.AudioMixer _audioMixer;
+        Resolution[] resolutionsList;
+        List<string> resolutions;
+        public Dropdown ResolutionDropDown;
+        public Dropdown QualityDropDown;
+        public Slider sliderAudio;
+        public Animator _animator;
+        public void Awake()
         {
-            resolutions.Add(i.width + "x" + i.height);
+            resolutions = new List<string>();
+            resolutionsList = Screen.resolutions;
+            foreach (var i in resolutionsList)
+            {
+                resolutions.Add(i.width + "x" + i.height);
+            }
+            ResolutionDropDown.ClearOptions();
+            ResolutionDropDown.AddOptions(resolutions);
         }
-        ResolutionDropDown.ClearOptions();
-        ResolutionDropDown.AddOptions(resolutions);
-    }
 
-    public void ShowMenu()
-    {
-        var menuOpen = (_animator.GetBool("IsOpenMenu"));
-        if (menuOpen) _animator.SetBool("IsOpenMenu", false);
-        else _animator.SetBool("IsOpenMenu", true);
-        _animator.gameObject.transform.SetAsLastSibling();
-    }
+        public void ShowMenu()
+        {
+            var menuOpen = _animator.GetBool("IsOpenMenu");
+            if (menuOpen) _animator.SetBool("IsOpenMenu", false);
+            else _animator.SetBool("IsOpenMenu", true);
+            _animator.gameObject.transform.SetAsLastSibling();
+        }
 
-    public void AudioVolume(float sliderValue)
-    {
-        _audioMixer.SetFloat("masterVolume", sliderValue);
-    }
+        public void AudioVolume()
+        {
+            _audioMixer.SetFloat("Volume", sliderAudio.value);
+        }
 
-    public void Resolution()
-    {
+        public void Resolution()
+        {
 
-        Screen.SetResolution(resolutionsList[ResolutionDropDown.value].width, resolutionsList[ResolutionDropDown.value].height, true);
-    }
-    public void Quality()
-    {
-        QualitySettings.SetQualityLevel(QualityDropDown.value, true);
-    }
+            Screen.SetResolution(resolutionsList[ResolutionDropDown.value].width, resolutionsList[ResolutionDropDown.value].height, true);
+        }
+        public void Quality()
+        {
+            QualitySettings.SetQualityLevel(QualityDropDown.value, true);
+        }
 
-    public void PlayPressed()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
+        public void PlayPressed()
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
 
-    public void ExitPressed()
-    {
-        Application.Quit();
+        public void ExitPressed()
+        {
+            Application.Quit();
+        }
     }
 }
