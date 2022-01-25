@@ -40,12 +40,7 @@ namespace GeekSpace
 
             gameIsPaused = true;
 
-            //var menu = FindObjectOfType<SceneManagment>();
-            //menu.ShowMenu();
-
-            ////_menuPausedUI.SetActive(true);
             Time.timeScale = 0f;
-            ////gameIsPaused = true;
         }
 
         public void LoadMenu()
