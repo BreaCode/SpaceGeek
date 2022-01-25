@@ -9,13 +9,10 @@ namespace GeekSpace
         public GameObject _menuPausedUI;
         public Button _buttonPause;
         public static bool gameIsPaused;
-        public Button _buttonSettings;
-        public GameObject _menuSettingsUI;
 
         private void Start()
         {
             _buttonPause.onClick.AddListener(Paused);
-            _buttonSettings.onClick.AddListener(Settings);
         }
 
         public void Resume()
@@ -41,13 +38,6 @@ namespace GeekSpace
         public void Restart()
         {
             SceneManager.LoadScene("SampleScene");
-        }
-
-        public void Settings()
-        {
-            _menuSettingsUI.SetActive(true);
-            Time.timeScale = 0f;
-            gameIsPaused = true;
         }
     }
 }
