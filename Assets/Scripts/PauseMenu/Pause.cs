@@ -32,12 +32,10 @@ namespace GeekSpace
             if (_menuPausedUI.activeSelf == true)
             {
                 _menuPausedUI.SetActive(false);
-
             }
             else
             {
                 _menuPausedUI.SetActive(true);
-
             }
 
             gameIsPaused = true;
