@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace GeekSpace
 {
-    public class Pause : SceneManagment
+    public class Pause : MonoBehaviour
     {
         public GameObject _menuPausedUI;
         public Button _buttonPause;
@@ -13,26 +13,40 @@ namespace GeekSpace
         private void Start()
         {
             _buttonPause.onClick.AddListener(Paused);
+            _menuPausedUI.SetActive(false);
+
         }
 
         public void Resume()
         {
             _menuPausedUI.SetActive(false);
-            Time.timeScale = 1f;
+
             gameIsPaused = false;
         }
 
-        void Paused()
+        public void Paused()
         {
-            _menuPausedUI.SetActive(true);
-            Time.timeScale = 0f;
+
+            if (_menuPausedUI.activeSelf == true)
+            {
+                _menuPausedUI.SetActive(false);
+             
+            }
+            else
+            {
+                _menuPausedUI.SetActive(true);
+               
+            }
+
             gameIsPaused = true;
         }
 
         public void LoadMenu()
         {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene("MainMenuScene");
+
+
+            var menu = FindObjectOfType<SceneManagment>();
+            menu.ShowMenu();
         }
 
         public void Restart()
