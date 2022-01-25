@@ -32,8 +32,19 @@ namespace GeekSpace
         public void ShowMenu()
         {
             var menuOpen = _animator.GetBool(SceeneConstManager.SETTING_MENU_TRIGGER);
-            if (menuOpen) _animator.SetBool(SceeneConstManager.SETTING_MENU_TRIGGER, false);
-            else _animator.SetBool(SceeneConstManager.SETTING_MENU_TRIGGER, true);
+            if (menuOpen)
+            {
+                _animator.SetBool(SceeneConstManager.SETTING_MENU_TRIGGER, false);
+              
+            }
+
+
+            else
+            {
+                _animator.SetBool(SceeneConstManager.SETTING_MENU_TRIGGER, true);
+                
+            }
+
             _animator.gameObject.transform.SetAsLastSibling();
         }
 
