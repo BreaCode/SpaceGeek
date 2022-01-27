@@ -2,33 +2,35 @@ using UnityEngine;
 
 namespace GeekSpace
 {
-    public class EnemyPoolOperator 
+    internal sealed class EnemyPoolOperator 
     {
-        readonly private IPool _pool;
-        readonly private int _poolSize;
-        
+        private readonly IPool _pool;
+        private readonly int _poolSize;
+        private readonly EnemyType _enemyType;
 
-        public EnemyPoolOperator(IPool pool, int poolSize)    
+        internal EnemyModel CurrentModel { get; private set; }
+
+        internal EnemyPoolOperator(IPool pool, int poolSize, EnemyType enemyType)    
         {
             _pool = pool;
             _poolSize = poolSize;
+            _enemyType = enemyType;
             InitiatePool();
         }
 
         private void InitiatePool()
         {
-            Camera camera = Camera.main;
             GameObject[] objects = new GameObject[_poolSize];
 
             for (int i = 0; i < _poolSize; i++)
             {
-                var asteroidStartPosition = Extention.GetRandomVectorAccordingCamera(camera, ConstManager.OFFSET_ASTEROID);
-                var asteroidModel = new EnemyModel(_pool, EnemyType.Asteroid, asteroidStartPosition, 10, 10);
+                var enemyModel = EnemyModelFactory.EnemyModelCreate(_pool, _enemyType);
 
-                objects[i] = _pool.Pop(asteroidStartPosition, Quaternion.identity);
+                objects[i] = _pool.Pop(enemyModel.Position, Quaternion.identity);
 
                 var EnemyProvider = objects[i].GetComponent<EnemyProvider>();
-                EnemyProvider.EnemyModel = asteroidModel;
+                EnemyProvider.EnemyModel = enemyModel;
+                CurrentModel = enemyModel;
             }
             for (int i = 0; i < _poolSize; i++)
             {

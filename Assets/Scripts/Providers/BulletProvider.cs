@@ -20,22 +20,22 @@ namespace GeekSpace
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
         }
-        void OnBecameInvisible()
+       private void OnBecameInvisible()
         {
-            GameEventSystem.current.GoingBeyondScreen(_bulletModel);
+            ReturnToPool();
         }
         private void OnBecameVisible()
         {
             _rigidbody2D.velocity = Vector2.zero;
         }
-        void OnTriggerEnter()
+        void OnTriggerEnter2D()
         {
-
+           
         }
 
         void ReturnToPool()
         {
-
+            GameEventSystem.current.GoingBeyondScreen(_bulletModel);
         }
     }
 }

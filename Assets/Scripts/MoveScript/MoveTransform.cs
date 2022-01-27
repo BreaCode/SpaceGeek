@@ -7,8 +7,8 @@ namespace GeekSpace
         readonly private PlayerModel _playerModel;
         readonly private IUserInputProxy _horizontalInputProxy;
         readonly private IUserInputProxy _verticalInputProxy;
-        private float horizontal;
-        private float vertical;
+        private float _horizontal;
+        private float _vertical;
 
         public MoveTransform(PlayerModel playerModel, (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical) input)
         {
@@ -21,21 +21,19 @@ namespace GeekSpace
 
         void VerticalOnAxisOnChange(float value)
         {
-            vertical = value;
+            _vertical = value;
         }
 
         void HorizontalOnAxisOnChange(float value)
         {
-            horizontal = value;
+            _horizontal = value;
         }
 
         public void Move(Transform transform)
         {
-            var shipSpeed = Mathf.Lerp(_playerModel.Speed, Mathf.Max(vertical, 0), 0.7f);
-            transform.position += transform.up * shipSpeed * _playerModel.Speed * Time.deltaTime;
-
-            var rot = -horizontal;
-            transform.rotation *= Quaternion.Euler(0, 0, 0.3f * rot);
+            var shipSpeed = _playerModel.Speed;
+            var movement = new Vector3(_horizontal, _vertical, 0);
+            transform.position = transform.position + movement * shipSpeed * Time.deltaTime;
         }
     }
 }
