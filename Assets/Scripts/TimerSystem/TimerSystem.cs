@@ -6,10 +6,23 @@ public sealed class TimerSystem
     private bool _isStartTimer = true;
     private bool _isloopTimer;
 
-    //timeSwich==true секуны, timeSwich==false кадры.
-    //loop зацикливание таймера.
-    //time еденицы времени задержки.
+    //timeSwich==true пїЅпїЅпїЅпїЅпїЅпїЅ, timeSwich==false пїЅпїЅпїЅпїЅпїЅ.
+    //loop пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+    //time пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
     public TimerSystem(bool timerSwich, bool isloop, float time)
+    {
+        SetParameters(timerSwich, isloop, time);
+    }
+    public TimerSystem(bool isloop, float time)
+    {
+        SetParameters(true, isloop, time);
+    }
+    public TimerSystem(float time)
+    {
+        SetParameters(true, true, time);
+    }
+
+    private void SetParameters(bool timerSwich, bool isloop, float time)
     {
         _isloopTimer = isloop;
         if(timerSwich)
@@ -21,18 +34,6 @@ public sealed class TimerSystem
         {
             _frameSizeDelaySet =(int)time;
         }
-    }
-    public TimerSystem(bool isloop, float time)
-    {
-        _isloopTimer = isloop;
-        float temp = time * 30;
-        _frameSizeDelaySet = (int)temp;
-    }
-    public TimerSystem(float time)
-    {
-        _isloopTimer = true;
-        float temp = time * 30;
-        _frameSizeDelaySet = (int)temp;
     }
     public bool CheckEvent()
     {
