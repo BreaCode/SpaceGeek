@@ -5,6 +5,7 @@ namespace GeekSpace
     internal sealed class InputInitialization : IInitialization
     {
         readonly private IUserInputProxy _pcInputHorizontal;
+        readonly private IUserInputProxy _pcInputHorizontalTwo;
         readonly private IUserInputProxy _pcInputVertical;
         readonly private IUserInputFire _pcInputFire;
 
@@ -13,9 +14,11 @@ namespace GeekSpace
             if (Application.platform == RuntimePlatform.Android)
             {
                 _pcInputHorizontal = new MobileInput();
+                _pcInputHorizontalTwo = new MobileInput();
                 return;
             }
             _pcInputHorizontal = new PCInputHorizontal();
+            _pcInputHorizontalTwo = new PCInputHorizontalTwo();
             _pcInputVertical = new PCInputVertical();
             _pcInputFire = new PCInputFire();
         }
@@ -24,9 +27,9 @@ namespace GeekSpace
         {
         }
 
-        public (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical, IUserInputFire pcIinputFire) GetInput()
+        public (IUserInputProxy inputHorizontal, IUserInputProxy inputHorizontalTwo, IUserInputProxy inputVertical, IUserInputFire pcIinputFire) GetInput()
         {
-            (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical, IUserInputFire pcInputFire) result = (_pcInputHorizontal, _pcInputVertical, _pcInputFire);
+            (IUserInputProxy inputHorizontal, IUserInputProxy inputHorizontalTwo, IUserInputProxy inputVertical, IUserInputFire pcInputFire) result = (_pcInputHorizontal, _pcInputHorizontalTwo, _pcInputVertical, _pcInputFire);
             return result;
         }
     }
