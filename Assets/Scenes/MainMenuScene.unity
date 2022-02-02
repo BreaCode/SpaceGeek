@@ -6190,7 +6190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5490abc457335149acda6b9b9fc76c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameData: {fileID: 0}
+  _gameData: {fileID: 11400000, guid: fbc6ccce67d86bf4281f52f71ce1aa44, type: 2}
   _audioMixer: {fileID: 24100000, guid: 4cd6ebcc4deff974489767594ecd716f, type: 2}
   _resolutionDropDown: {fileID: 1073118430}
   _qualityDropDown: {fileID: 2002326180}

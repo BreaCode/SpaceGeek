@@ -20,18 +20,18 @@ namespace GeekSpace
             Camera camera = Camera.main;
             System.Random random = new System.Random();
 
-            var startPosition = Extention.GetCentrAccordingCamera(camera);
-            var startPosition2 = Extention.GetRandomVectorAccordingCamera(camera, 1);
+            var startPositionPlayerOne = Extention.GetCentrAccordingCamera(camera);
+            var startPositionPlayerTwo = Extention.GetRandomVectorAccordingCamera(camera, 1);
 
             var inputPlayerOne = new InputInitialization();
-            var inputPlayerTwo = new InputInitialization2();
-            var inputController = new InputController(inputPlayerOne.GetInput());
-            var inputController2 = new InputController(inputPlayerTwo.GetInput());
+            var inputPlayerTwo = new InputInitialization();
+            var inputControllerPlayerOne = new InputController(inputPlayerOne.GetInput());
+            var inputControllerPlayerTwo = new InputController(inputPlayerTwo.GetInput());
 
 
             var playerWeaponModel = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);
-            var playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPosition, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
-            var playerModel2 = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPosition2, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
+            var playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPositionPlayerOne, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
+            var playerModel2 = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPositionPlayerTwo, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
 
             IMoveble playerMove = new MoveTransform(playerModel, (inputPlayerOne.GetInput().inputHorizontal, inputPlayerOne.GetInput().inputVertical));
             IMoveble playerMove2 = new MoveTransform(playerModel2, (inputPlayerTwo.GetInput().inputHorizontal, inputPlayerTwo.GetInput().inputVertical));
@@ -62,8 +62,8 @@ namespace GeekSpace
             IShootController enemyShootController = new EnemyShootController(timerSystemShipShooting, gunBulletPool, enemyShipPoolOperator.CurrentModel.Object.transform, enemyShipPoolOperator.CurrentModel.Object, EnemyParametrsManager.TARGET_LAYER);
 
             var beyondScreenActer = new BeyondScreenActer();
-            _controllers.Add(inputController);
-            _controllers.Add(inputController2);
+            _controllers.Add(inputControllerPlayerOne);
+            _controllers.Add(inputControllerPlayerTwo);
 
             _controllers.Add(enemyAsteroidController);
             _controllers.Add(playerMoveController);
