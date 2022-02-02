@@ -12,11 +12,11 @@ namespace GeekSpace
         {
             _controllers = new Controllers();
 
-            IGameStrategy result = gameData._tytpeGame switch
+            IGameStrategy result = gameData._GameType switch
             {
-                GameType.SINGLE => new GameSinglInitialisation(_controllers, new ISinglGameFactory(_controllers)),
+                GameType.SINGLE => new GameSinglInitialisation(_controllers, new SinglGameFactory(_controllers)),
                 GameType.MULTIPLAYER => new GameInitialisationMultiplayer(_controllers, gameData),
-                _ => new GameSinglInitialisation(_controllers, new ISinglGameFactory(_controllers)),
+                _ => new GameSinglInitialisation(_controllers, new SinglGameFactory(_controllers)),
             };
 
 
