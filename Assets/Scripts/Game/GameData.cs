@@ -6,6 +6,6 @@ namespace GeekSpace
     [CreateAssetMenu(fileName ="GameData",menuName ="Game" )]
     internal class GameData : ScriptableObject
     {
-        [SerializeField] GameType _GameType;
+        [SerializeField]internal GameType _GameType;
     }
 }
