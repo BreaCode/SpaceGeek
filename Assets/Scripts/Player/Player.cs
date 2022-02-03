@@ -5,6 +5,7 @@ namespace GeekSpace
     internal class Player
     {
         private readonly IMoveble _playerMove;
+        private readonly IMoveble _playerMoveTwo;
         private readonly PlayerModel _playerModel;
         internal PlayerProvider PlayerProvider { get; }
 
