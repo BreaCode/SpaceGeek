@@ -22,8 +22,8 @@ namespace GeekSpace
             var startPositionPlayerOne = Extention.GetCentrAccordingCamera(camera);
             var startPositionPlayerTwo = Extention.GetRandomVectorAccordingCamera(camera, 1);
 
-            var inputPlayerOne = new InputInitialisationBtns(_gameData);
-            var inputPlayerTwo = new InputInitialisationBtns(_gameData);
+            var inputPlayerOne = new InputInitialisationBtns((_gameData.LEFT,_gameData.RIGHT,_gameData.UP,_gameData.DOWN));
+            var inputPlayerTwo = new InputInitialisationBtns((_gameData.AltLEFT, _gameData.AltRIGHT, _gameData.AltUP, _gameData.AltDOWN));
             var inputControllerPlayerOne = new InputController(inputPlayerOne);
             var inputControllerPlayerTwo = new InputController(inputPlayerTwo);
 
