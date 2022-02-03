@@ -2,42 +2,29 @@
 {
     public sealed class InputController : IExecute
     {
-        private readonly IUserInputProxy _horizontal;
-        private readonly IUserInputProxy _hotizontalTwo;
-        private readonly IUserInputProxy _vertical;
-        private readonly IUserInputFire _fire;
+        private readonly IInputInitialisation _input;
 
-        internal IUserInputProxy Horizontal
+        internal InputController(IInputInitialisation input)
         {
-            get { return _horizontal; }
-        }
-        internal IUserInputProxy HorizontalTwo
-        {
-            get { return _hotizontalTwo; }
-        }
-        internal IUserInputProxy Vertical
-        {
-            get { return _vertical; }
-        }
-        internal IUserInputFire Fire
-        {
-            get { return _fire; }
-        }
-
-        public InputController((IUserInputProxy inputHorizontal, IUserInputProxy inputHorizontalTwo, IUserInputProxy inputVertical, IUserInputFire inputFire1) input)
-        {
-            _horizontal = input.inputHorizontal;
-            _hotizontalTwo = input.inputHorizontalTwo;
-            _vertical = input.inputVertical;
-            _fire = input.inputFire1;
+            _input = input;
         }
 
         public void Execute(float deltaTime)
         {
-            _horizontal.GetAxis();
-            _hotizontalTwo.GetAxis();
-            _vertical.GetAxis();
-            _fire.GetFire();
+            if (_input is InputInitializatioAxis initializatioAxis)
+            {
+                initializatioAxis.GetInput().inputHorizontal.GetAxis();
+                initializatioAxis.GetInput().inputVertical.GetAxis();
+                initializatioAxis.GetInput().pcIinputFire.GetFire();
+            }
+            if (_input is InputInitialisationBtns initialisationBtns)
+            {
+                initialisationBtns.GetUp();
+                initialisationBtns.GetDown();
+                initialisationBtns.GetLeft();
+                initialisationBtns.GetRight();
+
+            }
         }
     }
 }
