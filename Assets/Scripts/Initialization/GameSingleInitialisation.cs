@@ -16,7 +16,7 @@ namespace GeekSpace
 
         public void GameInit()
         {
-            _gameFactory.SetInput();
+            _gameFactory.SetInput(new InputInitialisationBtns(_gameData));
             _gameFactory.CreatePlayer();
             _gameFactory.CreateEnemy();
 

@@ -25,8 +25,8 @@ namespace GeekSpace
 
             var inputPlayerOne = new InputInitialization();
             var inputPlayerTwo = new InputInitialization();
-            var inputControllerPlayerOne = new InputController(inputPlayerOne.GetInput());
-            var inputControllerPlayerTwo = new InputController(inputPlayerTwo.GetInput());
+            var inputControllerPlayerOne = new InputController(inputPlayerOne);
+            var inputControllerPlayerTwo = new InputController(inputPlayerTwo);
 
 
             var playerWeaponModel = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);

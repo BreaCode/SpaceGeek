@@ -2,7 +2,7 @@
 
 namespace GeekSpace
 {
-    internal sealed class InputInitialization : IInitialization
+    internal sealed class InputInitialization : IInitialization,IInputInitialisation
     {
         readonly private IUserInputProxy _pcInputHorizontal;
         readonly private IUserInputProxy _pcInputVertical;
