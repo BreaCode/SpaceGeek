@@ -23,8 +23,8 @@ namespace GeekSpace
             var startPositionPlayerOne = Extention.GetCentrAccordingCamera(camera);
             var startPositionPlayerTwo = Extention.GetRandomVectorAccordingCamera(camera, 1);
 
-            var inputPlayerOne = new InputInitialization();
-            var inputPlayerTwo = new InputInitialization();
+            var inputPlayerOne = new InputInitialisationBtns(_gameData);
+            var inputPlayerTwo = new InputInitialisationBtns(_gameData);
             var inputControllerPlayerOne = new InputController(inputPlayerOne);
             var inputControllerPlayerTwo = new InputController(inputPlayerTwo);
 
@@ -33,8 +33,8 @@ namespace GeekSpace
             var playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPositionPlayerOne, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
             var playerModel2 = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPositionPlayerTwo, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
 
-            IMoveble playerMove = new MoveTransform(playerModel, (inputPlayerOne.GetInput().inputHorizontal, inputPlayerOne.GetInput().inputVertical));
-            IMoveble playerMove2 = new MoveTransform(playerModel2, (inputPlayerTwo.GetInput().inputHorizontal, inputPlayerTwo.GetInput().inputVertical));
+            IMoveble playerMove = new MoveTransform(playerModel, inputPlayerOne);
+            IMoveble playerMove2 = new MoveTransform(playerModel2, inputPlayerTwo);
 
             var player = new Player(playerMove, playerModel);
             var player2 = new Player(playerMove2, playerModel2);

@@ -13,8 +13,8 @@
         {
             if (_input is InputInitializatioAxis initializatioAxis)
             {
-                initializatioAxis.GetInput().inputHorizontal.GetAxis(InputManager.HORIZONTAL);
-                initializatioAxis.GetInput().inputVertical.GetAxis(InputManager.VERTICAL);
+                initializatioAxis.GetInput().inputHorizontal.GetAxis();
+                initializatioAxis.GetInput().inputVertical.GetAxis();
                 initializatioAxis.GetInput().pcIinputFire.GetFire();
             }
             if (_input is InputInitialisationBtns initialisationBtns)
