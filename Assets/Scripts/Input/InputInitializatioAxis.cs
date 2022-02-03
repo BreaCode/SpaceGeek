@@ -2,13 +2,13 @@
 
 namespace GeekSpace
 {
-    internal sealed class InputInitialization : IInitialization
+    internal sealed class InputInitializatioAxis : IInitialization, IInputInitialisation
     {
         readonly private IUserInputProxy _pcInputHorizontal;
         readonly private IUserInputProxy _pcInputVertical;
         readonly private IUserInputFire _pcInputFire;
 
-        public InputInitialization()
+        public InputInitializatioAxis()
         {
             if (Application.platform == RuntimePlatform.Android)
             {

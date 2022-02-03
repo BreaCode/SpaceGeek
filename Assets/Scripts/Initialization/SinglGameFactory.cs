@@ -4,6 +4,8 @@ namespace GeekSpace
 {
     internal class SinglGameFactory : IAbstractGameFactory
     {
+        private IInputInitialisation _inputInitialisation;
+
         Camera camera = Camera.main;
         System.Random random = new System.Random();
         private IPool gunBulletPool;
@@ -38,12 +40,12 @@ namespace GeekSpace
         public void CreatePlayer()
         {
             var startPosition = camera.GetCentrAccordingCamera();
-            var input = new InputInitialization();
-            var inputController = new InputController(input.GetInput());
+         
+            var inputController = new InputController(_inputInitialisation);
 
             var playerWeaponModel = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);
             var playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPosition, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
-            IMoveble playerMove = new MoveTransform(playerModel, (input.GetInput().inputHorizontal, input.GetInput().inputVertical));
+            IMoveble playerMove = new MoveTransform(playerModel, _inputInitialisation);
 
             player = new Player(playerMove, playerModel);
             var playerMoveController = new PlayerMoveController(player);
@@ -59,10 +61,11 @@ namespace GeekSpace
             _controllers.Add(playerShootController);
         }
 
-        public InputInitialization SetInput()
+        public IInputInitialisation SetInput(IInputInitialisation inputInitialisation)
         {
-            var input = new InputInitialization();
-            return input;
+            _inputInitialisation = inputInitialisation;
+
+            return _inputInitialisation;
         }
 
     }
