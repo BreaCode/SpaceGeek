@@ -5,13 +5,21 @@ namespace GeekSpace
     {
         #region Fields
         private Controllers _controllers;
-
+        [SerializeField] private GameData gameData;
         #endregion
         #region UnityMethods
         void Start()
         {
             _controllers = new Controllers();
-            new GameInitialisation(_controllers);
+
+            IGameStrategy result = gameData._GameType switch
+            {
+                GameType.SINGLE => new GameSinglInitialisation(_controllers, new SinglGameFactory(_controllers)),
+                GameType.MULTIPLAYER => new GameInitialisationMultiplayer(_controllers, gameData),
+                _ => new GameSinglInitialisation(_controllers, new SinglGameFactory(_controllers)),
+            };
+
+
             _controllers.Initialization();
 
         }

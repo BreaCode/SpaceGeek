@@ -9,7 +9,7 @@ namespace GeekSpace
 {
     public class SceneManagment : MonoBehaviour
     {
-
+        [SerializeField] internal GameData _gameData;
         public AudioMixer _audioMixer;
         Resolution[] _resolutionsArray;
         List<string> _resolutionsStringList;
@@ -63,9 +63,16 @@ namespace GeekSpace
             QualitySettings.SetQualityLevel(_qualityDropDown.value, true);
         }
 
-        public void PlayPressed()
+        public void SinglePlayPressed()
         {
+            _gameData._GameType = GameType.SINGLE;
             SceneManager.LoadScene(SceeneConstManager.MAIN_SCENE_NAME);
+        }
+
+        public void MultiplayerPlayPressed()
+        {
+            _gameData._GameType = GameType.MULTIPLAYER;
+            SceneManager.LoadScene("SampleScene");
         }
 
         public void ExitPressed()
