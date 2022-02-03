@@ -5,6 +5,6 @@ namespace GeekSpace
     public interface IUserInputProxy
     {
         event Action<float> AxisOnChange;
-        void GetAxis();
+        void GetAxis(string axis);
     }
 }
