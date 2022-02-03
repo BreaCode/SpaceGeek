@@ -18,7 +18,7 @@ namespace GeekSpace
             {
                 Vector3 newPosition = new Vector3();
                 newPosition = model.Object.transform.position;
-                if (newPosition.x <= ScreenBordersManager.LEFT_SIDE || newPosition.x >= ScreenBordersManager.RIGHT_SIDE)
+                if (newPosition.x <= ScreenBordersManager.RIGHT_SIDE || newPosition.x >= ScreenBordersManager.LEFT_SIDE)
                 {
                     newPosition.x *= -1;
                 }
