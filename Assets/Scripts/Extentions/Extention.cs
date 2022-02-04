@@ -101,31 +101,9 @@ public static class Extention
     public static Vector3 GetRandomVectorAccordingCamera(this Camera camera, float offset)
     {
         var randomX = Random.Range(camera.transform.localPosition.z + offset, -1 * camera.transform.localPosition.z - offset);
-        var vector = new Vector2(randomX, Mathf.Abs((camera.transform.localPosition.z / 2) + offset));
+        var vector = new Vector2(randomX, Mathf.Abs((camera.transform.localPosition.z/2) + offset));
         return vector;
-    }
-    public static float GetLeftSideValueAccordingCamera(this Camera camera, float offset)
-    {
-        var left = camera.transform.localPosition.z + offset;
-        return left;
-    }
 
-    public static float GetRightSideValueAccordingCamera(this Camera camera, float offset)
-    {
-        var right = (camera.transform.localPosition.z + offset) * -1;
-        return right;
-    }
-
-    public static float GetUpSideValueAccordingCamera(this Camera camera, float offset)
-    {
-        var up = ((camera.transform.localPosition.z / 2) + offset) * -1;
-        return up;
-    }
-
-    public static float GetDownSideValueAccordingCamera(this Camera camera, float offset)
-    {
-        var down = ((camera.transform.localPosition.z / 2) + offset);
-        return down;
     }
     #endregion
 }
