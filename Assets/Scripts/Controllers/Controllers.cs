@@ -5,6 +5,7 @@ namespace GeekSpace
     {
         #region Fields
         private readonly List<IInitialisation> _initializeControllers;
+        private readonly List<IInitialisationTwo> _initializeControllersTwo;
         private readonly List<IExecute> _executeControllers;
         private readonly List<IFixedExecute> _fixedExecuteControllers;
         private readonly List<ICleanUp> _cleanupControllers;
@@ -14,6 +15,7 @@ namespace GeekSpace
         public Controllers()
         {
             _initializeControllers = new List<IInitialisation>();
+            _initializeControllersTwo = new List<IInitialisationTwo>();
             _executeControllers = new List<IExecute>();
             _fixedExecuteControllers = new List<IFixedExecute>();
             _cleanupControllers = new List<ICleanUp>();
@@ -23,6 +25,9 @@ namespace GeekSpace
         {
             if (_controller is IInitialisation initializeController)
                 _initializeControllers.Add(initializeController);
+
+            if (_controller is IInitialisationTwo initializeControllerTwo)
+                _initializeControllersTwo.Add(initializeControllerTwo);
 
             if (_controller is IExecute executeController)
                 _executeControllers.Add(executeController);
@@ -43,6 +48,14 @@ namespace GeekSpace
             for (var i = 0; i < _initializeControllers.Count; ++i)
             {
                 _initializeControllers[i].Initialization();
+            }
+        }
+
+        public void InitializationTwo()
+        {
+            for (var i = 0; i < _initializeControllersTwo.Count; ++i)
+            {
+                _initializeControllersTwo[i].InitializationTwo();
             }
         }
 

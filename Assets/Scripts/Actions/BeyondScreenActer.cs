@@ -16,21 +16,13 @@ namespace GeekSpace
             }
             else if (model is PlayerModel)
             {
-
-                float weightShip = Mathf.Round(model.Object.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.rect.width / 100) + 0.2f;
-
-                float leftBorder = Extention.GetLeftSideValueAccordingCamera(Camera.main, weightShip);
-                float rightBorder = Extention.GetRightSideValueAccordingCamera(Camera.main, weightShip);
-                float upBorder = Extention.GetUpSideValueAccordingCamera(Camera.main, weightShip / 2);
-                float DownBorder = Extention.GetDownSideValueAccordingCamera(Camera.main, weightShip / 2);
-
                 Vector3 newPosition = new Vector3();
                 newPosition = model.Object.transform.position;
-                if (newPosition.x <= leftBorder || newPosition.x >= rightBorder)
+                if (newPosition.x <= ScreenBordersManager.LEFT_SIDE || newPosition.x >= ScreenBordersManager.RIGHT_SIDE)
                 {
                     newPosition.x *= -1;
                 }
-                if (newPosition.y <= DownBorder || newPosition.y >= upBorder)
+                else if (newPosition.y <= ScreenBordersManager.DOWN_SIDE || newPosition.y >= ScreenBordersManager.UPPER_SIDE)
                 {
                     newPosition.y *= -1;
                 }
