@@ -11,10 +11,11 @@ namespace GeekSpace
         private IPool gunBulletPool;
         private Player player;
         private Controllers _controllers;
-
-        public SinglGameFactory(Controllers controllers)
+        private readonly GameData _gameData;
+        public SinglGameFactory(Controllers controllers,GameData gameData)
         {
             _controllers = controllers;
+            _gameData = gameData;
         }
 
         public void CreateEnemy()
@@ -30,7 +31,7 @@ namespace GeekSpace
             var timerSystemShipShooting = new TimerSystem(true, true, enemyShipPoolOperator.CurrentModel.WeaponModel.Cooldown);
             IMoveble shipMove = new MoveTransformEnemy(enemyShipPoolOperator.CurrentModel, player.PlayerProvider.gameObject);
             var enemyShipController = new EnemyController(timerSystemShipSpawn, enemyPoolShip, random, shipMove);
-            IShootController enemyShootController = new EnemyShootController(timerSystemShipShooting, gunBulletPool, enemyShipPoolOperator.CurrentModel.Object.transform, enemyShipPoolOperator.CurrentModel.Object, EnemyParametrsManager.TARGET_LAYER);
+            IShootController enemyShootController = new EnemyShootController(timerSystemShipShooting, gunBulletPool, enemyShipPoolOperator.CurrentModel.Object.transform, enemyShipPoolOperator.CurrentModel.Object, EnemyParametrsManager.TARGET_LAYER,_gameData.PlayerFireClip);
             _controllers.Add(enemyAsteroidController);
             _controllers.Add(enemyShipController);
             _controllers.Add(enemyShootController);
@@ -53,7 +54,7 @@ namespace GeekSpace
             var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var playerReloadCooldown = player.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
             var shootTimer = new TimerSystem(true, true, playerReloadCooldown);
-            IShootController playerShootController = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
+            IShootController playerShootController = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER,_gameData.PlayerFireClip);
 
             _controllers.Add(inputController);
             _controllers.Add(playerMoveController);

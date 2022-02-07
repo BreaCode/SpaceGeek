@@ -6,7 +6,7 @@ namespace GeekSpace
 {
     internal class EnemyShootController : ShootControllerWithAutoShoot
     {
-        internal EnemyShootController(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player, string enemyLayerMask) : base(timerSystem, enemyPool, startPosition, player, enemyLayerMask)
+        internal EnemyShootController(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player, string enemyLayerMask,AudioClip shootAudioClip) : base(timerSystem, enemyPool, startPosition, player, enemyLayerMask,shootAudioClip)
         {
         }
 
