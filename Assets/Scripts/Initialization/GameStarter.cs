@@ -15,7 +15,7 @@ namespace GeekSpace
             IGameStrategy result = gameData._GameType switch
             {
                 GameType.SINGLE => new GameSinglInitialisation(_controllers, new SinglGameFactory(_controllers), gameData),
-                GameType.MULTIPLAYER => new GameInitialisationMultiplayer(_controllers, gameData),
+                GameType.MULTIPLAYER => new GameInitialisationMultiplayer(_controllers,new MultiplayerGameFactory(_controllers), gameData),
                 _ => new GameSinglInitialisation(_controllers, new SinglGameFactory(_controllers), gameData),
             };
 

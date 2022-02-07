@@ -39,11 +39,11 @@ namespace GeekSpace
         public void CreatePlayer()
         {
             var startPosition = camera.GetCentrAccordingCamera();
-         
+            var startShipAngle = PlayerParametrsManager.SINGLE_SHIP_ANGLE;
             var inputController = new InputController(_inputInitialisation);
 
             var playerWeaponModel = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);
-            var playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPosition, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
+            var playerModel = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModel, startPosition, startShipAngle, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
             IMoveble playerMove = new MoveTransform(playerModel, _inputInitialisation);
 
             player = new Player(playerMove, playerModel);

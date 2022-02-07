@@ -2,10 +2,10 @@
 
 namespace GeekSpace
 {
-    internal class MultiplayerGameFactory : IAbstractGameFactory
+    internal class MultiplayerGameFactory : IAbstractGameFactoryMultyPlayer
     {
         private IInputInitialisation _inputInitialisation;
-        private IInputInitialisationTwo _inputInitialisationTwo;
+        private IInputInitialisation _inputInitialisationTwo;
 
         Camera camera = Camera.main;
         System.Random random = new System.Random();
@@ -19,7 +19,6 @@ namespace GeekSpace
         {
             _controllers = controllers;
         }
-
         public void CreateEnemy()
         {
             var enemyPoolAsteroid = EnemyPoolFactory.EnemyPoolCreate(EnemyType.Asteroid);
@@ -38,22 +37,23 @@ namespace GeekSpace
             _controllers.Add(enemyShipController);
             _controllers.Add(enemyShootController);
         }
-
         public void CreatePlayer()
         {
-            var startPositionOne = Vector2.left;
-            var startPositionTwo = Vector2.right;
+            var startPositionOne = Extention.GetRightSideVector2AccordingCamera(Camera.main,2);
+            var startPositionTwo = Extention.GetLeftSideVector2AccordingCamera(Camera.main, 2);
+            var playerOneAngle = PlayerParametrsManager.MULTI_SHIP_ANGLE_PLAYER1;
+            var playerTwoAngle = PlayerParametrsManager.MULTI_SHIP_ANGLE_PLAYER2;
 
             var inputController = new InputController(_inputInitialisation);
-            var inputControllerTwo = new InputController(_inputInitialisation);
+            var inputControllerTwo = new InputController(_inputInitialisationTwo);
 
             var playerWeaponModelOne = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);
-            var playerModelOne = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModelOne, startPositionOne, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
+            var playerModelOne = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModelOne, startPositionOne,playerOneAngle, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
             IMoveble playerMoveOne = new MoveTransform(playerModelOne, _inputInitialisation);
 
             var playerWeaponModelTwo = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);
-            var playerModelTwo = new PlayerModel(PathsManager.PLAYER_PREFAB_TWO, WeaponType.ChainGunMk1, playerWeaponModelTwo, startPositionTwo, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
-            IMoveble playerMoveTwo = new MoveTransform(playerModelTwo, _inputInitialisation);
+            var playerModelTwo = new PlayerModel(PathsManager.PLAYER_PREFAB_TWO, WeaponType.ChainGunMk1, playerWeaponModelTwo, startPositionTwo,playerTwoAngle, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
+            IMoveble playerMoveTwo = new MoveTransform(playerModelTwo, _inputInitialisationTwo);
 
             player = new Player(playerMoveOne, playerModelOne);
             var playerMoveControllerOne = new PlayerMoveController(player);
@@ -65,7 +65,7 @@ namespace GeekSpace
             IShootController playerShootControllerOne = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
 
             playerTwo = new Player(playerMoveTwo, playerModelTwo);
-            var playerMoveControllerTwo = new PlayerMoveController(player);
+            var playerMoveControllerTwo = new PlayerMoveController(playerTwo);
             gunBulletPoolTwo = BulletPoolFactory.BulletPoolCreate(WeaponType.ChainGunMk1);
             var bulletModelTwo = new BulletModel(gunBulletPoolTwo, playerTwo.PlayerProvider.transform.position, 2);
             var bulletPoolOperatorTwo = new BulletPoolOperator(gunBulletPoolTwo, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
@@ -74,21 +74,21 @@ namespace GeekSpace
             IShootController playerShootControllerTwo = new ShootControllerWithAutoShoot(shootTimer, gunBulletPoolTwo, playerTwo.PlayerProvider.transform, playerTwo.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
 
             _controllers.Add(inputController);
+            _controllers.Add(inputControllerTwo);
+
             _controllers.Add(playerMoveControllerOne);
             _controllers.Add(playerShootControllerOne);
 
             _controllers.Add(playerMoveControllerTwo);
             _controllers.Add(playerShootControllerTwo);
         }
-
         public IInputInitialisation SetInput(IInputInitialisation inputInitialisation)
         {
             _inputInitialisation = inputInitialisation;
 
             return _inputInitialisation;
         }
-
-        public IInputInitialisationTwo SetInputTwo(IInputInitialisationTwo inputInitialisationTwo)
+        public IInputInitialisation SetInputTwo(IInputInitialisation inputInitialisationTwo)
         {
             _inputInitialisationTwo = inputInitialisationTwo;
 

@@ -104,10 +104,21 @@ public static class Extention
         var vector = new Vector2(randomX, Mathf.Abs((camera.transform.localPosition.z / 2) + offset));
         return vector;
     }
+    public static Vector2 GetLeftSideVector2AccordingCamera(this Camera camera, float offset)
+    {
+        var vector_left = new Vector2(camera.transform.localPosition.z + offset, camera.transform.localPosition.y);
+        return vector_left;
+    }
+
     public static float GetLeftSideValueAccordingCamera(this Camera camera, float offset)
     {
         var left = camera.transform.localPosition.z + offset;
         return left;
+    }
+    public static Vector2 GetRightSideVector2AccordingCamera(this Camera camera, float offset)
+    {
+        var vector_right = new Vector2(((camera.transform.localPosition.z + offset)*-1), camera.transform.localPosition.y);
+        return vector_right;
     }
 
     public static float GetRightSideValueAccordingCamera(this Camera camera, float offset)
