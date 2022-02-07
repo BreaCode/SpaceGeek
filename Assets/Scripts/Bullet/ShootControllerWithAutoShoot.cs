@@ -14,7 +14,7 @@ namespace GeekSpace
         internal RaycastHit2D _hit;
         internal LayerMask _enemyLayerMask;
         internal AudioClip _shootAudioClip;
-        private Camera _camera;
+        internal Camera _camera;
         internal ShootControllerWithAutoShoot(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player, string enemyLayerMask, AudioClip shootAudioClip)
         {
             _startPosition = startPosition;

@@ -23,3 +23,6 @@ MonoBehaviour:
   AltUP: 119
   AltDOWN: 115
   AltFIRE: 101
+  PlayerFireClip: {fileID: 8300000, guid: 814722732e52d1b47adb2e3dfe434305, type: 3}
+  AsteroidBurst: {fileID: 8300000, guid: 085f399e1b116074985dfc0e433e92ea, type: 3}
+  ShipBurst: {fileID: 8300000, guid: 73e4ca00090c6c04896671fdb2613b97, type: 3}
