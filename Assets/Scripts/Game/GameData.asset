@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8328dd1a9c7804a8bd386285b13d9b, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  _GameType: 1
+  _GameType: 0
   LEFT: 276
   RIGHT: 275
   UP: 273
@@ -24,5 +24,5 @@ MonoBehaviour:
   AltDOWN: 115
   AltFIRE: 101
   PlayerFireClip: {fileID: 8300000, guid: 814722732e52d1b47adb2e3dfe434305, type: 3}
-  AsteroidBurst: {fileID: 8300000, guid: 085f399e1b116074985dfc0e433e92ea, type: 3}
+  AsteroidBurst: {fileID: 8300000, guid: 344c58431711063418f034d11d616bcd, type: 3}
   ShipBurst: {fileID: 8300000, guid: 73e4ca00090c6c04896671fdb2613b97, type: 3}
