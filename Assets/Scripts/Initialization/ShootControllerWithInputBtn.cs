@@ -8,13 +8,16 @@ namespace GeekSpace
         private IPool _enemyPool;
         private Transform _startPosition;
         InputInitialisationBtns _getShoot;
-        float _onClickFire;
-        public ShootControllerWithInputBtn(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, InputInitialisationBtns getShoot)
+        internal AudioClip _shootAudioClip;
+        private Camera _camera;
+        public ShootControllerWithInputBtn(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, InputInitialisationBtns getShoot, AudioClip shootAudioClip)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;
             _enemyPool = enemyPool;
             _getShoot = getShoot;
+            _shootAudioClip = shootAudioClip;
+            _camera = Camera.main;
         }
 
 
@@ -22,7 +25,7 @@ namespace GeekSpace
         {
             if (_timerSystem.CheckEvent())
             {
-                _onClickFire = 0;
+                Extention.GetOrAddComponent<AudioSource>(_camera.gameObject).PlayOneShot(_shootAudioClip);
                 var a = _enemyPool.Pop(_startPosition.localPosition, _startPosition.localRotation);
                 a.GetComponent<Rigidbody2D>().AddForce(_startPosition.transform.up * 3);
                 return;

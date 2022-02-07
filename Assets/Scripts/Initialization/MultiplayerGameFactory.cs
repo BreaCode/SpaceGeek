@@ -14,10 +14,11 @@ namespace GeekSpace
         private Player player;
         private Player playerTwo;
         private Controllers _controllers;
-
-        public MultiplayerGameFactory(Controllers controllers)
+        private readonly GameData _gameData;
+        public MultiplayerGameFactory(Controllers controllers, GameData gameData)
         {
             _controllers = controllers;
+            _gameData = gameData;
         }
         public void CreateEnemy()
         {
@@ -32,7 +33,7 @@ namespace GeekSpace
         }
         public void CreatePlayer()
         {
-            var startPositionOne = Extention.GetRightSideVector2AccordingCamera(Camera.main,2);
+            var startPositionOne = Extention.GetRightSideVector2AccordingCamera(Camera.main, 2);
             var startPositionTwo = Extention.GetLeftSideVector2AccordingCamera(Camera.main, 2);
             var playerOneAngle = PlayerParametrsManager.MULTI_SHIP_ANGLE_PLAYER1;
             var playerTwoAngle = PlayerParametrsManager.MULTI_SHIP_ANGLE_PLAYER2;
@@ -41,11 +42,11 @@ namespace GeekSpace
             var inputControllerTwo = new InputController(_inputInitialisationTwo);
 
             var playerWeaponModelOne = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);
-            var playerModelOne = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModelOne, startPositionOne,playerOneAngle, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
+            var playerModelOne = new PlayerModel(PathsManager.PLAYER_PREFAB, WeaponType.ChainGunMk1, playerWeaponModelOne, startPositionOne, playerOneAngle, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
             IMoveble playerMoveOne = new MoveTransform(playerModelOne, _inputInitialisation);
 
             var playerWeaponModelTwo = WeaponModelFactory.WeaponModelCreate(WeaponType.ChainGunMk1);
-            var playerModelTwo = new PlayerModel(PathsManager.PLAYER_PREFAB_TWO, WeaponType.ChainGunMk1, playerWeaponModelTwo, startPositionTwo,playerTwoAngle, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
+            var playerModelTwo = new PlayerModel(PathsManager.PLAYER_PREFAB_TWO, WeaponType.ChainGunMk1, playerWeaponModelTwo, startPositionTwo, playerTwoAngle, PlayerParametrsManager.PLAYER_HEALTH, PlayerParametrsManager.PLAYER_SPEED);
             IMoveble playerMoveTwo = new MoveTransform(playerModelTwo, _inputInitialisationTwo);
 
             player = new Player(playerMoveOne, playerModelOne);
@@ -55,7 +56,7 @@ namespace GeekSpace
             var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var playerReloadCooldown = player.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
             var shootTimer = new TimerSystem(true, true, playerReloadCooldown);
-            IShootController playerShootControllerOne = new ShootControllerWithInputBtn(shootTimer, gunBulletPool, player.PlayerProvider.transform, _inputInitialisation as InputInitialisationBtns);
+            IShootController playerShootControllerOne = new ShootControllerWithInputBtn(shootTimer, gunBulletPool, player.PlayerProvider.transform, _inputInitialisation as InputInitialisationBtns, _gameData.PlayerFireClip);
 
             playerTwo = new Player(playerMoveTwo, playerModelTwo);
             var playerMoveControllerTwo = new PlayerMoveController(playerTwo);
@@ -64,7 +65,7 @@ namespace GeekSpace
             var bulletPoolOperatorTwo = new BulletPoolOperator(gunBulletPoolTwo, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var playerReloadCooldownTwo = playerTwo.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
             var shootTimerTwo = new TimerSystem(true, true, playerReloadCooldownTwo);
-            IShootController playerShootControllerTwo = new ShootControllerWithInputBtn(shootTimer, gunBulletPoolTwo, playerTwo.PlayerProvider.transform,  _inputInitialisationTwo as InputInitialisationBtns);
+            IShootController playerShootControllerTwo = new ShootControllerWithInputBtn(shootTimer, gunBulletPoolTwo, playerTwo.PlayerProvider.transform, _inputInitialisationTwo as InputInitialisationBtns, _gameData.PlayerFireClip);
 
             _controllers.Add(inputController);
             _controllers.Add(inputControllerTwo);
