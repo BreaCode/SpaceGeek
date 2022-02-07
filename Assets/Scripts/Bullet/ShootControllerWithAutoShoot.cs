@@ -24,6 +24,7 @@ namespace GeekSpace
 
         public virtual void GetShoot()
         {
+            if (_player == null) return;
             _hit = Physics2D.Raycast(_player.transform.position, _player.transform.up,100.0f, _enemyLayerMask);
             if (_timerSystem.CheckEvent() && _hit)
             {

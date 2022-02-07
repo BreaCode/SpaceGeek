@@ -45,8 +45,6 @@ namespace GeekSpace
 
         public void LoadMenu()
         {
-
-
             var menu = FindObjectOfType<SceneManagment>();
             menu.ShowMenu();
         }

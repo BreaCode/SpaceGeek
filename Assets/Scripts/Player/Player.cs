@@ -21,6 +21,7 @@ namespace GeekSpace
 
         internal void Move(float timeDelta)
         {
+            if (PlayerProvider == null) return;
             _playerMove.Move(PlayerProvider.transform);
         }
     }

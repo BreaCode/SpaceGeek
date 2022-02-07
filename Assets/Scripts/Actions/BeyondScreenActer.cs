@@ -10,6 +10,7 @@ namespace GeekSpace
         }
         private void GoingBeyondScreen(IDynamicModel model)
         {
+            if (model == null) return;
             if (model is EnemyModel || model is BulletModel)
             {
                 model.Pool.Push(model.Object);
