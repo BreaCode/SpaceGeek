@@ -22,6 +22,7 @@ namespace GeekSpace
             _fabric.SetInputTwo(inputPlayerTwo);
             _fabric.CreatePlayer();
             _fabric.CreateEnemy();
+            var beyondScreenActer = new BeyondScreenActer();
         }
     }
 }
