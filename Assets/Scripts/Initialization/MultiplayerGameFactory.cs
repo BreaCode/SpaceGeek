@@ -26,16 +26,9 @@ namespace GeekSpace
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 15);
             IMoveble nullMove = new MoveNOTHING();
             var enemyAsteroidController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid, random, nullMove);
-            var enemyPoolShip = EnemyPoolFactory.EnemyPoolCreate(EnemyType.Ship);
-            var enemyShipPoolOperator = new EnemyPoolOperator(enemyPoolShip, MaximumsManager.SHIP_MAXIMUM, EnemyType.Ship);
             var timerSystemShipSpawn = new TimerSystem(true, true, 35);
-            var timerSystemShipShooting = new TimerSystem(true, true, enemyShipPoolOperator.CurrentModel.WeaponModel.Cooldown);
-            IMoveble shipMove = new MoveTransformEnemy(enemyShipPoolOperator.CurrentModel, player.PlayerProvider.gameObject);
-            var enemyShipController = new EnemyController(timerSystemShipSpawn, enemyPoolShip, random, shipMove);
-            IShootController enemyShootController = new EnemyShootController(timerSystemShipShooting, gunBulletPool, enemyShipPoolOperator.CurrentModel.Object.transform, enemyShipPoolOperator.CurrentModel.Object, EnemyParametrsManager.TARGET_LAYER);
             _controllers.Add(enemyAsteroidController);
-            _controllers.Add(enemyShipController);
-            _controllers.Add(enemyShootController);
+
         }
         public void CreatePlayer()
         {
@@ -62,7 +55,6 @@ namespace GeekSpace
             var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var playerReloadCooldown = player.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
             var shootTimer = new TimerSystem(true, true, playerReloadCooldown);
-            //  IShootController playerShootControllerOne = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
             IShootController playerShootControllerOne = new ShootControllerWithInputBtn(shootTimer, gunBulletPool, player.PlayerProvider.transform, _inputInitialisation as InputInitialisationBtns);
 
             playerTwo = new Player(playerMoveTwo, playerModelTwo);
@@ -72,7 +64,6 @@ namespace GeekSpace
             var bulletPoolOperatorTwo = new BulletPoolOperator(gunBulletPoolTwo, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var playerReloadCooldownTwo = playerTwo.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
             var shootTimerTwo = new TimerSystem(true, true, playerReloadCooldownTwo);
-            //IShootController playerShootControllerTwo = new ShootControllerWithAutoShoot(shootTimer, gunBulletPoolTwo, playerTwo.PlayerProvider.transform, playerTwo.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
             IShootController playerShootControllerTwo = new ShootControllerWithInputBtn(shootTimer, gunBulletPoolTwo, playerTwo.PlayerProvider.transform,  _inputInitialisationTwo as InputInitialisationBtns);
 
             _controllers.Add(inputController);
