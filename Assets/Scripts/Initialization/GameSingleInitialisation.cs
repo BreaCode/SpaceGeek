@@ -6,7 +6,7 @@ namespace GeekSpace
     {
         private IAbstractGameFactory _gameFactory;
         #region ClassLifeCycles
-        internal GameSinglInitialisation(Controllers controllers, IAbstractGameFactory fabric)
+        internal GameSinglInitialisation( IAbstractGameFactory fabric)
         {
             this._gameFactory = fabric;
             GameInit();
