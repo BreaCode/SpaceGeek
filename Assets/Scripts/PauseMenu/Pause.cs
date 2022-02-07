@@ -7,6 +7,8 @@ namespace GeekSpace
     public class Pause : MonoBehaviour
     {
         public GameObject _menuPausedUI;
+        public GameObject _LooseMenu;
+
         public Button _buttonPause;
         public static bool gameIsPaused;
 
@@ -14,7 +16,12 @@ namespace GeekSpace
         {
             _buttonPause.onClick.AddListener(Paused);
             _menuPausedUI.SetActive(false);
-
+            _LooseMenu.SetActive(false);
+        }
+        public void ShowLooseMenu()
+        {
+            _LooseMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
 
         public void Resume()
@@ -56,6 +63,7 @@ namespace GeekSpace
 
         public void Exit()
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenuScene");
         }
     }

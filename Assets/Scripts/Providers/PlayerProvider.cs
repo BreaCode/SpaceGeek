@@ -25,7 +25,7 @@ namespace GeekSpace
         void OnTriggerEnter2D()
         {
             var sceneManagment = FindObjectOfType<Pause>();
-            sceneManagment.Paused();
+            sceneManagment.ShowLooseMenu();
             Destroy(this.gameObject);
         }
 
