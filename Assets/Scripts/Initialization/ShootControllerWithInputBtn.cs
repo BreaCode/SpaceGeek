@@ -1,33 +1,29 @@
 ﻿using UnityEngine;
+
 namespace GeekSpace
 {
-    internal class ShootControllerWithInput : IExecute,IShootController
+    internal class ShootControllerWithInputBtn : IShootController,IExecute
     {
         private TimerSystem _timerSystem;
         private IPool _enemyPool;
         private Transform _startPosition;
-        IUserInputFire _getShoot;
+        InputInitialisationBtns _getShoot;
         float _onClickFire;
-        public ShootControllerWithInput(TimerSystem timerSystem, IPool enemyPool,Transform startPosition,IUserInputFire getShoot)
+        public ShootControllerWithInputBtn(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, InputInitialisationBtns getShoot)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;
             _enemyPool = enemyPool;
             _getShoot = getShoot;
-            _getShoot.AxisOnChange += GetInput;
         }
 
-        private void GetInput(float value)
-        {
-            _onClickFire = value;
-        }
 
         public void GetShoot()
         {
-            if (_onClickFire > 0 && _timerSystem.CheckEvent())
+            if (_timerSystem.CheckEvent())
             {
                 _onClickFire = 0;
-                var a = _enemyPool.Pop(_startPosition.position, _startPosition.rotation);
+                var a = _enemyPool.Pop(_startPosition.localPosition, _startPosition.localRotation);
                 a.GetComponent<Rigidbody2D>().AddForce(_startPosition.transform.up * 3);
                 return;
             }
@@ -35,7 +31,8 @@ namespace GeekSpace
 
         public void Execute(float deltaTime)
         {
-            GetShoot();          
+            if (_getShoot.GetFire())
+             GetShoot();
         }
 
     }

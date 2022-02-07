@@ -62,7 +62,8 @@ namespace GeekSpace
             var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var playerReloadCooldown = player.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
             var shootTimer = new TimerSystem(true, true, playerReloadCooldown);
-            IShootController playerShootControllerOne = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
+            //  IShootController playerShootControllerOne = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
+            IShootController playerShootControllerOne = new ShootControllerWithInputBtn(shootTimer, gunBulletPool, player.PlayerProvider.transform, _inputInitialisation as InputInitialisationBtns);
 
             playerTwo = new Player(playerMoveTwo, playerModelTwo);
             var playerMoveControllerTwo = new PlayerMoveController(playerTwo);
@@ -71,7 +72,8 @@ namespace GeekSpace
             var bulletPoolOperatorTwo = new BulletPoolOperator(gunBulletPoolTwo, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
             var playerReloadCooldownTwo = playerTwo.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
             var shootTimerTwo = new TimerSystem(true, true, playerReloadCooldownTwo);
-            IShootController playerShootControllerTwo = new ShootControllerWithAutoShoot(shootTimer, gunBulletPoolTwo, playerTwo.PlayerProvider.transform, playerTwo.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
+            //IShootController playerShootControllerTwo = new ShootControllerWithAutoShoot(shootTimer, gunBulletPoolTwo, playerTwo.PlayerProvider.transform, playerTwo.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER);
+            IShootController playerShootControllerTwo = new ShootControllerWithInputBtn(shootTimer, gunBulletPoolTwo, playerTwo.PlayerProvider.transform,  _inputInitialisationTwo as InputInitialisationBtns);
 
             _controllers.Add(inputController);
             _controllers.Add(inputControllerTwo);

@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8328dd1a9c7804a8bd386285b13d9b, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  _GameType: 0
+  _GameType: 1
+  LEFT: 276
+  RIGHT: 275
+  UP: 273
+  DOWN: 274
+  FIRE: 114
+  AltLEFT: 97
+  AltRIGHT: 100
+  AltUP: 119
+  AltDOWN: 115
+  AltFIRE: 101

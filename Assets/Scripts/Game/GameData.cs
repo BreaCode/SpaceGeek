@@ -12,7 +12,7 @@ namespace GeekSpace
         [SerializeField] internal KeyCode RIGHT = KeyCode.RightArrow;
         [SerializeField] internal KeyCode UP = KeyCode.UpArrow;
         [SerializeField] internal KeyCode DOWN = KeyCode.DownArrow;
-        [SerializeField] internal KeyCode FIRE = KeyCode.KeypadEnter;
+        [SerializeField] internal KeyCode FIRE = KeyCode.Space;
         [SerializeField] internal KeyCode AltLEFT = KeyCode.A;
         [SerializeField] internal KeyCode AltRIGHT = KeyCode.D;
         [SerializeField] internal KeyCode AltUP = KeyCode.W;
