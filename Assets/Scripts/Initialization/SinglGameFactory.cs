@@ -15,7 +15,6 @@ namespace GeekSpace
         public SinglGameFactory(Controllers controllers)
         {
             _controllers = controllers;
-
         }
 
         public void CreateEnemy()
