@@ -4,13 +4,11 @@ namespace GeekSpace
 {
     public sealed class GameSinglInitialisation : IGameStrategy
     {
-        private readonly GameData _gameData;
         private IAbstractGameFactory _gameFactory;
         #region ClassLifeCycles
-        internal GameSinglInitialisation(Controllers controllers, IAbstractGameFactory fabric,GameData gameData)
+        internal GameSinglInitialisation(Controllers controllers, IAbstractGameFactory fabric)
         {
             this._gameFactory = fabric;
-            _gameData = gameData;
             GameInit();
         }
 
