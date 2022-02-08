@@ -40,6 +40,15 @@ namespace GeekSpace
                 onTakeDamage(model);
             }
         }
+
+        public event Action onDestroyNearby;
+        public void DestroyNearby()
+        {
+            if (onDestroyNearby != null)
+            {
+                onDestroyNearby();
+            }
+        }
         #endregion
 
         #region Changes
