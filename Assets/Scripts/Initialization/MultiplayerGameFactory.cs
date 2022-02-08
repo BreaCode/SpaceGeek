@@ -23,7 +23,7 @@ namespace GeekSpace
         public void CreateEnemy()
         {
             var enemyPoolAsteroid = EnemyPoolFactory.EnemyPoolCreate(EnemyType.Asteroid);
-            var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM, EnemyType.Asteroid);
+            var enemyAsteroidPoolOperator = new EnemyPoolOperator(enemyPoolAsteroid, MaximumsManager.ASTEROIDS_MAXIMUM, EnemyType.Asteroid,_gameData.AsteroidBurst);
             var timerSystemAsteroidSpawn = new TimerSystem(true, true, 15);
             IMoveble nullMove = new MoveNOTHING();
             var enemyAsteroidController = new EnemyController(timerSystemAsteroidSpawn, enemyPoolAsteroid, random, nullMove);

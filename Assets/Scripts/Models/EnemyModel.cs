@@ -12,6 +12,7 @@ namespace GeekSpace
         private int _armor;
         private int _size;
         private float _speed;
+        private AudioClip _explosionClip;
 
         public EnemyType EnemyType
         {
@@ -53,7 +54,12 @@ namespace GeekSpace
             get { return _speed; }
         }
 
-        public EnemyModel(IPool pool, EnemyType enemyType, WeaponModel weaponModel, Vector3 position, int healthPoitns, float speed, int armor, int size = 1)
+        public AudioClip ExplosionClip
+        {
+            get { return _explosionClip; }
+        }
+
+        public EnemyModel(IPool pool, EnemyType enemyType, WeaponModel weaponModel, Vector3 position, int healthPoitns, float speed, int armor, int size , AudioClip explosionClip)
         {
             _pool = pool;
             _enemyType = enemyType;
@@ -63,6 +69,7 @@ namespace GeekSpace
             _armor = armor;
             _speed = speed;
             _size = size;
+            _explosionClip = explosionClip;
         }
     }
 }

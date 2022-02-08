@@ -9,6 +9,7 @@ namespace GeekSpace
     {
         private EnemyModel _enemyModel;
         private Rigidbody2D _rigidbody2D;
+        private Camera _camera;
 
         internal EnemyModel EnemyModel
         {
@@ -22,6 +23,7 @@ namespace GeekSpace
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _camera = Camera.main;
         }
         void OnBecameInvisible()
         {
@@ -35,6 +37,7 @@ namespace GeekSpace
         void OnTriggerEnter2D()
         {
             GameEventSystem.current.GoingBeyondScreen(_enemyModel);
+            Extention.GetOrAddComponent<AudioSource>(_camera.gameObject).PlayOneShot(_enemyModel.ExplosionClip);
         }
 
         void ReturnToPool()

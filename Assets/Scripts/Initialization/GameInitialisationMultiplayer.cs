@@ -4,12 +4,11 @@ namespace GeekSpace
 {
     internal class GameInitialisationMultiplayer : IGameStrategy
     {
-        private Controllers _controllers;
+       
         private GameData _gameData;
         private readonly IAbstractGameFactoryMultyPlayer _fabric;
-        public GameInitialisationMultiplayer(Controllers controllers, IAbstractGameFactoryMultyPlayer fabric, GameData gameData)
+        public GameInitialisationMultiplayer(IAbstractGameFactoryMultyPlayer fabric, GameData gameData)
         {
-            this._controllers = controllers;
             this._gameData = gameData;
             this._fabric = fabric;
             GameInit();

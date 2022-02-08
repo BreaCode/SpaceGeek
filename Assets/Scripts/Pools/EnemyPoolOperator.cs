@@ -7,14 +7,16 @@ namespace GeekSpace
         private readonly IPool _pool;
         private readonly int _poolSize;
         private readonly EnemyType _enemyType;
+        private readonly AudioClip _audioClip;
 
         internal EnemyModel CurrentModel { get; private set; }
 
-        internal EnemyPoolOperator(IPool pool, int poolSize, EnemyType enemyType)    
+        internal EnemyPoolOperator(IPool pool, int poolSize, EnemyType enemyType, AudioClip audioClip)    
         {
             _pool = pool;
             _poolSize = poolSize;
             _enemyType = enemyType;
+            _audioClip = audioClip;
             InitiatePool();
         }
 
@@ -24,7 +26,7 @@ namespace GeekSpace
 
             for (int i = 0; i < _poolSize; i++)
             {
-                var enemyModel = EnemyModelFactory.EnemyModelCreate(_pool, _enemyType);
+                var enemyModel = EnemyModelFactory.EnemyModelCreate(_pool, _enemyType,_audioClip);
 
                 objects[i] = _pool.Pop(enemyModel.Position, Quaternion.identity);
 
