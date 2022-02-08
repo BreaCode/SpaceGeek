@@ -30,7 +30,7 @@ namespace GeekSpace
         }
         void OnTriggerEnter2D()
         {
-           
+            ReturnToPool();
         }
 
         void ReturnToPool()
