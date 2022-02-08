@@ -22,9 +22,11 @@ namespace GeekSpace
             GameEventSystem.current.GoingBeyondScreen(_playerModel);
         }
 
-        void OnTriggerEnter()
+        void OnTriggerEnter2D()
         {
-
+            var sceneManagment = FindObjectOfType<Pause>();
+            sceneManagment.ShowLooseMenu();
+            Destroy(this.gameObject);
         }
 
 

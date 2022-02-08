@@ -8,6 +8,7 @@ namespace GeekSpace
         readonly private WeaponType _weaponType;
         private WeaponModel _weaponModel;
         private Vector3 _position;
+        private float _angle;
         private GameObject _playerObject;
         private IPool _pool;
         private int _healthPoitns;
@@ -46,7 +47,12 @@ namespace GeekSpace
             get { return _speed; }
         }
 
-        public PlayerModel(string pathToPrefab, WeaponType weaponType, WeaponModel weaponModel, Vector3 position, int healthPoitns, float speed)
+        public float Angle
+        {
+            get { return _angle; }
+        }
+
+        public PlayerModel(string pathToPrefab, WeaponType weaponType, WeaponModel weaponModel, Vector3 position,float angle, int healthPoitns, float speed)
         {
             _pathToPrefab = pathToPrefab;
             _weaponType = weaponType;
@@ -54,6 +60,7 @@ namespace GeekSpace
             _position = position;
             _healthPoitns = healthPoitns;
             _speed = speed;
+            _angle = angle;
         }
     }
 }

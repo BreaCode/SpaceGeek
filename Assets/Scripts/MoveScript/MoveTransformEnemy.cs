@@ -16,6 +16,7 @@ namespace GeekSpace
 
         public void Move(Transform transform)
         {
+            if (_player == null) return;
             var speed = _enemyModel.Speed * Time.deltaTime;
             var pos = Vector2.MoveTowards(transform.position, _player.transform.position, speed);
             transform.position = new Vector2(pos.x, transform.position.y);

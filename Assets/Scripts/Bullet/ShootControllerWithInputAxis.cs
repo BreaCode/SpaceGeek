@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 namespace GeekSpace
 {
-    internal class ShootControllerWithInput : IExecute,IShootController
+    internal class ShootControllerWithInputAxis : IExecute,IShootController
     {
         private TimerSystem _timerSystem;
         private IPool _enemyPool;
         private Transform _startPosition;
         IUserInputFire _getShoot;
         float _onClickFire;
-        public ShootControllerWithInput(TimerSystem timerSystem, IPool enemyPool,Transform startPosition,IUserInputFire getShoot)
+        public ShootControllerWithInputAxis(TimerSystem timerSystem, IPool enemyPool,Transform startPosition,IUserInputFire getShoot)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;
@@ -16,6 +16,8 @@ namespace GeekSpace
             _getShoot = getShoot;
             _getShoot.AxisOnChange += GetInput;
         }
+
+
 
         private void GetInput(float value)
         {

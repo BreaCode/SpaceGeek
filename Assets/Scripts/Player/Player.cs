@@ -17,10 +17,13 @@ namespace GeekSpace
             PlayerProvider = player.GetComponent<PlayerProvider>();
             PlayerProvider.PlayerModel = _playerModel;
             player.transform.position = _playerModel.Position;
+            player.transform.rotation = Quaternion.Euler(0,0,_playerModel.Angle);
+
         }
 
         internal void Move(float timeDelta)
         {
+            if (PlayerProvider == null) return;
             _playerMove.Move(PlayerProvider.transform);
         }
     }

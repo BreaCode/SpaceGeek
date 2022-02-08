@@ -23,7 +23,7 @@
                 initialisationBtns.GetDown();
                 initialisationBtns.GetLeft();
                 initialisationBtns.GetRight();
-
+                initialisationBtns.GetFire();
             }
         }
     }
