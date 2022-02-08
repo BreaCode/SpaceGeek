@@ -18,6 +18,7 @@ namespace GeekSpace
             _gameFactory.CreatePlayer();
             _gameFactory.CreateEnemy();
 
+            var DestroyController = new DestroyController();
             var beyondScreenActer = new BeyondScreenActer();
         }
         #endregion
