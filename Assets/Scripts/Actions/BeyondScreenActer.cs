@@ -15,9 +15,8 @@ namespace GeekSpace
             {
                 model.Pool.Push(model.Object);
             }
-            else if (model is PlayerModel)
+            else if (model is PlayerModel && Camera.main != null)
             {
-
                 float weightShip = Mathf.Round(model.Object.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.rect.width / 100) + 0.2f;
 
                 float leftBorder = Extention.GetLeftSideValueAccordingCamera(Camera.main, weightShip);
@@ -40,6 +39,7 @@ namespace GeekSpace
             else
             {
                 Debug.Log("Model Error");
+                var asd = SceneManagment.FindObjectsOfType(typeof(GameObject));
             }
 
         }
