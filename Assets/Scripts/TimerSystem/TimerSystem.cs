@@ -3,6 +3,7 @@ public sealed class TimerSystem
 {
     private int _frameSizeDelaySet =0;
     private int _delayTic = 0;
+    internal const int FRAME = 30;
     private bool _isStartTimer = true;
     private bool _isloopTimer;
 
@@ -11,28 +12,28 @@ public sealed class TimerSystem
     //time еденицы времени задержки.
     public TimerSystem(bool timerSwich, bool isloop, float time)
     {
+        Timer(timerSwich,isloop,time);
+    }
+    public TimerSystem(bool isloop, float time)
+    {
+        Timer(true, isloop, time);
+    }
+    public TimerSystem(float time)
+    {
+        Timer(true, true, time);
+    }
+    private void Timer(bool timerSwich, bool isloop, float time)
+    {
         _isloopTimer = isloop;
-        if(timerSwich)
+        if (timerSwich)
         {
-            float temp = time * 30;
+            float temp = time * FRAME;
             _frameSizeDelaySet = (int)temp;
         }
         else
         {
-            _frameSizeDelaySet =(int)time;
+            _frameSizeDelaySet = (int)time;
         }
-    }
-    public TimerSystem(bool isloop, float time)
-    {
-        _isloopTimer = isloop;
-        float temp = time * 30;
-        _frameSizeDelaySet = (int)temp;
-    }
-    public TimerSystem(float time)
-    {
-        _isloopTimer = true;
-        float temp = time * 30;
-        _frameSizeDelaySet = (int)temp;
     }
     public bool CheckEvent()
     {
