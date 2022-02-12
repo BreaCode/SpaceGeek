@@ -38,7 +38,7 @@ namespace GeekSpace
         {
             _health = _enemyModel.HealthPoitns;
             _maxHealth = _health;
-            _damage = FindObjectOfType<PlayerProvider>().PlayerModel.WeaponModel.Damage;
+            _damage = FindObjectOfType<PlayerProvider>() == null ? 0.0f : FindObjectOfType<PlayerProvider>().PlayerModel.WeaponModel.Damage;
 
         }
         void OnBecameInvisible()
