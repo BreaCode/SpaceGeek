@@ -7,7 +7,7 @@ namespace GeekSpace
     internal class ShootControllerWithAutoShoot : IExecute, IShootController
     {
         internal TimerSystem _timerSystem;
-        internal IPool _enemyPool;
+        internal IPoolBullet _bullets;
         internal Transform _startPosition;
         //private Transform _startPosition2;
         private bool _isReady = true;
@@ -16,11 +16,11 @@ namespace GeekSpace
         internal LayerMask _enemyLayerMask;
         internal AudioClip _shootAudioClip;
         internal Camera _camera;
-        internal ShootControllerWithAutoShoot(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, GameObject player, string enemyLayerMask, AudioClip shootAudioClip)
+        internal ShootControllerWithAutoShoot(TimerSystem timerSystem, IPoolBullet bullets, Transform startPosition, GameObject player, string enemyLayerMask, AudioClip shootAudioClip)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;
-            _enemyPool = enemyPool;
+            _bullets = bullets;
             _player = player;
             _enemyLayerMask = LayerMask.GetMask(enemyLayerMask);
             _shootAudioClip = shootAudioClip;
@@ -39,7 +39,7 @@ namespace GeekSpace
             {
                 _isReady = false;
                 Extention.GetOrAddComponent<AudioSource>(_camera.gameObject).PlayOneShot(_shootAudioClip);
-                var a = _enemyPool.Pop(_startPosition.position, _startPosition.rotation);
+                var a = _bullets.Pop(_startPosition.position, _startPosition.rotation);
                 a.GetComponent<Rigidbody2D>().AddForce(_startPosition.transform.up * 3);
                 return;
             }

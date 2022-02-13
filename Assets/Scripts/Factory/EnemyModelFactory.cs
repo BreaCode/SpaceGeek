@@ -4,7 +4,7 @@ namespace GeekSpace
 {
     internal class EnemyModelFactory
     {
-        internal static EnemyModel EnemyModelCreate(IPool pool, EnemyType enemyType,AudioClip audioClip)
+        internal static EnemyModel EnemyModelCreate(IPoolEnemy pool, EnemyType enemyType,AudioClip audioClip)
         {
             WeaponModel DEFAULT_WEAPON_MODEL = new WeaponModel(0, WeaponParametrsManager.DEFAULT_RELOAD_COOLDOWN);
             WeaponModel weaponModel = DEFAULT_WEAPON_MODEL;

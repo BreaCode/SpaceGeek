@@ -1,13 +1,13 @@
 using UnityEngine;
 namespace GeekSpace
 {
-    internal sealed class EnemyModel : IDynamicModel
+    internal sealed class EnemyModel : IDynamicModelEnemy
     {
         private EnemyType _enemyType;
         private WeaponModel _weaponModel;
         private Vector3 _position;
         private GameObject _enemyObject;
-        private IPool _pool;
+        private IPoolEnemy _pool;
         private int _healthPoitns;
         private int _armor;
         private int _size;
@@ -32,7 +32,7 @@ namespace GeekSpace
             get { return _enemyObject; }
             set { _enemyObject = value; }
         }
-        public IPool Pool
+        public IPoolEnemy Pool
         {
             get { return _pool; }
             set { _pool = value; }
@@ -59,7 +59,7 @@ namespace GeekSpace
             get { return _explosionClip; }
         }
 
-        public EnemyModel(IPool pool, EnemyType enemyType, WeaponModel weaponModel, Vector3 position, int healthPoitns, float speed, int armor, int size , AudioClip explosionClip)
+        public EnemyModel(IPoolEnemy pool, EnemyType enemyType, WeaponModel weaponModel, Vector3 position, int healthPoitns, float speed, int armor, int size , AudioClip explosionClip)
         {
             _pool = pool;
             _enemyType = enemyType;

@@ -60,7 +60,7 @@ namespace GeekSpace
              UpdateHealthBar();       
             if (_health <= 0)
             {
-                GameEventSystem.current.GoingBeyondScreen(_enemyModel);
+                GameEventSystem.current.GoingBeyondScreenEnemy(_enemyModel);
                 Extention.GetOrAddComponent<AudioSource>(_camera.gameObject).PlayOneShot(_enemyModel.ExplosionClip);            
             }
         }

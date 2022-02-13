@@ -35,7 +35,7 @@ namespace GeekSpace
 
         void ReturnToPool()
         {
-            GameEventSystem.current.GoingBeyondScreen(_bulletModel);
+            GameEventSystem.current.GoingBeyondScreenBullet(_bulletModel);
         }
     }
 }

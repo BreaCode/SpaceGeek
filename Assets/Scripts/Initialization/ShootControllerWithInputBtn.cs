@@ -5,12 +5,12 @@ namespace GeekSpace
     internal class ShootControllerWithInputBtn : IShootController,IExecute
     {
         private TimerSystem _timerSystem;
-        private IPool _enemyPool;
+        private IPoolBullet _enemyPool;
         private Transform _startPosition;
         InputInitialisationBtns _getShoot;
         internal AudioClip _shootAudioClip;
         private Camera _camera;
-        public ShootControllerWithInputBtn(TimerSystem timerSystem, IPool enemyPool, Transform startPosition, InputInitialisationBtns getShoot, AudioClip shootAudioClip)
+        public ShootControllerWithInputBtn(TimerSystem timerSystem, IPoolBullet enemyPool, Transform startPosition, InputInitialisationBtns getShoot, AudioClip shootAudioClip)
         {
             _startPosition = startPosition;
             _timerSystem = timerSystem;

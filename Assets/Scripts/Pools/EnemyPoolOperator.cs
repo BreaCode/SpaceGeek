@@ -4,14 +4,14 @@ namespace GeekSpace
 {
     internal sealed class EnemyPoolOperator 
     {
-        private readonly IPool _pool;
+        private readonly IPoolEnemy _pool;
         private readonly int _poolSize;
         private readonly EnemyType _enemyType;
         private readonly AudioClip _audioClip;
 
         internal EnemyModel CurrentModel { get; private set; }
 
-        internal EnemyPoolOperator(IPool pool, int poolSize, EnemyType enemyType, AudioClip audioClip)    
+        internal EnemyPoolOperator(IPoolEnemy pool, int poolSize, EnemyType enemyType, AudioClip audioClip)    
         {
             _pool = pool;
             _poolSize = poolSize;

@@ -5,11 +5,11 @@ namespace GeekSpace
 {
     internal class BulletPoolOperator 
     {
-        private IPool _pool;
+        private IPoolBullet _pool;
         private BulletModel _bulletModel;
         private int _poolSize;
 
-        internal BulletPoolOperator(IPool pool, BulletModel bulletModel, int poolSize)
+        internal BulletPoolOperator(IPoolBullet pool, BulletModel bulletModel, int poolSize)
         {
             _pool = pool;
             _bulletModel = bulletModel;
