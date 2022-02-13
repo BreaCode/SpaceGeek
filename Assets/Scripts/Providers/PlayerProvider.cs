@@ -9,6 +9,7 @@ namespace GeekSpace
         private float _health;
         private float _maxHealth;
         private float _damage;
+        public bool fireBlocked = false;
         MaterialPropertyBlock _healtBarmatBlock;
         MeshRenderer _healtBarMeshRenderer;
 

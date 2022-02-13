@@ -16,10 +16,8 @@ namespace GeekSpace
                     bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
                     break;
             }
-
-
-            var poolRoot = new Vector3(0, 0, 0);
-            var bulletPool = new ObjectPool(bulletPrefab.gameObject, poolRoot);
+            var root = new ParrentStruct(Vector2.zero, NameManager.POOL_ENEMY_BULLET);
+            var bulletPool = new ObjectPool(bulletPrefab.gameObject, root);
 
             return bulletPool;
         }
