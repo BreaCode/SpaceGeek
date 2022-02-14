@@ -66,14 +66,20 @@ namespace GeekSpace
         public void SinglePlayPressed()
         {
             _gameData._GameType = GameType.SINGLE;
-            GetComponent<AudioSource>().enabled = false;
+            if (TryGetComponent(out AudioSource audioSource))
+            {
+                audioSource.enabled = false;
+            }
             SceneManager.LoadScene(SceeneConstManager.MAIN_SCENE_NAME);
         }
 
         public void MultiplayerPlayPressed()
         {
             _gameData._GameType = GameType.MULTIPLAYER;
-            GetComponent<AudioSource>().enabled = false;
+            if (TryGetComponent(out AudioSource audioSource))
+            {
+                audioSource.enabled = false;
+            }
             SceneManager.LoadScene("SampleScene");
         }
 
