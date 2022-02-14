@@ -16,6 +16,17 @@ namespace GeekSpace
         public Dropdown _resolutionDropDown;
         public Dropdown _qualityDropDown;
         public Slider _sliderAudio;
+        private float _audioValue
+        {
+            get 
+            {
+                return _sliderAudio.value;
+            }
+            set
+            {
+                value = _sliderAudio.value;
+            }
+        }
         public Animator _animator;
         public void Awake()
         {
@@ -27,6 +38,11 @@ namespace GeekSpace
             }
             _resolutionDropDown.ClearOptions();
             _resolutionDropDown.AddOptions(_resolutionsStringList);
+        }
+
+        private void OnBecameVisible()
+        {
+            _sliderAudio.value = _audioValue;
         }
 
         public void ShowMenu()
@@ -50,7 +66,7 @@ namespace GeekSpace
 
         public void AudioVolume()
         {
-            _audioMixer.SetFloat(SceeneConstManager.AUDIO_MIXER_VOLUME_LABEL, _sliderAudio.value);
+            _audioMixer.SetFloat(SceeneConstManager.AUDIO_MIXER_VOLUME_LABEL, _audioValue);
         }
 
         public void Resolution()

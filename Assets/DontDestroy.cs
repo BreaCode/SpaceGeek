@@ -1,13 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class DontDestroy : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        var cnt = FindObjectsOfType<DontDestroy>().Length;
+        if (cnt > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
 }
