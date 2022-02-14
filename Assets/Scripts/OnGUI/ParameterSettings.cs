@@ -6,15 +6,8 @@ namespace GeekSpace
 {
     public class ParameterSettings : EditorWindow
     {
-        //private  GeekSpace.Entity _Player = new GeekSpace.Entity
-        //    (GeekSpace.PlayerParametrsManager.PLAYER_SPEED, GeekSpace.PlayerParametrsManager.PLAYER_HEALTH, GeekSpace.WeaponParametrsManager.DEFAULT_RELOAD_COOLDOWN);
-        //private  GeekSpace.Entity _Ship = new GeekSpace.Entity
-        //    (GeekSpace.EnemyParametrsManager.SHIP_SPEED, GeekSpace.EnemyParametrsManager.SHIP_HEALTH,1);
-        //private  GeekSpace.Entity _Asteroid = new GeekSpace.Entity
-        //    (GeekSpace.EnemyParametrsManager.ASTEROID_SPEED, GeekSpace.EnemyParametrsManager.ASTEROID_HEALTH,1);
         private int[] _posX = new int[] { 80, 200 };
         private const int _height = 20;
-        private bool start = true;
         private bool PlayerLockShoot = false;
         private bool ShipLockShoot = false;
         [MenuItem("Инструменты/ Окна/ Настройки объектов")]
