@@ -54,7 +54,8 @@ namespace GeekSpace
         public void Move(Transform transform)
         {
             GetInputFromBtn();
-            var shipSpeed = _playerModel.Speed;
+            var shipSpeed = EntityData._Player._speed;
+            //var shipSpeed = _playerModel.Speed;
             var movement = new Vector3(_horizontal, _vertical, 0);
             transform.position = transform.position + movement * shipSpeed * Time.deltaTime;
         }

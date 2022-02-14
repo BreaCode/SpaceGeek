@@ -5,7 +5,7 @@ namespace GeekSpace
         public float _speed;
         public float _maxSpeed;
         public int _HP;
-        public int _maxHP;
+        public float _maxHP;
         public float _speedFire;
         public float _maxSpeedFire;
         public int _shootBlocked;

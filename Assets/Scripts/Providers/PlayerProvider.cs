@@ -18,7 +18,8 @@ namespace GeekSpace
         {
             _healtBarMeshRenderer = gameObject.transform.GetChild(1).transform.gameObject.GetComponent<MeshRenderer>();
             _healtBarmatBlock = new MaterialPropertyBlock();
-            _health = _playerModel.HealthPoitns;
+            _health = EntityData._Player._HP;
+            //_health = _playerModel.HealthPoitns;
             _maxHealth = _health;
         }
 

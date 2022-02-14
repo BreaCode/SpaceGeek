@@ -28,7 +28,8 @@ namespace GeekSpace
             var enemyPoolShip = EnemyPoolFactory.EnemyPoolCreate(EnemyType.Ship);
             var enemyShipPoolOperator = new EnemyPoolOperator(enemyPoolShip, MaximumsManager.SHIP_MAXIMUM, EnemyType.Ship,_gameData.ShipBurst);
             var timerSystemShipSpawn = new TimerSystem(true, true, 35);
-            var timerSystemShipShooting = new TimerSystem(true, true, enemyShipPoolOperator.CurrentModel.WeaponModel.Cooldown);
+            var timerSystemShipShooting = new TimerSystem(true, true, 4/ EntityData._Ship._speedFire);
+            //var timerSystemShipShooting = new TimerSystem(true, true, enemyShipPoolOperator.CurrentModel.WeaponModel.Cooldown);
             IMoveble shipMove = new MoveTransformEnemy(enemyShipPoolOperator.CurrentModel, player.PlayerProvider.gameObject);
             var enemyShipController = new EnemyController(timerSystemShipSpawn, enemyPoolShip, random, shipMove);
             IShootController enemyShootController = new EnemyShootController(timerSystemShipShooting, gunBulletPool, enemyShipPoolOperator.CurrentModel.Object.transform, enemyShipPoolOperator.CurrentModel.Object, EnemyParametrsManager.TARGET_LAYER,_gameData.PlayerFireClip);
@@ -52,7 +53,8 @@ namespace GeekSpace
             gunBulletPool = BulletPoolFactory.BulletPoolCreate(WeaponType.ChainGunMk1);
             var bulletModel = new BulletModel(gunBulletPool, player.PlayerProvider.transform.position, 2);
             var bulletPoolOperator = new BulletPoolOperator(gunBulletPool, bulletModel, MaximumsManager.BULLETS_MAXIMUM);
-            var playerReloadCooldown = player.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
+            var playerReloadCooldown = 4/EntityData._Player._speedFire;
+            //var playerReloadCooldown = player.PlayerProvider.PlayerModel.WeaponModel.Cooldown;
             var shootTimer = new TimerSystem(true, true, playerReloadCooldown);
             IShootController playerShootController = new ShootControllerWithAutoShoot(shootTimer, gunBulletPool, player.PlayerProvider.transform, player.PlayerProvider.gameObject, PlayerParametrsManager.TARGET_LAYER,_gameData.PlayerFireClip);
 
