@@ -24,7 +24,7 @@ namespace GeekSpace
             GameObject closet = null;
 
             var enemyProviders = GameObject.FindObjectsOfType<EnemyProvider>();
-            for (int i = 0; i < enemyProviders.Length - 1; i++)
+            for (int i = 0; i < (enemyProviders.Length - 1); i++)
             {
                 enemyObjects.Add(enemyProviders[i].EnemyModel.Object);
             }

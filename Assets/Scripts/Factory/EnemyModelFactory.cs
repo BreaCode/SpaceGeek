@@ -17,7 +17,6 @@ namespace GeekSpace
             switch (enemyType)
             {
                 case EnemyType.Asteroid:
-                    //—юда фабрику оружи€
                     Camera camera = Camera.main;
                     startPosition = Extention.GetRandomVectorAccordingCamera(camera, ConstManager.OFFSET_ASTEROID);
                     enemyHealth = EnemyParametrsManager.ASTEROID_HEALTH;
@@ -25,7 +24,6 @@ namespace GeekSpace
                     enemySize = 6;
                     break;
                 case EnemyType.Ship:
-                    //—юда фабрику оружи€
                     startPosition = new Vector3(0, ScreenBordersManager.UPPER_SIDE, 0);
                     enemyHealth = EnemyParametrsManager.SHIP_HEALTH;
                     enemySpeed = EnemyParametrsManager.SHIP_SPEED;

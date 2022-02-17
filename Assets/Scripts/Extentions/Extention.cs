@@ -15,17 +15,17 @@ public static class Extention
     #region Vector
     public static Vector3 MultiplyX(this Vector3 v, float val)
     {
-        v = new Vector3(val * v.x, v.y, v.z);
+        v = new Vector3((val * v.x), v.y, v.z);
         return v;
     }
     public static Vector3 MultiplyY(this Vector3 v, float val)
     {
-        v = new Vector3(v.x, val * v.y, v.z);
+        v = new Vector3(v.x, (val * v.y), v.z);
         return v;
     }
     public static Vector3 MultiplyZ(this Vector3 v, float val)
     {
-        v = new Vector3(v.x, v.y, val * v.z);
+        v = new Vector3(v.x, v.y, (val * v.z));
         return v;
     }
     #endregion
@@ -100,24 +100,25 @@ public static class Extention
     }
     public static Vector3 GetRandomVectorAccordingCamera(this Camera camera, float offset)
     {
-        var randomX = Random.Range(camera.transform.localPosition.z + offset, -1 * camera.transform.localPosition.z - offset);
+        var randomX = Random.Range(camera.transform.localPosition.z + offset, (-1 * camera.transform.localPosition.z - offset));
         var vector = new Vector2(randomX, Mathf.Abs((camera.transform.localPosition.z / 2) + offset));
         return vector;
     }
     public static Vector2 GetLeftSideVector2AccordingCamera(this Camera camera, float offset)
     {
-        var vector_left = new Vector2(camera.transform.localPosition.z + offset, camera.transform.localPosition.y);
+        var vector_left = new Vector2((camera.transform.localPosition.z + offset), camera.transform.localPosition.y);
         return vector_left;
     }
 
     public static float GetLeftSideValueAccordingCamera(this Camera camera, float offset)
     {
-        var left = camera.transform.localPosition.z + offset;
+        var left = (camera.transform.localPosition.z + offset);
         return left;
     }
     public static Vector2 GetRightSideVector2AccordingCamera(this Camera camera, float offset)
     {
-        var vector_right = new Vector2(((camera.transform.localPosition.z + offset)*-1), camera.transform.localPosition.y);
+        var right = (camera.transform.localPosition.z + offset) * -1;
+        var vector_right = new Vector2(right, camera.transform.localPosition.y);
         return vector_right;
     }
 
@@ -129,7 +130,7 @@ public static class Extention
 
     public static float GetUpSideValueAccordingCamera(this Camera camera, float offset)
     {
-        var up = ((camera.transform.localPosition.z / 2) + offset) * -1;
+        var up = (((camera.transform.localPosition.z / 2) + offset) * -1);
         return up;
     }
 
