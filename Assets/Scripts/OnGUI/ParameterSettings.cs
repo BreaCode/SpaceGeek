@@ -25,12 +25,14 @@ namespace GeekSpace
             EntityData._Player._speed     = LabelSlider(20, EntityData._Player._speed,    ref EntityData._Player._maxSpeed, "Player Speed");//connected
             EntityData._Player._HP   = (int)LabelSlider(40, EntityData._Player._HP,       ref EntityData._Player._maxHP, "Player HP");//connected
             EntityData._Player._speedFire = LabelSlider(60, EntityData._Player._speedFire,ref EntityData._Player._maxSpeedFire, "Player SpeedFire");//connected
-            PlayerLockShoot = GUI.Toggle(new Rect(_posX[0], 80, 150, _height), PlayerLockShoot, "Player Lock Shoot");
+            PlayerLockShoot = GUI.Toggle(new Rect(_posX[0], 80, 150, _height), PlayerLockShoot, "Player Lock Shoot");//connected
+            if (PlayerLockShoot) EntityData._Player._shootBlocked = 1; else EntityData._Player._shootBlocked = 0;
 
             EntityData._Ship._speed = LabelSlider(120, EntityData._Ship._speed,        ref EntityData._Ship._maxSpeed, "Ship Speed");
             EntityData._Ship._HP = (int)LabelSlider(140, EntityData._Ship._HP,         ref EntityData._Ship._maxHP, "Ship HP");
-            EntityData._Ship._speedFire = LabelSlider(160, EntityData._Ship._speedFire,ref EntityData._Ship._maxSpeedFire, "Ship SpeedFire");
-            ShipLockShoot = GUI.Toggle(new Rect(_posX[0], 180, 150, _height), ShipLockShoot, "Ship Lock Shoot");
+            EntityData._Ship._speedFire = LabelSlider(160, EntityData._Ship._speedFire,ref EntityData._Ship._maxSpeedFire, "Ship SpeedFire");//connected
+            ShipLockShoot = GUI.Toggle(new Rect(_posX[0], 180, 150, _height), ShipLockShoot, "Ship Lock Shoot");//connected
+            if (ShipLockShoot) EntityData._Ship._shootBlocked = 1; else EntityData._Ship._shootBlocked = 0;
 
             EntityData._Asteroid._speed = LabelSlider(220, EntityData._Asteroid._speed,ref EntityData._Ship._maxSpeed, "Asteroid Speed");
             EntityData._Asteroid._HP = (int)LabelSlider(240, EntityData._Asteroid._HP, ref EntityData._Ship._maxHP, "Asteroid HP");

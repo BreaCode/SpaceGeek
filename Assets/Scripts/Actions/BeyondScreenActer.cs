@@ -7,21 +7,14 @@ namespace GeekSpace
         internal BeyondScreenActer()
         {
             GameEventSystem.current.onGoingBeyondScreen += GoingBeyondScreen;
-            GameEventSystem.current.onGoingBeyondScreenEnemy += GoingBeyondScreenEnemy;
-            GameEventSystem.current.onGoingBeyondScreenBullet += GoingBeyondScreenBullet;
-        }
-        private void GoingBeyondScreenEnemy(IDynamicModelEnemy model)
-        {
-            model.Pool.Push(model.Object);
-        }
-        private void GoingBeyondScreenBullet(IDynamicModelBullet model)
-        {
-            model.Pool.Push(model.Object);
         }
         private void GoingBeyondScreen(IDynamicModel model)
         {
             if (model == null) return;
-
+            if (model is EnemyModel || model is BulletModel)
+            {
+                model.Pool.Push(model.Object);
+            }
             else if (model is PlayerModel)
             {
 
@@ -48,13 +41,10 @@ namespace GeekSpace
             {
                 Debug.Log("Model Error");
             }
-
         }
         ~BeyondScreenActer()
         {
             GameEventSystem.current.onGoingBeyondScreen -= GoingBeyondScreen;
-            GameEventSystem.current.onGoingBeyondScreenEnemy -= GoingBeyondScreenEnemy;
-            GameEventSystem.current.onGoingBeyondScreenBullet -= GoingBeyondScreenBullet;
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GeekSpace
 {
-    internal sealed class ObjectPool : IPoolBullet , IPoolEnemy//IPool
+    internal sealed class ObjectPool : IPool
     {
         private readonly Stack<GameObject> _stack = new Stack<GameObject>();
         private readonly GameObject _prefab;

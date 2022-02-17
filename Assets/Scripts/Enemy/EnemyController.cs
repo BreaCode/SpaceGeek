@@ -7,12 +7,12 @@ namespace GeekSpace
     internal sealed class EnemyController : IExecute
     {
         private readonly TimerSystem _respawnTimer;
-        private readonly IPoolEnemy _objectPool;
+        private readonly IPool _objectPool;
         private readonly System.Random _random;
         private readonly IMoveble _moveble;
         private List<GameObject> _enemies;
 
-        internal EnemyController(TimerSystem respawnTimer, IPoolEnemy objectPool, System.Random random, IMoveble moveble)
+        internal EnemyController(TimerSystem respawnTimer, IPool objectPool, System.Random random, IMoveble moveble)
         {
             if (respawnTimer == null) throw new Exception("TimerSystem is null");
             if (objectPool == null) throw new Exception("ObjectPool is null");

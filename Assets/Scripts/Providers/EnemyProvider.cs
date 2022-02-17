@@ -15,6 +15,7 @@ namespace GeekSpace
         private float _damage;
         MaterialPropertyBlock _healtBarmatBlock;
         MeshRenderer _healtBarMeshRenderer;
+        //private IPool gunBulletPool;
 
 
         internal EnemyModel EnemyModel
@@ -39,6 +40,15 @@ namespace GeekSpace
             _health = _enemyModel.HealthPoitns;
             _maxHealth = _health;
             _damage = FindObjectOfType<PlayerProvider>().PlayerModel.WeaponModel.Damage;
+            //var timerSystemShipShooting = new TimerSystem(true, true, 4 / EntityData._Ship._speedFire);
+            //IShootController enemyShootController = new EnemyShootController
+            //    (timerSystemShipShooting, 
+            //    gunBulletPool,
+            //    _enemyModel.Position, 
+            //    enemyShipPoolOperator.CurrentModel.Object, 
+            //    EnemyParametrsManager.TARGET_LAYER, 
+            //    _gameData.PlayerFireClip
+            //    );
 
         }
         void OnBecameInvisible()
@@ -60,7 +70,7 @@ namespace GeekSpace
              UpdateHealthBar();       
             if (_health <= 0)
             {
-                GameEventSystem.current.GoingBeyondScreenEnemy(_enemyModel);
+                GameEventSystem.current.GoingBeyondScreen(_enemyModel);
                 Extention.GetOrAddComponent<AudioSource>(_camera.gameObject).PlayOneShot(_enemyModel.ExplosionClip);            
             }
         }

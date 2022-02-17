@@ -9,8 +9,8 @@ namespace GeekSpace
 
         Camera camera = Camera.main;
         System.Random random = new System.Random();
-        private IPoolBullet gunBulletPool;
-        private IPoolBullet gunBulletPoolTwo;
+        private IPool gunBulletPool;
+        private IPool gunBulletPoolTwo;
         private Player player;
         private Player playerTwo;
         private Controllers _controllers;

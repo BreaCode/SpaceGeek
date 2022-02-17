@@ -4,7 +4,8 @@ namespace GeekSpace
 {
     internal class EnemyShootController : ShootControllerWithAutoShoot
     {
-        internal EnemyShootController(TimerSystem timerSystem, IPoolBullet enemyBulletPool, Transform startPosition, GameObject player, string enemyLayerMask,AudioClip shootAudioClip) : base(timerSystem, enemyBulletPool, startPosition, player, enemyLayerMask,shootAudioClip)
+        internal TimerSystem _timerSystemEnemy;
+        internal EnemyShootController(TimerSystem timerSystem, IPool enemyBulletPool, Transform startPosition, GameObject player, string enemyLayerMask,AudioClip shootAudioClip) : base(timerSystem, enemyBulletPool, startPosition, player, enemyLayerMask,shootAudioClip)
         {
 
         }
@@ -12,8 +13,13 @@ namespace GeekSpace
         public override void GetShoot()
         {
             if (_player.activeSelf == false) return;
+            _timerSystemEnemy = _timerSystem;
+#if UNITY_EDITOR
+            _timerSystemEnemy.SetNewTimer(4 / EntityData._Ship._speedFire);
+#endif
             _hit = Physics2D.Raycast(_player.transform.position, -_player.transform.up, 100.0f, _enemyLayerMask);
-            if (_timerSystem.CheckEvent() && _hit)
+            Debug.DrawLine(_player.transform.position, -_player.transform.up,Color.red);
+            if (_timerSystemEnemy.CheckEvent() && _hit && EntityData._Ship._shootBlocked==0)
             {
                 Extention.GetOrAddComponent<AudioSource>(_camera.gameObject).PlayOneShot(_shootAudioClip);
                 var startpos = new Vector2(_startPosition.transform.position.x, _startPosition.transform.position.y - 1);

@@ -1,12 +1,13 @@
 using UnityEngine;
 namespace GeekSpace
 {
-    internal sealed class BulletModel : IDynamicModelBullet//IDynamicModel
+    internal sealed class BulletModel : IDynamicModel
     {
         private Vector3 _position;
         private GameObject _bulletObject;
-        private IPoolBullet _pool;
+        private IPool _pool;
         private float _speed;
+        private int _number;
 
         public Vector3 Position
         {
@@ -18,7 +19,7 @@ namespace GeekSpace
             get { return _bulletObject; }
             set { _bulletObject = value; }
         }
-        public IPoolBullet Pool
+        public IPool Pool
         {
             get { return _pool; }
             set { _pool = value; }
@@ -27,10 +28,15 @@ namespace GeekSpace
         {
             get { return _speed; }
         }
-
-        public BulletModel(IPoolBullet pool, Vector3 position,float speed)
+        public int number
         {
-            _pool = pool;         
+            get { return _number; }
+            set { }
+        }
+
+        public BulletModel(IPool pool, Vector3 position,float speed)
+        {
+            _pool = pool;
             _position = position;
             _speed = speed;
         }

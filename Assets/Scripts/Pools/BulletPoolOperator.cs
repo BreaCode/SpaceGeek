@@ -5,11 +5,11 @@ namespace GeekSpace
 {
     internal class BulletPoolOperator 
     {
-        private IPoolBullet _pool;
+        private IPool _pool;
         private BulletModel _bulletModel;
         private int _poolSize;
 
-        internal BulletPoolOperator(IPoolBullet pool, BulletModel bulletModel, int poolSize)
+        internal BulletPoolOperator(IPool pool, BulletModel bulletModel, int poolSize)
         {
             _pool = pool;
             _bulletModel = bulletModel;
@@ -24,6 +24,7 @@ namespace GeekSpace
             for (int i = 0; i < _poolSize; i++)
             {
                 objects[i] = _pool.Pop(_bulletModel.Position, Quaternion.identity);
+                _bulletModel.number = i;
 
                 var BulletProvider = objects[i].GetComponent<BulletProvider>();
                 BulletProvider.BulletModel = _bulletModel;

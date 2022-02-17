@@ -79,22 +79,6 @@ namespace GeekSpace
                 onGoingBeyondScreen(model);
             }
         }
-        public event Action<IDynamicModelEnemy> onGoingBeyondScreenEnemy;
-        public void GoingBeyondScreenEnemy(IDynamicModelEnemy model)
-        {
-            if (onGoingBeyondScreenEnemy != null)
-            {
-                onGoingBeyondScreenEnemy(model);
-            }
-        }
-        public event Action<IDynamicModelBullet> onGoingBeyondScreenBullet;
-        public void GoingBeyondScreenBullet(IDynamicModelBullet model)
-        {
-            if (onGoingBeyondScreenBullet != null)
-            {
-                onGoingBeyondScreenBullet(model);
-            }
-        }
         #endregion
     }
 }

@@ -66,4 +66,9 @@ public sealed class TimerSystem
             }
         }
     }
+    public void SetNewTimer(float time)
+    {
+        float temp = time * FRAME;
+        _frameSizeDelaySet = (int)temp;
+    }
 }
