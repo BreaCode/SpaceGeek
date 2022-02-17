@@ -25,7 +25,7 @@ namespace GeekSpace
             {
                 objects[i] = _pool.Pop(_bulletModel.Position, Quaternion.identity);
 
-                var BulletProvider = objects[i].GetComponent<BulletProvider>();
+                var BulletProvider = objects[i].GetComponent<BulletProviderBeh>();
                 BulletProvider.BulletModel = _bulletModel;
             }
             for (int i = 0; i < _poolSize; i++)

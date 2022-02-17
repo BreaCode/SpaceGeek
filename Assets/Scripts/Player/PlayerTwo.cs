@@ -6,14 +6,14 @@ namespace GeekSpace
     {
         private readonly IMoveble _playerMoveTwo;
         private readonly PlayerModel _playerModelTwo;
-        internal PlayerProvider PlayerProvider { get; }
+        internal PlayerProviderBeh PlayerProvider { get; }
 
         internal PlayerTwo(IMoveble playerMoveTwo, PlayerModel playerModelTwo)
         {
             _playerMoveTwo = playerMoveTwo;
             _playerModelTwo = playerModelTwo;
-            var player = GameObject.Instantiate(Resources.Load<PlayerProvider>("Prefabs/Ship/PlayerShip"));
-            PlayerProvider = player.GetComponent<PlayerProvider>();
+            var player = GameObject.Instantiate(Resources.Load<PlayerProviderBeh>("Prefabs/Ship/PlayerShip"));
+            PlayerProvider = player.GetComponent<PlayerProviderBeh>();
             PlayerProvider.PlayerModel = _playerModelTwo;
             player.transform.position = _playerModelTwo.Position;
         }

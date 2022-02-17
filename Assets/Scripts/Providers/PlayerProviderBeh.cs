@@ -3,7 +3,7 @@ using UnityEngine;
 namespace GeekSpace
 {
     [RequireComponent(typeof(MeshRenderer))]
-    public class PlayerProvider : MonoBehaviour
+    public class PlayerProviderBeh : MonoBehaviour
     {
         private PlayerModel _playerModel;
         private float _health;
@@ -38,19 +38,19 @@ namespace GeekSpace
 
         void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.GetComponent<BulletProvider>())
+            if (collider.GetComponent<BulletProviderBeh>())
             {
                 _damage =PlayerModel.WeaponModel.Damage;
             }
-            else if (collider.GetComponent<PlayerProvider>())
+            else if (collider.GetComponent<PlayerProviderBeh>())
             {
-                _damage = collider.GetComponent<PlayerProvider>().PlayerModel.WeaponModel.Damage;
+                _damage = collider.GetComponent<PlayerProviderBeh>().PlayerModel.WeaponModel.Damage;
             }
-            else if (collider.GetComponent<EnemyProvider>())
+            else if (collider.GetComponent<EnemyProviderBeh>())
             {
-                if (collider.gameObject.GetComponent<EnemyProvider>().EnemyModel.EnemyType is EnemyType.Asteroid)
+                if (collider.gameObject.GetComponent<EnemyProviderBeh>().EnemyModel.EnemyType is EnemyType.Asteroid)
                     _damage = EnemyParametrsManager.ASTEROID_TARAN_DAMAGE;
-                if (collider.gameObject.GetComponent<EnemyProvider>().EnemyModel.EnemyType is EnemyType.Ship)
+                if (collider.gameObject.GetComponent<EnemyProviderBeh>().EnemyModel.EnemyType is EnemyType.Ship)
                     _damage = EnemyParametrsManager.SHIP_TARAN_DAMAGE;
             }
             _health -= _damage;
