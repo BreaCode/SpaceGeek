@@ -27,7 +27,7 @@ public sealed class TimerSystem
         _isloopTimer = isloop;
         if (timerSwich)
         {
-            float temp = time * FRAME;
+            float temp = (time * FRAME);
             _frameSizeDelaySet = (int)temp;
         }
         else

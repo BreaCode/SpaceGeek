@@ -21,8 +21,8 @@ namespace GeekSpace
 
                 float leftBorder = Extention.GetLeftSideValueAccordingCamera(Camera.main, weightShip);
                 float rightBorder = Extention.GetRightSideValueAccordingCamera(Camera.main, weightShip);
-                float upBorder = Extention.GetUpSideValueAccordingCamera(Camera.main, weightShip / 2);
-                float DownBorder = Extention.GetDownSideValueAccordingCamera(Camera.main, weightShip / 2);
+                float upBorder = Extention.GetUpSideValueAccordingCamera(Camera.main, (weightShip / 2));
+                float DownBorder = Extention.GetDownSideValueAccordingCamera(Camera.main, (weightShip / 2));
 
                 Vector3 newPosition = new Vector3();
                 newPosition = model.Object.transform.position;

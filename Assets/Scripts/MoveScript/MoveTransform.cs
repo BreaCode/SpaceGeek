@@ -56,7 +56,7 @@ namespace GeekSpace
             GetInputFromBtn();
             var shipSpeed = _playerModel.Speed;
             var movement = new Vector3(_horizontal, _vertical, 0);
-            transform.position = transform.position + movement * shipSpeed * Time.deltaTime;
+            transform.position = (transform.position + movement * shipSpeed * Time.deltaTime);
         }
     }
 }

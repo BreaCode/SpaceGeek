@@ -18,9 +18,9 @@ namespace GeekSpace
             if (_timerSystem.CheckEvent() && _hit)
             {
                 Extention.GetOrAddComponent<AudioSource>(_camera.gameObject).PlayOneShot(_shootAudioClip);
-                var startpos = new Vector2(_startPosition.transform.position.x, _startPosition.transform.position.y - 1);
+                var startpos = new Vector2(_startPosition.transform.position.x, (_startPosition.transform.position.y - 1));
                 var a = _enemyPool.Pop(startpos, _startPosition.rotation);
-                a.GetComponent<Rigidbody2D>().AddForce(-_startPosition.transform.up * 3);
+                a.GetComponent<Rigidbody2D>().AddForce((-_startPosition.transform.up * 3));
                 return;
             }
         }
