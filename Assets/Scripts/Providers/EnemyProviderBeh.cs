@@ -65,11 +65,6 @@ namespace GeekSpace
             }
         }
 
-        void ReturnToPool()
-        {
-
-        }
-
         private void UpdateHealthBar()
         {
             _healtBarMeshRenderer.GetPropertyBlock(_healtBarmatBlock);
