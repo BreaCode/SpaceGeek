@@ -6,14 +6,14 @@ namespace GeekSpace
     {
         internal static ObjectPool BulletPoolCreate(WeaponType weaponType)
         {
-            var bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
+            var bulletPrefab = (Resources.Load<BulletProviderBeh>(PathsManager.BULLET_PREFAB));
             switch (weaponType)
             {
                 case WeaponType.ChainGunMk1:
-                    bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
+                    bulletPrefab = (Resources.Load<BulletProviderBeh>(PathsManager.BULLET_PREFAB));
                     break;
                 case WeaponType.LaserGunMk1:
-                    bulletPrefab = (Resources.Load<BulletProvider>(PathsManager.BULLET_PREFAB));
+                    bulletPrefab = (Resources.Load<BulletProviderBeh>(PathsManager.BULLET_PREFAB));
                     break;
             }
 

@@ -9,7 +9,7 @@ namespace GeekSpace
 
         internal DestroyController()
         {
-            var playerProvider = GameObject.FindObjectOfType<PlayerProvider>();
+            var playerProvider = GameObject.FindObjectOfType<PlayerProviderBeh>();
             var playerModel = playerProvider.PlayerModel;
             _playerObject = playerModel.Object;
 
@@ -23,7 +23,7 @@ namespace GeekSpace
             var playerPosition = _playerObject.transform.position;
             GameObject closet = null;
 
-            var enemyProviders = GameObject.FindObjectsOfType<EnemyProvider>();
+            var enemyProviders = GameObject.FindObjectsOfType<EnemyProviderBeh>();
             for (int i = 0; i < (enemyProviders.Length - 1); i++)
             {
                 enemyObjects.Add(enemyProviders[i].EnemyModel.Object);
@@ -45,7 +45,7 @@ namespace GeekSpace
         internal void DestroyNearby()
         {
             var nearbyEnemy = GetNearby();
-            var enemyProvider = nearbyEnemy.GetComponent<EnemyProvider>();
+            var enemyProvider = nearbyEnemy.GetComponent<EnemyProviderBeh>();
             var enemyPool = enemyProvider.EnemyModel.Pool;
             enemyPool.Push(nearbyEnemy);
         }

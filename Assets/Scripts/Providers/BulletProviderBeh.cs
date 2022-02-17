@@ -3,7 +3,7 @@ namespace GeekSpace
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(MeshRenderer))]
-    public class BulletProvider : MonoBehaviour
+    public class BulletProviderBeh : MonoBehaviour
     {
         private BulletModel _bulletModel;
         private Rigidbody2D _rigidbody2D;
