@@ -59,6 +59,7 @@ namespace GeekSpace
         public void Restart()
         {
             SceneManager.LoadScene("SampleScene");
+            Time.timeScale = 1f;
         }
 
         public void Exit()
