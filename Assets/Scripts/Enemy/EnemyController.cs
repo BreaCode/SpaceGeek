@@ -34,6 +34,7 @@ namespace GeekSpace
                 var enemySize = (_random.Next(1, enemyModel.Size) / 2f);
                 Vector3 scale = new Vector3(enemySize, enemySize, 0);
                 enemyObject.transform.localScale = scale;
+                enemyModel.HealthPoitns = (int)enemySize * 2;
                 _enemies.Add(enemyObject.gameObject);
             }
 
