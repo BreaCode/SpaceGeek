@@ -18,7 +18,7 @@ namespace GeekSpace
             {
                 case EnemyType.Asteroid:
                     Camera camera = Camera.main;
-                    startPosition = Extention.GetRandomVectorAccordingCamera(camera, ConstManager.OFFSET_ASTEROID);
+                    startPosition = Extention.GetRandomVectorAccordingCamera(camera, ConstManager.OFFSET_EDGES, ConstManager.OFFSET_ASTEROID);
                     enemyHealth = EnemyParametrsManager.ASTEROID_HEALTH;
                     enemySpeed = EnemyParametrsManager.ASTEROID_SPEED;
                     enemySize = 6;
