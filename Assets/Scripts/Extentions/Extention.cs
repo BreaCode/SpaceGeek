@@ -98,10 +98,12 @@ public static class Extention
         var centrPosition = new Vector3(camera.transform.position.x, camera.transform.position.y, 0);
         return centrPosition;
     }
-    public static Vector3 GetRandomVectorAccordingCamera(this Camera camera, float offset)
+    public static Vector3 GetRandomVectorAccordingCamera(this Camera camera, float offsetX, float offsetY)
     {
-        var randomX = Random.Range(camera.transform.localPosition.z + offset, (-1 * camera.transform.localPosition.z - offset));
-        var vector = new Vector2(randomX, Mathf.Abs((camera.transform.localPosition.z / 2) + offset));
+        var weight = ((camera.orthographicSize * 2) * camera.aspect) / 2;
+        var height = camera.orthographicSize;
+        var randomX = Random.Range(-1 * weight + offsetX, weight - offsetX);
+        var vector = new Vector2(randomX, Mathf.Abs(height) - offsetY);
         return vector;
     }
     public static Vector2 GetLeftSideVector2AccordingCamera(this Camera camera, float offset)
