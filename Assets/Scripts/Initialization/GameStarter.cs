@@ -25,6 +25,7 @@ namespace GeekSpace
         }
         private void Update()
         {
+            if (Pause.gameIsPaused) return;
             var deltaTime = Time.deltaTime;
             _controllers.Execute(deltaTime);
         }

@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace GeekSpace
+using GeekSpace.POOL;
+namespace GeekSpace.MODEL
 {
     internal sealed class EnemyModel : IDynamicModel
     {

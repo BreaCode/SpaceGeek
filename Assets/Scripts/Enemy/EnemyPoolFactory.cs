@@ -1,6 +1,8 @@
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.CONSTANT;
+using GeekSpace.POOL;
+using GeekSpace.PROVIDER;
+namespace GeekSpace.ENEMY
 {
     internal class EnemyPoolFactory
     {
@@ -16,8 +18,6 @@ namespace GeekSpace
                     enemyPrefab = (Resources.Load<EnemyProviderBeh>(PathsManager.ENEMY_SHIP_PREFAB));
                     break;
             }
-
-
             var poolRoot = new Vector3(0, 0, 0);
             var enemyPool = new ObjectPool(enemyPrefab.gameObject, poolRoot);
 

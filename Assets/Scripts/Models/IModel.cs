@@ -1,4 +1,4 @@
-namespace GeekSpace
+namespace GeekSpace.MODEL
 {
     public interface IModel
     {

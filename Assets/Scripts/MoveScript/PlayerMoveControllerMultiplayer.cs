@@ -1,4 +1,4 @@
-﻿namespace GeekSpace
+﻿namespace GeekSpace.MOVE
 {
     internal class PlayerMoveControllerMultiplayer : IExecute
     {

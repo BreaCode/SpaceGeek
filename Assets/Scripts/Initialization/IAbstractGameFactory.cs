@@ -3,7 +3,7 @@ namespace GeekSpace
 {
     internal interface IAbstractGameFactory
     {
-        IInputInitialisation SetInput(IInputInitialisation inputInitialisation);
+        IInputInitialisation SetInputPlayerOne(IInputInitialisation inputInitialisation);
         void CreatePlayer();
         void CreateEnemy();
 

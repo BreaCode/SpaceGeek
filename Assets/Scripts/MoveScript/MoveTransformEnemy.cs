@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using GeekSpace.MODEL;
 using UnityEngine;
 
-namespace GeekSpace
+namespace GeekSpace.MOVE
 {
     internal class MoveTransformEnemy : IMoveble
     {

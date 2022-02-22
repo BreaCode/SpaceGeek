@@ -1,6 +1,8 @@
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.ENEMY;
+using GeekSpace.MODEL;
+using GeekSpace.PROVIDER;
+namespace GeekSpace.POOL
 {
     internal sealed class EnemyPoolOperator 
     {

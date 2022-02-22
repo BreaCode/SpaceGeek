@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GeekSpace
+namespace GeekSpace.POOL
 {
     public interface IPool
     {

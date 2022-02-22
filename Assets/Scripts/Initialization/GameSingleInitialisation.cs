@@ -1,5 +1,5 @@
-using UnityEngine;
-
+using GeekSpace.ACTION;
+using GeekSpace.INPUT;
 namespace GeekSpace
 {
     public sealed class GameSinglInitialisation : IGameStrategy
@@ -14,7 +14,7 @@ namespace GeekSpace
 
         public void GameInit()
         {
-            _gameFactory.SetInput(new InputInitializatioAxis());
+            _gameFactory.SetInputPlayerOne(new InputInitializatioAxis());
             _gameFactory.CreatePlayer();
             _gameFactory.CreateEnemy();
 

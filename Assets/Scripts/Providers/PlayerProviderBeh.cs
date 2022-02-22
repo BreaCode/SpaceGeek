@@ -1,6 +1,8 @@
 using UnityEngine;
+using GeekSpace.ACTION;
+using GeekSpace.MODEL;
 
-namespace GeekSpace
+namespace GeekSpace.PROVIDER
 {
     [RequireComponent(typeof(MeshRenderer))]
     public class PlayerProviderBeh : MonoBehaviour

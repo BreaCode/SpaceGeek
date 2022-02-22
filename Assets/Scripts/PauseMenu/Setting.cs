@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using GeekSpace.CONSTANT;
 namespace GeekSpace
 {
     internal class Setting : SceneManagment

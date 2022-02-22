@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using GeekSpace.PROVIDER;
 
-namespace GeekSpace
+namespace GeekSpace.ACTION
 {
     internal sealed class DestroyController
     {

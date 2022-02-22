@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GeekSpace
+namespace GeekSpace.INPUT
 {
     internal sealed class MobileInput : IUserInputProxy
     {

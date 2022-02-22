@@ -23,6 +23,5 @@ namespace GeekSpace
         [SerializeField] internal AudioClip AsteroidBurst;
         [SerializeField] internal AudioClip ShipBurst;
 
-
     }
 }

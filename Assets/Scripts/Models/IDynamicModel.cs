@@ -1,6 +1,6 @@
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.POOL;
+namespace GeekSpace.MODEL
 {
     public interface IDynamicModel : IModel
     {

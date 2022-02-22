@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
-
+using GeekSpace.CONSTANT;
+using GeekSpace.ENEMY;
+using GeekSpace.EXTENSHION;
+using GeekSpace.INPUT;
+using GeekSpace.MODEL;
+using GeekSpace.MOVE;
+using GeekSpace.POOL;
 namespace GeekSpace
 {
     internal class MultiplayerGameFactory : IAbstractGameFactoryMultyPlayer
@@ -76,13 +82,13 @@ namespace GeekSpace
             _controllers.Add(playerMoveControllerTwo);
             _controllers.Add(playerShootControllerTwo);
         }
-        public IInputInitialisation SetInput(IInputInitialisation inputInitialisation)
+        public IInputInitialisation SetInputPlayerOne(IInputInitialisation inputInitialisation)
         {
             _inputInitialisation = inputInitialisation;
 
             return _inputInitialisation;
         }
-        public IInputInitialisation SetInputTwo(IInputInitialisation inputInitialisationTwo)
+        public IInputInitialisation SetInputPlayerTwo(IInputInitialisation inputInitialisationTwo)
         {
             _inputInitialisationTwo = inputInitialisationTwo;
 
