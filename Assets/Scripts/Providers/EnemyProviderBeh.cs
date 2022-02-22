@@ -5,7 +5,7 @@ namespace GeekSpace
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(MeshRenderer))]
-    public class EnemyProvider : MonoBehaviour
+    public class EnemyProviderBeh : MonoBehaviour
     {
         private EnemyModel _enemyModel;
         private Rigidbody2D _rigidbody2D;
@@ -38,7 +38,7 @@ namespace GeekSpace
         {
             _health = _enemyModel.HealthPoitns;
             _maxHealth = _health;
-            _damage = FindObjectOfType<PlayerProvider>() == null ? 0.0f : FindObjectOfType<PlayerProvider>().PlayerModel.WeaponModel.Damage;
+            _damage = FindObjectOfType<PlayerProviderBeh>().PlayerModel.WeaponModel.Damage;
 
         }
         void OnBecameInvisible()
@@ -63,11 +63,6 @@ namespace GeekSpace
                 GameEventSystem.current.GoingBeyondScreen(_enemyModel);
                 Extention.GetOrAddComponent<AudioSource>(_camera.gameObject).PlayOneShot(_enemyModel.ExplosionClip);            
             }
-        }
-
-        void ReturnToPool()
-        {
-
         }
 
         private void UpdateHealthBar()

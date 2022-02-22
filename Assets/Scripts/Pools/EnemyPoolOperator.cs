@@ -30,7 +30,7 @@ namespace GeekSpace
 
                 objects[i] = _pool.Pop(enemyModel.Position, Quaternion.identity);
 
-                var EnemyProvider = objects[i].GetComponent<EnemyProvider>();
+                var EnemyProvider = objects[i].GetComponent<EnemyProviderBeh>();
                 EnemyProvider.EnemyModel = enemyModel;
                 CurrentModel = enemyModel;
             }

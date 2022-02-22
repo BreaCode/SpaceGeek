@@ -30,8 +30,8 @@ namespace GeekSpace
             if (_respawnTimer.CheckEvent())
             {
                 var enemyObject = _objectPool.Pop(Extention.GetRandomVectorAccordingCamera(Camera.main, ConstManager.OFFSET_ASTEROID), Quaternion.identity);
-                var enemyModel = enemyObject.gameObject.GetOrAddComponent<EnemyProvider>().EnemyModel;
-                var enemySize = _random.Next(1, enemyModel.Size) / 2f;
+                var enemyModel = enemyObject.gameObject.GetOrAddComponent<EnemyProviderBeh>().EnemyModel;
+                var enemySize = (_random.Next(1, enemyModel.Size) / 2f);
                 Vector3 scale = new Vector3(enemySize, enemySize, 0);
                 enemyObject.transform.localScale = scale;
                 _enemies.Add(enemyObject.gameObject);
