@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.MODEL;
+namespace GeekSpace.ACTION
 {
     public sealed class GameEventSystem : MonoBehaviour
     {

@@ -1,4 +1,5 @@
-﻿namespace GeekSpace
+﻿using GeekSpace.INPUT;
+namespace GeekSpace
 {
     public sealed class InputController : IExecute
     {

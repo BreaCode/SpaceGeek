@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GeekSpace
+namespace GeekSpace.MOVE
 {
     public class MoveNOTHING : IMoveble
     {

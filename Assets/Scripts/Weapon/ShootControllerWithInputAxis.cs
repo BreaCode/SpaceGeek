@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using GeekSpace.INPUT;
+using GeekSpace.POOL;
 namespace GeekSpace
 {
     internal class ShootControllerWithInputAxis : IExecute,IShootController

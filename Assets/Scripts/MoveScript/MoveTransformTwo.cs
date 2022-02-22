@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.INPUT;
+using GeekSpace.MODEL;
+namespace GeekSpace.MOVE
 {
     internal class MoveTransformTwo : IMoveble
     {

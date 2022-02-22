@@ -1,4 +1,4 @@
-namespace GeekSpace
+namespace GeekSpace.MODEL
 {
     internal sealed class WeaponModel : IModel
     {

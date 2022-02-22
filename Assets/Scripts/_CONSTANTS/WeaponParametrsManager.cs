@@ -1,4 +1,4 @@
-﻿namespace GeekSpace
+﻿namespace GeekSpace.CONSTANT
 {
     internal class WeaponParametrsManager
     {

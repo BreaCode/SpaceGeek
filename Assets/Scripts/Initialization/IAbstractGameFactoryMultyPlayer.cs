@@ -2,6 +2,6 @@
 {
     internal interface IAbstractGameFactoryMultyPlayer:IAbstractGameFactory
     {
-        IInputInitialisation SetInputTwo(IInputInitialisation inputInitialisation);
+        IInputInitialisation SetInputPlayerTwo(IInputInitialisation inputInitialisation);
     }
 }

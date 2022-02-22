@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GeekSpace
+namespace GeekSpace.MOVE
 {
     internal interface IMoveble
     {

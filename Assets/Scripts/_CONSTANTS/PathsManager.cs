@@ -1,5 +1,5 @@
 
-namespace GeekSpace
+namespace GeekSpace.CONSTANT
 {
     internal static class PathsManager
     {

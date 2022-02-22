@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.CONSTANT;
+namespace GeekSpace.POOL
 {
     internal sealed class ObjectPool : IPool
     {

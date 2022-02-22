@@ -2067,19 +2067,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 702932934}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2081701106}
-        m_TargetAssemblyTypeName: GeekSpace.SceneManagment, SPACEGEEK
-        m_MethodName: MultiplayerPlayPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &702932934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5878,19 +5866,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2607268913537654365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2081701106}
-        m_TargetAssemblyTypeName: GeekSpace.SceneManagment, SPACEGEEK
-        m_MethodName: SinglePlayPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &2607268913537654367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6227,19 +6203,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2607268914029181357}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2081701106}
-        m_TargetAssemblyTypeName: GeekSpace.SceneManagment, SPACEGEEK
-        m_MethodName: ShowMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &2607268914029181359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6360,19 +6324,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2607268914173609889}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2081701106}
-        m_TargetAssemblyTypeName: GeekSpace.SceneManagment, SPACEGEEK
-        m_MethodName: ExitPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &2607268914173609891
 RectTransform:
   m_ObjectHideFlags: 0

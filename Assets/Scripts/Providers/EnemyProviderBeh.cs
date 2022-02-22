@@ -1,7 +1,8 @@
-using System;
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.ACTION;
+using GeekSpace.EXTENSHION;
+using GeekSpace.MODEL;
+namespace GeekSpace.PROVIDER
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(MeshRenderer))]

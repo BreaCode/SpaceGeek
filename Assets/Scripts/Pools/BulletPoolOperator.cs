@@ -1,7 +1,7 @@
-
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.PROVIDER;
+using GeekSpace.MODEL;
+namespace GeekSpace.POOL
 {
     internal class BulletPoolOperator 
     {

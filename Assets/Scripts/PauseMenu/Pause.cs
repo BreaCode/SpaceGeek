@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,9 +9,8 @@ namespace GeekSpace
     {
         public GameObject _menuPausedUI;
         public GameObject _LooseMenu;
-
         public Button _buttonPause;
-        public static bool gameIsPaused;
+        public static bool gameIsPaused { get; set; }
 
         private void Start()
         {
@@ -21,16 +21,15 @@ namespace GeekSpace
         public void ShowLooseMenu()
         {
             _LooseMenu.SetActive(true);
-            Time.timeScale = 0f;
+            gameIsPaused = true;
+            ChangeSimulatedPhisicsVisibleEnemy(gameIsPaused);
         }
 
         public void Resume()
         {
             _menuPausedUI.SetActive(false);
-
             gameIsPaused = false;
-
-            Time.timeScale = 1f;
+            ChangeSimulatedPhisicsVisibleEnemy(gameIsPaused);
         }
 
         public void Paused()
@@ -39,15 +38,24 @@ namespace GeekSpace
             if (_menuPausedUI.activeSelf == true)
             {
                 _menuPausedUI.SetActive(false);
+                gameIsPaused = false;
             }
             else
             {
                 _menuPausedUI.SetActive(true);
+                gameIsPaused = true;
             }
+            ChangeSimulatedPhisicsVisibleEnemy(gameIsPaused);
+        }
 
-            gameIsPaused = true;
-
-            Time.timeScale = 0f;
+        private static void ChangeSimulatedPhisicsVisibleEnemy(bool isPaused)
+        {
+            var rb = FindObjectsOfType<Rigidbody2D>();
+            foreach (var item in rb)
+            {
+                if (isPaused) item.simulated = false;
+                else item.simulated = true;
+            }
         }
 
         public void LoadMenu()
@@ -59,13 +67,13 @@ namespace GeekSpace
         public void Restart()
         {
             SceneManager.LoadScene("SampleScene");
-            Time.timeScale = 1f;
+            gameIsPaused = false;
         }
 
         public void Exit()
         {
-            Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenuScene");
+            gameIsPaused = false;
         }
     }
 }

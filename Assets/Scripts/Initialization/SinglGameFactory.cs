@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
-
+using GeekSpace.CONSTANT;
+using GeekSpace.ENEMY;
+using GeekSpace.EXTENSHION;
+using GeekSpace.MODEL;
+using GeekSpace.MOVE;
+using GeekSpace.POOL;
 namespace GeekSpace
 {
     internal class SinglGameFactory : IAbstractGameFactory
@@ -61,7 +66,7 @@ namespace GeekSpace
             _controllers.Add(playerShootController);
         }
 
-        public IInputInitialisation SetInput(IInputInitialisation inputInitialisation)
+        public IInputInitialisation SetInputPlayerOne(IInputInitialisation inputInitialisation)
         {
             _inputInitialisation = inputInitialisation;
 

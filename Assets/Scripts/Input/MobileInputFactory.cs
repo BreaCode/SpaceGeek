@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace GeekSpace
+namespace GeekSpace.INPUT
 {
     internal sealed class MobileInputFactory : IMobileInputFactory
     {

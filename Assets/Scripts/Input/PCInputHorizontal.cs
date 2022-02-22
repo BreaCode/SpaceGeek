@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GeekSpace
+namespace GeekSpace.INPUT
 {
     public sealed class PCInputHorizontal : IUserInputProxy
     {

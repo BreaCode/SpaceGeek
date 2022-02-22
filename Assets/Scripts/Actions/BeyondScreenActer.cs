@@ -1,6 +1,7 @@
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.EXTENSHION;
+using GeekSpace.MODEL;
+namespace GeekSpace.ACTION
 {
     internal sealed class BeyondScreenActer
     {

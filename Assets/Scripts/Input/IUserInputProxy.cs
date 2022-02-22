@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GeekSpace
+namespace GeekSpace.INPUT
 {
     public interface IUserInputProxy
     {

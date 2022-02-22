@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GeekSpace
+namespace GeekSpace.INPUT
 {
     internal sealed class InputInitializatioAxis : IInitialization, IInputInitialisation
     {

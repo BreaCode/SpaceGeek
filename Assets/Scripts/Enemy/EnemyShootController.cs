@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using GeekSpace.EXTENSHION;
 using UnityEngine;
-
-namespace GeekSpace
+using GeekSpace.POOL;
+namespace GeekSpace.ENEMY
 {
     internal class EnemyShootController : ShootControllerWithAutoShoot
     {
@@ -10,7 +9,6 @@ namespace GeekSpace
         {
 
         }
-
         public override void GetShoot()
         {
             if (_player.activeSelf == false) return;
