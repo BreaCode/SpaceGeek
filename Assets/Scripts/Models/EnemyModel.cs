@@ -40,6 +40,7 @@ namespace GeekSpace
         public int HealthPoitns
         {
             get { return _healthPoitns; }
+            set { _healthPoitns = value; }
         }
         public int Armor
         {

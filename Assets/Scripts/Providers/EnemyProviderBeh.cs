@@ -50,7 +50,8 @@ namespace GeekSpace
         {
             _rigidbody2D.velocity = Vector2.zero;
             _healtBarMeshRenderer.enabled = true;
-            _health = _maxHealth;
+            _health = _enemyModel.HealthPoitns;
+            _maxHealth = _health;
             UpdateHealthBar();
         }
 
